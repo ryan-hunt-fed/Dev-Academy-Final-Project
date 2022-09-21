@@ -8,7 +8,7 @@ Wellbeing (when I'm stressed ... I need...) (general needs eg. kids, illness, sl
 
 - Jordan stress profile, same as Jeff for stress signs. To do, separate Jordan from the work/have a break.
 
-- Kris stress profile, similar to Ming, withdraw or get frustrated. To do, check in when you can see that or talk about something slightly off topic to distract/destress.
+- Kris stress profile, similar to Ming, withdraw or get frustrated. To do, check in with Kris when you can see that or talk about something slightly off topic to distract/destress.
 
 - Ryan stress profile, will get quiet when stressed with addition of moving around in the chair. To do, first give some space then check in.  
 
@@ -37,7 +37,7 @@ How will you, individually and as a team, get the help you need both technically
 
 How will you make sure everyone feels included?
 
-- Make sure people have time to speak, Listen to each other, Let the person finish their idea before inputting, Run by group if there are separate meetings and decisions are made. 
+- Make sure people have time to speak, Listen to each other, Let the person finish their idea before inputting, Run by group if there are separate meetings and decisions are made, which will be done in person, if someone is sick will do updates via Slack at lunch and end of day. 
 
 How will you decide who needs to be present for which conversations
 
@@ -53,11 +53,12 @@ How will you work (what roles and what agile rituals will we use etc)
 
 Agile rituals
 
-- Stand ups
+- Stand ups 
 - Physical kanban
-- Sprints
+- Sprints - 1 day per sprint or all tasks complete
 - Team huddles 
 - Check in’s 
+- Reflections/Retro - at end of day. 
 
 
 How will you survive (Will you eat together? How will you break the tension? What is your fun times plan?)
@@ -103,7 +104,8 @@ What might a day look like? What agile rituals will happen? When during the day 
 
 - Team huddle at start of day 9am
 - Stand ups at 11am and 3:30pm
-- Lunch at 12:30pm -2pm
+- Lunch at 12:30pm - 2pm
+- Retro at 4:30pm
 - Team huddle at end of day at 5pm
 
 - Can be adjustable depending on work during the day. 
@@ -112,13 +114,12 @@ What might a day look like? What agile rituals will happen? When during the day 
 
 - As a team we will be going outside and spending time together.
 
-Documentation. Set up a repo and a readme, start adding things to it
-
-
-
 Set up a kanban board (To Do, Up Next, In Progress, Done)
 
 Draw your wireframes, make some user stories, do some DB diagrams, global store plans, etc.
+
+- Check Slack chat for images related to wireframe, user stories, DB diagrams, global store plans. 
+
 By the end of the day, make these accessible to us and talk us through your plans:
 Group needs / stress profiles
 MVP (what it is :P)
