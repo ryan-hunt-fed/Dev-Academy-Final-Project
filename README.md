@@ -1,108 +1,124 @@
-# Fullstack Collection App
+---PokeHuman---
 
-This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, api requests, react components, and redux actions and creators. Let's get going!
+- Wellbeing (when I'm stressed ... I need...) (general needs eg. kids, illness, sleep etc)
 
-## Setup
+Ming stress profile, will be quiet, will ask brother and facilitator for help, will speak up early before getting to that part. To do, check in on Ming if he gets too quiet.
 
-### 0. Cloning and installation
-- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
+Jeff stress profile, starts to become avoidant, avoids talking about the difficult thing, lower chance of that happening based on past experience. To do, separate Jeff from the work/have a break.
 
-    You may also want to start a new branch
-    ```sh
-    cd my-fullstack-collection-scss
-    npm i
-    git checkout -b <branchname>
-    npm run dev
-    ```
-  </details>
+Jordan stress profile, same as Jeff for stress signs. To do, separate Jordan from the work/have a break.
 
-<details>
-  <summary>More about using <code>.scss</code> files</summary>
+Kris stress profile, similar to Ming, withdraw or get frustrated. To do, check in when you can see that or talk about something slightly off topic to distract/destress.
 
-  - Any css should be written in `client/styles/index.scss`
-  - The when the project bundles, a <code>.css</code> file will be created in the public folder. Each time the project bundles this file will be overwritten to match the css within your styles folder.
-  - You can use normal css styling or make use of the extra features of [sass](https://sass-lang.com/documentation/)
-</details>
-<details>
-  <summary>More about using SCSS</summary>
-    Instead of writing your styles in a <code>.css</code> file in your <code>server/public</code> folder, you'll need to write them in a <code>.scss</code> file in the <code>client/styles</code> folder. 
-</details>
+Ryan stress profile, will get quiet when stressed with addition of moving around in the chair. To do, first give some space then check in.  
 
----
 
-## Requirements
+- Expectation setting and agreements (what do we each want out of this time, what hours will we keep, what do we do when conflict arises, how will we communicate, especially what hours work will happen over the weekend)
 
-### 1. Choosing your data set
+- What do we want out of this time
+To solidify work, process around learning new tech, Fun and a fun team environment.
 
-- [ ] First, decide what you would like to keep a collection of. This could be a repo for keeping track of movies, books, gifs, cars, rocks, anything you fancy, but keep it simple!
-  <details style="padding-left: 2em">
-    <summary>More about your collection</summary>
+- What hours will we keep
+Reasonable hours 9-5. One day on the weekend to be off. Kris and Jeff ideally not Saturday, Jordan and Ryan ideally not Sunday, Ming can do either. Ideally Saturday will be the extra work day if project demands it. Option to stay late, end of day check in to decide.
 
-    **Note:** the aim is to have some simple data. If you think you might need more than one database table, or have lots of details you want to store, how could you simplify the information you're keeping track of? Leave more complex data until later in the project. For example, I want to keep track of books that I want to read, ones that I have read, and ones that I own. To start with though, let's keep track of the books themselves. My data might look like:
+- What do we do when conflict arises
 
-    |id|title|author|
-    |---|---|---|
-    | 1 | Ready Player One | Ernest Cline |
-    | 2 | Throwing Rocks at the Google Bus | Douglas Rushkoff |
+Pokemon battles on showdown to destress. Talk it out. Sit as a group and communicate as a group. Making sure there is a majority vote if the conflict is decision based. 
 
-Our first job is getting something showing on the front end from our database. Here's a list of steps in case they are useful. You can build in any order you like though ;)
+- How will you make decisions together? How will you handle conflict?
 
-## Back end
+Decision making - get in a group around a white board and talk about it. With having a majority vote. 
 
-### 2. Building the database
+- How will you, individually and as a team, get the help you need both technically and non-technically?
 
-- [ ] Design a database to store a list of your things (e.g. books)
-- [ ] Build the migrations and seed data
+First ask the group for help and set time box for group help if needed, Google for solutions, Consulate facilitator help or ask family who are in tech for help. 
 
-### 3. Building the API
-- [ ] Build an API (back end route) to get the information from your database
-- [ ] Test your API with Insomnia
+- How will you make sure everyone feels included?
 
-## Front end
+Make sure people have time to speak, Listen to each other, Let the person finish their idea before inputting, Run by group if there are separate meetings and decisions are made. 
 
-### 4. Setting the stage
+- How will you decide who needs to be present for which conversations
 
-- [ ] Build a React component with static html
-- [ ] Build Redux reducer. Start with a hardcoded initial state
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-    
-    For example:
-    ```js
-    const initialState = [{ id: 1, title: 'Ready Player One', author: 'Ernest Cline' }]
-    ```
-  </details>
+Meeting by meeting basis, based on the components that are being worked on. If it doesn’t involve you, you don’t need to be there, but are welcomed to stay if it's something to learn. 
 
-- [ ] Use `useSelector` to display the redux state you hardcoded in the React Component
+- How will you work (what roles and what agile rituals will we use etc)
 
-### 5. Building the API client
-- [ ] Build an API client in the front end to request the information from your routes
+Vibe Watcher - Kris
+Product Owner - Ryan 
+Scrum Lead - Jeff
+Git Keeper - Jordan
+Fungineer - Ming
 
-### 6. Building thunky actions
-- [ ] Build Thunk actions to use the API and get the information
-- [ ] Build Redux actions to save task data from the thunk
-- [ ] Use `useDispatch` and `useEffect` to dispatch the thunk when your app loads
+Agile rituals
 
-## Additional functionality
+Stand ups
+Physical kanban
+Sprints
+Team huddles 
+Check in’s 
 
-### 7. Adding, deleting, and updating records
-- [ ] Include the ability to add a new record (will need a form in your components)
-- [ ] Include the ability to remove/delete records
-- [ ] Include the ability to update records (e.g. for correcting typos)
 
----
-## Stretch
+- How will you survive (Will you eat together? How will you break the tension? What is your fun times plan?)
 
-<details>
-  <summary>More about stretch challenges</summary>
+Play games 
+Lunch together
+No code talk at lunch
+Snacks - each person brings something in, not every day. 
+More to be added as project goes on.
 
-  - Is there any complex data you chose to not include earlier or any way you could expand this dataset?
-    - You might have some other information (e.g. unread books vs. read books) that should be included in your database design, and this may require adjusting your database design
-  - Could you add an external API (maybe an inspirational quote in the footer?)
-  - If you haven't already, CSS!
-</details>
 
----
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=my-fullstack-collection-scss)
+- What is your MVP? How much work do you think it will take to achieve it?
+
+MVP
+Human dex, id, name, type, stats, image
+Dex size -  For start 5, will be added to. 
+CRUD - page to display all with add and release (Add and Delete)
+Sound effects
+Record a theme
+Styling for MVP
+
+Stretch
+Auth
+Battle
+Save to favorites/team
+SASS
+Deployment
+About us/ about the team
+
+- What tech will you be using? Is there anything you need to research? If you’re using our stack, will you use Redux?
+
+Yes to redux and most tools we’ve used, Possibly borrow from the pokemon api for battle stretch, Research into how a battle system would work, Research other deployment services. 
+
+- GitFlow. How will you arrange your work?
+
+Main branch for working/final product and Dev branch for current build everyone is working on. 
+
+- Roles. Which will you use? Who will be accountable for which areas?
+
+Product owner accountable to get to MVP, Scrum lead for stand ups, Accountable for own work, Don’t rush and ask for help, Dynamic grouping for pairs or solo work. 
+
+- What might a day look like? What agile rituals will happen? When during the day will you do the hard tech? Will you go outside as a team?
+
+Team huddle at start of day 9am
+Stand ups at 11am and 3:30pm
+Lunch at 12:30pm -2pm
+Team huddle at end of day at 5pm
+
+Can be adjustable depending on work during the day. 
+
+Last hour and a half of the day will be no new features, polish off what you were working on.
+
+As a team we will be going outside and spending time together.
+
+- Documentation. Set up a repo and a readme, start adding things to it
+
+
+
+- Set up a kanban board (To Do, Up Next, In Progress, Done)
+
+- Draw your wireframes, make some user stories, do some DB diagrams, global store plans, etc.
+By the end of the day, make these accessible to us and talk us through your plans:
+- Group needs / stress profiles
+- MVP (what it is :P)
+- Wireframes
+- User Stories
