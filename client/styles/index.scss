@@ -59,9 +59,10 @@ body {
   font-size: 1.2em;
   justify-content: space-around;
   & img {
-  max-width: 200px;
-  min-height: 200px;
+  max-width: 300px;
+  min-height: 300px;
   object-fit: cover;
+  background-color: white;
   }
   & p {
     text-align: center;
@@ -151,6 +152,27 @@ body {
 
 .speed-label{
   padding-right: 35px;
+//ABOUT
+
+.about-h2 {
+  text-align: center;
+  font-size: 3em;
+}
+
+.about-team-img {
+  text-align: center;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 50px;
+}
+
+.about-text {
+  margin: 40px;
+  font-size: 1.5em;
 }
 
 //TYPE
@@ -236,6 +258,12 @@ body {
 
  .type-Fairy{
   background-color: #D685AD;
+ }
+
+ // Dex Entry
+
+ .dexentry-container {
+  display: flex;
  }
 
 
