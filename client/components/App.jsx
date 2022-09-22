@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './Home'
 import Nav from './Nav'
 import AddPokeHumans from './AddPokeHumans'
+import DexEntry from './DexEntry'
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<AddPokeHumans />} />
         {/* <Route path='/dex' element={<Dex />}/> */}
-        {/* <Route path='/dex/:id' element={<DexEntry />}/> */}
+        <Route path="/dex/:id" element={<DexEntry />} />
       </Routes>
     </>
   )
