@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import ImageUploading from 'react-images-uploading'
-
+import { useNavigate } from 'react-router-dom'
 import { postAddPokehumanThunk } from '../actions/pokehumansActions'
 
 function AddPokeHumans() {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const [formData, setFormData] = useState()
   const [images, setImages] = useState([])
@@ -12,6 +13,7 @@ function AddPokeHumans() {
   const handleSubmit = (evt) => {
     evt.preventDefault()
     dispatch(postAddPokehumanThunk(formData))
+    navigate('/dex')
   }
 
   const handleChange = (evt) => {
@@ -19,6 +21,7 @@ function AddPokeHumans() {
       ...formData,
       [evt.target.name]: evt.target.value,
     })
+    console.log(evt.target.value)
   }
 
   const onChange = (imageList) => {
@@ -39,21 +42,45 @@ function AddPokeHumans() {
         </div>
         <div>
           <label htmlFor="type_1">Type_1: </label>
-          <input
-            type="text"
-            id="type_1"
-            name="type_1"
-            onChange={handleChange}
-          />
+          <select id="type_1" name="type_1" onChange={handleChange}>
+            <option>--Please choose your type--</option>
+            <option value="Normal">Normal</option>
+            <option value="Fighting">Fighting</option>
+            <option value="Ground">Ground</option>
+            <option value="Rock">Rock</option>
+            <option value="Bug">Bug</option>
+            <option value="Steel">Steel</option>
+            <option value="Fire">Fire</option>
+            <option value="Water">Water</option>
+            <option value="Grass">Grass</option>
+            <option value="Electric">Electric</option>
+            <option value="Psychic">Psychic</option>
+            <option value="Ice">Ice</option>
+            <option value="Dragon">Dragon</option>
+            <option value="Dark">Dark</option>
+            <option value="Fairy">Fairy</option>
+          </select>
         </div>
         <div>
           <label htmlFor="type_2">Type_2: </label>
-          <input
-            type="text"
-            id="type_2"
-            name="type_2"
-            onChange={handleChange}
-          />
+          <select id="type_2" name="type_2" onChange={handleChange}>
+            <option>--Please choose your type--</option>
+            <option value="Normal">Normal</option>
+            <option value="Fighting">Fighting</option>
+            <option value="Ground">Ground</option>
+            <option value="Rock">Rock</option>
+            <option value="Bug">Bug</option>
+            <option value="Steel">Steel</option>
+            <option value="Fire">Fire</option>
+            <option value="Water">Water</option>
+            <option value="Grass">Grass</option>
+            <option value="Electric">Electric</option>
+            <option value="Psychic">Psychic</option>
+            <option value="Ice">Ice</option>
+            <option value="Dragon">Dragon</option>
+            <option value="Dark">Dark</option>
+            <option value="Fairy">Fairy</option>
+          </select>
         </div>
         <div>
           <label htmlFor="HP">HP: </label>
@@ -100,7 +127,7 @@ function AddPokeHumans() {
           <input type="text" id="speed" name="speed" onChange={handleChange} />
         </div>
 
-        <button>Add PokeHuman</button>
+        <button disabled={!formData}>Add PokeHuman</button>
       </form>
       <div className="App">
         <ImageUploading

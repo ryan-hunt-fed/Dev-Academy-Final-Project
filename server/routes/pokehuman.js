@@ -38,8 +38,8 @@ router.post('/', async (req, res) => {
     speed,
     image,
   }
-  
-  let idArr = await db.insertPokeHuman(data)
+
+  let idArr = await db.insertPokeHumanDb(data)
   const id = idArr[0]
   let onePokeHuman = await db.getDexEntryDb(id)
   res.json(onePokeHuman)
