@@ -6,6 +6,7 @@ import Nav from './Nav'
 import Dex from './Dex'
 import DexEntry from './DexEntry'
 
+
 function App() {
   return (
     <>

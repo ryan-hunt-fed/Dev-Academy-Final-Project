@@ -24,7 +24,7 @@ function Home() {
       </div>
 
       <div className="intro-container">
-        <h4 className="intro">Welcome to PokeHuman,</h4>
+        <h4 className="intro">Welcome to PokeHuman, From FameGreak Studios</h4>
         <div className="intro-text-container">
           <p className="intro">
             Pokemon have finally risen up and have decided to be the new Pokemon
