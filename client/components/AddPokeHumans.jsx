@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import ImageUploading from 'react-images-uploading'
-
+import { useNavigate } from 'react-router-dom'
 import { postAddPokehumanThunk } from '../actions/pokehumansActions'
 
 function AddPokeHumans() {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const [formData, setFormData] = useState()
   const [images, setImages] = useState([])
@@ -12,6 +13,7 @@ function AddPokeHumans() {
   const handleSubmit = (evt) => {
     evt.preventDefault()
     dispatch(postAddPokehumanThunk(formData))
+    navigate('/dex')
   }
 
   const handleChange = (evt) => {
@@ -19,6 +21,7 @@ function AddPokeHumans() {
       ...formData,
       [evt.target.name]: evt.target.value,
     })
+    console.log(evt.target.value)
   }
 
   const onChange = (imageList) => {
@@ -31,114 +34,158 @@ function AddPokeHumans() {
 
   return (
     <>
-      <div className='form-container'>
+      <div className="form-container">
         <h2>Add New PokeHumans</h2>
         <div className="App">
-            <ImageUploading
-              value={images}
-              onChange={onChange}
-              dataURLKey="data_url"
-            >
-              {({
-                imageList,
-                onImageUpload,
-                onImageRemoveAll,
-                isDragging,
-                dragProps,
-              }) => (
-                // write your building UI
-                <div className="upload-image-wrapper">
-                  <button
-                    style={isDragging ? { color: 'red' } : undefined}
-                    onClick={onImageUpload}
-                    {...dragProps}
-                  >
-                    Click or Drop here
-                  </button>
-                  &nbsp;
-                  <button onClick={onImageRemoveAll}>Remove</button>
-                  {imageList.map((image, index) => (
-                    <div key={index} className="image-item">
-                      <img src={image['data_url']} alt="" width="100" />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </ImageUploading>
+          <ImageUploading
+            value={images}
+            onChange={onChange}
+            dataURLKey="data_url"
+          >
+            {({
+              imageList,
+              onImageUpload,
+              onImageRemoveAll,
+              isDragging,
+              dragProps,
+            }) => (
+              // write your building UI
+              <div className="upload-image-wrapper">
+                <button
+                  style={isDragging ? { color: 'red' } : undefined}
+                  onClick={onImageUpload}
+                  {...dragProps}
+                >
+                  Click or Drop here
+                </button>
+                &nbsp;
+                <button onClick={onImageRemoveAll}>Remove</button>
+                {imageList.map((image, index) => (
+                  <div key={index} className="image-item">
+                    <img src={image['data_url']} alt="" width="100" />
+                  </div>
+                ))}
+              </div>
+            )}
+          </ImageUploading>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name" className="name-label">
+              Name:{' '}
+            </label>
+            <input type="text" id="name" name="name" onChange={handleChange} />
           </div>
-        {/* <div className='form-container'> */}
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label className='name-label' htmlFor="name">Name: </label>
-              <input type="text" id="name" name="name" onChange={handleChange} />
-            </div>
-            <div>
-              <label className='type-1-label' htmlFor="type_1">Type_1: </label>
-              <input
-                type="text"
-                id="type_1"
-                name="type_1"
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label className='type-2-label' htmlFor="type_2">Type_2: </label>
-              <input
-                type="text"
-                id="type_2"
-                name="type_2"
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label className='hp-label' htmlFor="HP">HP: </label>
-              <input type="text" id="HP" name="HP" onChange={handleChange} />
-            </div>
-            <div>
-              <label className='attack-label' htmlFor="attack">Attack: </label>
-              <input
-                type="text"
-                id="attack"
-                name="attack"
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label className='defence-label' htmlFor="defence">Defence: </label>
-              <input
-                type="text"
-                id="defence"
-                name="defence"
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label className='sp-attack-label' htmlFor="Sp_attack">Sp_attack: </label>
-              <input
-                type="text"
-                id="Sp_attack"
-                name="Sp_attack"
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label className='sp-defence-label' htmlFor="Sp_defence">Sp_defence: </label>
-              <input
-                type="text"
-                id="Sp_defence"
-                name="Sp_defence"
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label className='speed-label' htmlFor="speed">Speed: </label>
-              <input type="text" id="speed" name="speed" onChange={handleChange} />
-            </div>
+          <div>
+            <label htmlFor="type_1" className="type-1-label">
+              Type_1:{' '}
+            </label>
+            <select id="type_1" name="type_1" onChange={handleChange}>
+              <option>--Please choose your type--</option>
+              <option value="Normal">Normal</option>
+              <option value="Fighting">Fighting</option>
+              <option value="Ground">Ground</option>
+              <option value="Rock">Rock</option>
+              <option value="Bug">Bug</option>
+              <option value="Steel">Steel</option>
+              <option value="Fire">Fire</option>
+              <option value="Water">Water</option>
+              <option value="Grass">Grass</option>
+              <option value="Electric">Electric</option>
+              <option value="Psychic">Psychic</option>
+              <option value="Ice">Ice</option>
+              <option value="Dragon">Dragon</option>
+              <option value="Dark">Dark</option>
+              <option value="Fairy">Fairy</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="type_2" className="type-2-label">
+              Type_2:{' '}
+            </label>
+            <select id="type_2" name="type_2" onChange={handleChange}>
+              <option>--Please choose your type--</option>
+              <option value="Normal">Normal</option>
+              <option value="Fighting">Fighting</option>
+              <option value="Ground">Ground</option>
+              <option value="Rock">Rock</option>
+              <option value="Bug">Bug</option>
+              <option value="Steel">Steel</option>
+              <option value="Fire">Fire</option>
+              <option value="Water">Water</option>
+              <option value="Grass">Grass</option>
+              <option value="Electric">Electric</option>
+              <option value="Psychic">Psychic</option>
+              <option value="Ice">Ice</option>
+              <option value="Dragon">Dragon</option>
+              <option value="Dark">Dark</option>
+              <option value="Fairy">Fairy</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="HP" className="hp-label">
+              HP:{' '}
+            </label>
+            <input type="text" id="HP" name="HP" onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="attack" className="attack-label">
+              Attack:{' '}
+            </label>
+            <input
+              type="text"
+              id="attack"
+              name="attack"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="defence" className="defence-label">
+              Defence:{' '}
+            </label>
+            <input
+              type="text"
+              id="defence"
+              name="defence"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="Sp_attack" className="sp-attack-label">
+              Sp_attack:{' '}
+            </label>
+            <input
+              type="text"
+              id="Sp_attack"
+              name="Sp_attack"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="Sp_defence" className="sp-defence-label">
+              Sp_defence:{' '}
+            </label>
+            <input
+              type="text"
+              id="Sp_defence"
+              name="Sp_defence"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="speed" className="speed-label">
+              Speed:{' '}
+            </label>
+            <input
+              type="text"
+              id="speed"
+              name="speed"
+              onChange={handleChange}
+            />
+          </div>
 
-            <button className='add-pokehuman-button'>Add PokeHuman</button>
-          </form>
-         
-        {/* </div> */}
+          <button disabled={!formData}>Add PokeHuman</button>
+        </form>
       </div>
     </>
   )
