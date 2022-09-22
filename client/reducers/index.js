@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 
-// import stuff from './stuff'
+import pokehumans from './pokehumansReducers'
+import dexEntry from './dexentry'
 
 export default combineReducers({
-  // stuff
+  pokehumans,
+  dexEntry
 })
