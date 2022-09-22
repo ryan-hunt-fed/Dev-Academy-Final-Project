@@ -24,11 +24,11 @@ function Dex() {
               </Link>
               <p>{pokes.name}</p>
               <div className="Type-box">
-                <p className={`type-${pokes.type_1}`}>{pokes.type_1}</p>
-                {pokes.type_1 === pokes.type_2 ? (
+                <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
+                {pokes.type1 === pokes.type2 ? (
                   <p></p>
                 ) : (
-                  <p className={`type-${pokes.type_2}`}>{pokes.type_2}</p>
+                  <p className={`type-${pokes.type2}`}>{pokes.type2}</p>
                 )}
               </div>
             </div>
