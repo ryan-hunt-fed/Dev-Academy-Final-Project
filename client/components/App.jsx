@@ -15,7 +15,7 @@ function App() {
         <Nav />
       </header>
 
-      <section className="main"></section>
+      {/* <section className="main"></section> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<AddPokeHumans />} />
