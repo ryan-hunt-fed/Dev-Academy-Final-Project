@@ -1,11 +1,10 @@
 const express = require('express')
 const path = require('path')
-const pokehumansRoutes = require('./routes/pokehuman')
 
+const pokehumansRoutes = require('./routes/pokehuman')
 const getDexEntry = require('./routes/dexentry')
 
 const server = express()
-
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))

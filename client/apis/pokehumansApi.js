@@ -1,6 +1,6 @@
 import request from "superagent";
 
-export function getAllPokesApi() {
-  return request.get('/api/v1/pokehumans')
-    .then(res => res.body)
+export async function getAllPokesApi() {
+  const pokes = await request.get('/api/v1/pokehumans')
+  return pokes.body
 }

@@ -2,16 +2,16 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { getDexEntryTHUNK } from '../actions/dexentry'
+import { getDexEntryThunk } from '../actions/dexentry'
 
 export default function DexEntry() {
   const dispatch = useDispatch()
-  const pokehuman = useSelector((redux) => redux.dexEntry)
+  const pokehuman = useSelector((store) => store.dexEntry)
 
   const { id } = useParams()
 
   useEffect(() => {
-    dispatch(getDexEntryTHUNK(id))
+    dispatch(getDexEntryThunk(id))
   }, [])
 
   return (
