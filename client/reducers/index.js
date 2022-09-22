@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-// import stuff from './stuff'
+import dexEntry from './dexentry'
 
 export default combineReducers({
-  // stuff
+  dexEntry,
 })
