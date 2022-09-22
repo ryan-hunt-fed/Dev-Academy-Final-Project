@@ -14,10 +14,9 @@ exports.up = function (knex) {
     table.integer('Sp_attack')
     table.integer('Sp_defence')
     table.integer('speed')
-    table.string('image')
+    table.binary('image')
   })
-
-};
+}
 
 /**
  * @param { import("knex").Knex } knex
@@ -25,4 +24,4 @@ exports.up = function (knex) {
  */
 exports.down = function (knex) {
   return knex.schema.dropTable('pokehumans')
-};
+}

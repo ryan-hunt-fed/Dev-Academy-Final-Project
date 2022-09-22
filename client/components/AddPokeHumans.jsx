@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import ImageUploading from 'react-images-uploading'
+
 import { postAddPokehuman } from '../actions/pokehumansActions'
 
 function AddPokeHumans() {
@@ -15,6 +17,25 @@ function AddPokeHumans() {
       ...formData,
       [evt.target.name]: evt.target.value,
     })
+  }
+
+  const [images, setImages] = useState([])
+
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex)
+
+    // const imageBuffer = Buffer.from(imageList[0].data_url, 'base64')
+    // console.log(imageBuffer)
+
+    setImages(imageList)
+
+    setFormData({
+      ...formData,
+      image: imageList[0].data_url,
+    })
+
+    console.log(formData)
   }
 
   return (
@@ -87,12 +108,42 @@ function AddPokeHumans() {
           <label htmlFor="speed">Speed: </label>
           <input type="text" id="speed" name="speed" onChange={handleChange} />
         </div>
-        <div>
-          <label htmlFor="image">Image: </label>
-          <input type="text" id="image" name="image" onChange={handleChange} />
-        </div>
+
         <button>Add PokeHuman</button>
       </form>
+      <div className="App">
+        <ImageUploading
+          value={images}
+          onChange={onChange}
+          dataURLKey="data_url"
+        >
+          {({
+            imageList,
+            onImageUpload,
+            onImageRemoveAll,
+            isDragging,
+            dragProps,
+          }) => (
+            // write your building UI
+            <div className="upload__image-wrapper">
+              <button
+                style={isDragging ? { color: 'red' } : undefined}
+                onClick={onImageUpload}
+                {...dragProps}
+              >
+                Click or Drop here
+              </button>
+              &nbsp;
+              <button onClick={onImageRemoveAll}>Remove</button>
+              {imageList.map((image, index) => (
+                <div key={index} className="image-item">
+                  <img src={image['data_url']} alt="" width="100" />
+                </div>
+              ))}
+            </div>
+          )}
+        </ImageUploading>
+      </div>
     </>
   )
 }
