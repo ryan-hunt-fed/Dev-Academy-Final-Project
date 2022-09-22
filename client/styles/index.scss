@@ -9,6 +9,8 @@ body {
   background-color: #e8e8e8;
 }
 
+//HOME
+
 .title-container{
   display: flex;
   justify-content: center;
@@ -33,6 +35,8 @@ body {
   margin: 0px 100px;
   text-align: center;
 }
+
+//NAV
 
 .nav-container a{
   text-decoration: none;
@@ -63,86 +67,118 @@ body {
   align-items: center;
 }
 
-.type-normal{
+//DEX
+
+.dex-card{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.2em;
+  justify-content: space-around;
+  & img {
+  max-width: 200px;
+  min-height: 200px;
+  object-fit: cover;
+  }
+  & p {
+    text-align: center;
+  }
+}
+
+.dex-wapper {
+   margin: 5px;
+}
+
+.Type-box {
+  display: inline;
+  & p {
+    border-radius: 6px;
+    box-shadow: black;
+    text-align: center;
+  }
+}
+
+//TYPE
+
+.type-Normal{
  background-color: #A8A77A;
 }
 
-.type-fire{
+.type-Fire{
   background-color: #EE8130;
   color:white;
  }
 
- .type-water{
+ .type-Water{
   background-color: #6390F0;
   color:white;
  }
 
- .type-grass{
+ .type-Grass{
   background-color: #7AC74C;
  }
 
- .type-electric{
+ .type-Electric{
   background-color: #F7D02C;
  }
 
- .type-ice{
+ .type-Ice{
   background-color: #96D9D6;
  }
 
- .type-fighting{
+ .type-Fighting{
   background-color: #C22E28;
   color:white;
  }
 
- .type-poison{
+ .type-Poison{
   background-color: #A33EA1;
   color:white;
  }
 
- .type-ground{
+ .type-Ground{
   background-color: #E2BF65;
  }
 
- .type-flying{
+ .type-Flying{
   background-color: #A98FF3;
   color:white;
  }
 
- .type-psychic{
+ .type-Psychic{
   background-color: #F95587;
   color:white;
  }
 
- .type-bug{
+ .type-Bug{
   background-color: #A6B91A;
   color:white;
  }
 
- .type-rock{
+ .type-Rock{
   background-color: #B6A136;
   color:white;
  }
 
- .type-ghost{
+ .type-Ghost{
   background-color: #735797;
   color:white;
  }
 
- .type-dark{
+ .type-Dark{
   background-color: #705746;
   color:white;
  }
 
- .type-dragon{
+ .type-Dragon{
   background-color: #6F35FC;
   color:white;
  }
 
- .type-steel{
+ .type-Steel{
   background-color: #B7B7CE;
  }
 
- .type-fairy{
+ .type-Fairy{
   background-color: #D685AD;
  }
 
