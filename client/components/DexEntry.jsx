@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
-import { getDexEntryAPI } from '../apis/dexentry'
+import { getDexEntryTHUNK } from '../actions/dexentry'
 
 export default function DexEntry() {
-  const [pokehuman, setPokehuman] = useState()
+  const dispatch = useDispatch()
+  const pokehuman = useSelector((redux) => redux.dexEntry)
+
   const { id } = useParams()
 
-  const handleClick = async () => {
-    const entry = await getDexEntryAPI(id)
-    console.log(entry)
-    setPokehuman(entry)
-  }
+  useEffect(() => {
+    dispatch(getDexEntryTHUNK(id))
+  }, [])
 
   return (
     <>
       <div>DexEntry</div>
-      <button onClick={handleClick}>Click me</button>
+      <button>Click me</button>
       <img src={pokehuman?.image} alt="A pokehuman!" />
       <h1>{pokehuman?.name}</h1>
       <h4>Type: {pokehuman?.type_1}</h4>
