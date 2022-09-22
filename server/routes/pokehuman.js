@@ -61,11 +61,8 @@ router.post('/', async (req, res) => {
     image,
   }
 
-  let idArr = await db.insertPokeHumanDb(data)
-  const id = idArr[0]
-  let onePokeHuman = await db.getOnePokeHuman(id)
-  const numel = ekansToNumelPost(onePokeHuman)
-  res.json(numel)
+  await db.insertPokeHumanDb(data)
+  return res
 })
 
 module.exports = router
