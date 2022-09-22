@@ -1,10 +1,8 @@
 
 body {
-  // position: absolute;
   top: 0;
   left: 0;
   margin: 0;
-  // padding: 20px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #e8e8e8;
 }
@@ -28,31 +26,29 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
-
-.intro-text-container{
   margin: 0px 100px;
   text-align: center;
 }
 
+
 //NAV
-
-.nav-container a{
-  text-decoration: none;
-  margin: 0px 10px;
-  font-size: 24px;
-  color:white;
-
-}
-
-.nav-container a:hover{
-  color: #2a75bb;
-}
 
 .nav-container{
   background-color: #E54222;
   padding: 30px;
   text-align: center;
+ 
+  & a{
+    text-decoration: none;
+    margin: 0px 10px;
+    font-size: 24px;
+    color:white;
+  }
+
+  & a:hover{
+    color: #2a75bb;
+  }
+  
 }
 
 //DEX
@@ -86,6 +82,76 @@ body {
   }
 }
 
+//ADD
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding: 10px 5px;
+  margin: 35px 250px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px #383c3d;
+
+  & h2{
+    text-align: center;
+  }
+ 
+  & label {
+    margin: 10px;
+  }
+  & input {
+    margin: 10px;
+  }
+
+  & button {
+    margin: 10px 85px;
+  }
+}
+
+.upload-image-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & button {
+    margin: 2px 2px;
+  }
+}
+
+.name-label{
+  padding-right: 38px;
+}
+
+.type-1-label{
+  padding-right: 30px;
+}
+
+.type-2-label{
+  padding-right: 30px;
+}
+
+.hp-label{
+  padding-right: 55px;
+}
+
+.attack-label{
+  padding-right: 35px;
+}
+
+.defence-label{
+  padding-right: 23px;
+}
+
+.sp-attack-label{
+  padding-right: 12px;
+}
+
+.speed-label{
+  padding-right: 35px;
 //ABOUT
 
 .about-h2 {
