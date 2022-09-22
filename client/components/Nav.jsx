@@ -10,7 +10,6 @@ function Nav() {
             <Link to='/dex'>Dex</Link>
             <Link to='/add'>Add</Link>
      </div>
-      
     </>
   )
 }
