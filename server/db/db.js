@@ -1,10 +1,19 @@
-const config = require('./knexfile').development
-const connection = require('knex')(config)
+//code here
+const conn = require('./connection')
 
-async function getDexEntryDB(id, db = connection) {
+//GET
+
+function getAllPokesDb(db = conn) {
+  return db('pokehumans').select()
+}
+
+async function getDexEntryDB(id, db = conn) {
   return await db('pokehumans').select().where('id', id).first()
 }
 
 module.exports = {
+  getAllPokesDb,
   getDexEntryDB
 }
+
+
