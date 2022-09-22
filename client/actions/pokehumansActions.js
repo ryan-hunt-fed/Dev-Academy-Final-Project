@@ -14,7 +14,7 @@ function getPokehumansAction(humans) {
   }
 }
 
-function addPokeHuman(human) {
+function addPokeHumanAction(human) {
   return {
     type: ADD_POKEHUMANS,
     payload: human,
@@ -37,10 +37,10 @@ export function getAllPokehumansThunk() {
   }
 }
 
-export function postAddPokehuman(data) {
+export function postAddPokehumanThunk(data) {
   return (dispatch) => {
     return addPokeHumanApi(data).then((human) => {
-      dispatch(addPokeHuman(human))
+      dispatch(addPokeHumanAction(human))
     })
   }
 }

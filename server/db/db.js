@@ -6,24 +6,19 @@ async function getAllPokesDb(db = conn) {
   return await db('pokehumans')
 }
 
-function insertPokeHuman(newData, db = conn) {
-  return db('pokehumans').insert(newData)
-}
-
-function getOnePokeHuman(id, db = conn) {
-  return db('pokehumans').where('id', id).first()
-}
-
-async function getDexEntryDB(id, db = connection) {
+async function getDexEntryDb(id, db = conn) {
   return await db('pokehumans').select().where('id', id).first()
 }
-async function getDexEntryDB(id, db = conn) {
-  return await db('pokehumans').select().where('id', id).first()
+
+// INSERT Functions
+
+async function insertPokeHumanDb(newData, db = conn) {
+  return await db('pokehumans').insert(newData)
 }
+
 
 module.exports = {
-  insertPokeHuman,
-  getOnePokeHuman,
+  insertPokeHumanDb,
   getAllPokesDb,
-  getDexEntryDB,
+  getDexEntryDb,
 }
