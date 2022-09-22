@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import ImageUploading from 'react-images-uploading'
 
-import { postAddPokehuman } from '../actions/pokehumansActions'
+import { postAddPokehumanThunk } from '../actions/pokehumansActions'
 
 function AddPokeHumans() {
   const dispatch = useDispatch()
@@ -11,7 +11,7 @@ function AddPokeHumans() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    dispatch(postAddPokehuman(formData))
+    dispatch(postAddPokehumanThunk(formData))
   }
 
   const handleChange = (evt) => {

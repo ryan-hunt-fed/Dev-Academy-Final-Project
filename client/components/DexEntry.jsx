@@ -16,8 +16,6 @@ export default function DexEntry() {
 
   return (
     <>
-      <div>DexEntry</div>
-      <button>Click me</button>
       <img src={pokehuman?.image} alt="A pokehuman!" />
       <h1>{pokehuman?.name}</h1>
       <h4>Type: {pokehuman?.type_1}</h4>
