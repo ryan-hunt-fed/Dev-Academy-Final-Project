@@ -12,7 +12,7 @@ function insertPokeHuman(newData, db = conn) {
 }
 
 function getOnePokeHuman(id, db = conn) {
-  return db('pokehumans').select().where('id', id).first()
+  return db('pokehumans').where('id', id).first()
 }
 
 async function getDexEntryDB(id, db = connection) {
