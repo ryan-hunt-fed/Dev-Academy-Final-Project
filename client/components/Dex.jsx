@@ -17,14 +17,19 @@ function Dex() {
       <div className="dex-card">
         {humans.map((pokes) => {
           return (
-            <div key={pokes.id}>
+            <div key={pokes.id} className="dex-wapper">
               <Link to={`/dex/${pokes.id}`}>
                 <img src={pokes.image} alt={pokes.name} />
               </Link>
               <p>{pokes.name}</p>
-              <p>
-                {pokes.type_1},{pokes.type_2}
-              </p>
+              <div className="Type-box">
+                <p className={`type-${pokes.type_1}`}>{pokes.type_1}</p>
+                {pokes.type_1 === pokes.type_2 ? (
+                  <p></p>
+                ) : (
+                  <p className={`type-${pokes.type_2}`}>{pokes.type_2}</p>
+                )}
+              </div>
             </div>
           )
         })}

@@ -19,7 +19,6 @@ export function getAllPokehumansThunk() {
   return async (dispatch) => {
     try {
       const humans = await getAllPokesApi()
-      console.log('thunk ', humans)
       dispatch(getPokehumansAction(humans))
     } catch (err) {
       console.log(err.message)
