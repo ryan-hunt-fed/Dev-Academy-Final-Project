@@ -1,9 +1,11 @@
 import { getAllPokesApi } from '../apis/pokehumansApi'
 
-//VAR
+//Variable
+
 export const GET_POKEHUMANS = 'GET_POKEHUMANS'
 
-//ACTION CREATOR
+//Action Creator
+
 function getPokehumansAction(humans) {
   return {
     type: GET_POKEHUMANS,
@@ -12,6 +14,7 @@ function getPokehumansAction(humans) {
 }
 
 //THUNK
+
 export function getAllPokehumansThunk() {
   // api call
   // dispatch action

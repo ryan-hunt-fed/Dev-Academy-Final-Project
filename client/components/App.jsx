@@ -12,6 +12,7 @@ function App() {
       <header className="header">
         <Nav />
       </header>
+
       <section className="main"></section>
       <Routes>
         <Route path="/" element={<Home />} />

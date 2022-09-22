@@ -1,13 +1,17 @@
 const express = require('express')
+const router = express.Router()
 
 const db = require('../db/db')
 
-const router = express.Router()
 
 router.get('/:id', async (req, res) => {
-  const id = req.params.id
-  const entry = await db.getDexEntryDB(id)
-  return res.json(entry)
+  try {
+    const id = req.params.id
+    const entry = await db.getDexEntryDB(id)
+    return res.json(entry)
+  } catch (err) {
+    res.status(500).json({ msg: err.message })
+  }
 })
 
 module.exports = router
