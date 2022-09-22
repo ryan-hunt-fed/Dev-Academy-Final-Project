@@ -1,10 +1,9 @@
-//code here
 const conn = require('./connection')
 
-//GET
+// GET Functions
 
-function getAllPokesDb(db = conn) {
-  return db('pokehumans').select()
+async function getAllPokesDb(db = conn) {
+  return await db('pokehumans')
 }
 
 function insertPokeHuman(newData, db = conn) {
