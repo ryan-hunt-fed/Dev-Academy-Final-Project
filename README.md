@@ -73,7 +73,7 @@ How will you survive (Will you eat together? How will you break the tension? Wha
 What is your MVP? How much work do you think it will take to achieve it?
 
 MVP
-- Human dex, id, name, type, stats, image
+- Human dex, id, name, type, stats, image - Table name - 'pokehumans'
 - Dex size -  For start 5, will be added to. 
 - Home page, Dex page (All entries), Add page, Single PokeHuman page (with links to next or previous PokeHuman).
 - CRUD - page to display all with add and release (Add and Delete)
