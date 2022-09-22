@@ -1,4 +1,4 @@
-import { getDexEntryAPI } from '../apis/dexentry'
+import { getDexEntryApi } from '../apis/dexentry'
 
 // Variable
 
@@ -17,7 +17,7 @@ export function getDexEntryAction(entry) {
 
 export function getDexEntryThunk(id) {
   return (dispatch) => {
-    getDexEntryAPI(id)
+    getDexEntryApi(id)
       .then((entry) => {
         dispatch(getDexEntryAction(entry))
       })
