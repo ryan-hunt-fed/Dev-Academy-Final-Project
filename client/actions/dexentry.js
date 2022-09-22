@@ -1,8 +1,12 @@
-import { getDexEntryAPI } from '../apis/dexentry'
+import { getDexEntryApi } from '../apis/dexentry'
+
+// Variable
 
 export const GET_ENTRY = 'GET_ENTRY'
 
-export function getDexEntryACTION(entry) {
+// Action Creator
+
+export function getDexEntryAction(entry) {
   return {
     type: GET_ENTRY,
     payload: entry,
@@ -11,11 +15,11 @@ export function getDexEntryACTION(entry) {
 
 // THUNK
 
-export function getDexEntryTHUNK(id) {
+export function getDexEntryThunk(id) {
   return (dispatch) => {
-    getDexEntryAPI(id)
+    getDexEntryApi(id)
       .then((entry) => {
-        dispatch(getDexEntryACTION(entry))
+        dispatch(getDexEntryAction(entry))
       })
       .catch((err) => {
         ((err.message)) 

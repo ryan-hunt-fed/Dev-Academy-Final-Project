@@ -1,17 +1,28 @@
-import { getAllPokesApi } from '../apis/pokehumansApi'
+import { addPokeHumanApi, getAllPokesApi } from '../apis/pokehumansApi'
 
-//VAR
+//Variable
+
 export const GET_POKEHUMANS = 'GET_POKEHUMANS'
+export const ADD_POKEHUMANS = 'ADD_POKEHUMANS'
 
-//ACTION CREATOR
+//Action Creator
+
 function getPokehumansAction(humans) {
   return {
     type: GET_POKEHUMANS,
-    payload: humans
+    payload: humans,
+  }
+}
+
+function addPokeHuman(human) {
+  return {
+    type: ADD_POKEHUMANS,
+    payload: human,
   }
 }
 
 //THUNK
+
 export function getAllPokehumansThunk() {
   // api call
   // dispatch action
@@ -23,5 +34,13 @@ export function getAllPokehumansThunk() {
     } catch (err) {
       console.log(err.message)
     }
+  }
+}
+
+export function postAddPokehuman(data) {
+  return (dispatch) => {
+    return addPokeHumanApi(data).then((human) => {
+      dispatch(addPokeHuman(human))
+    })
   }
 }
