@@ -1,4 +1,5 @@
 import React from 'react'
+import AddPokeHumans from './AddPokeHumans'
 
 function App() {
   return (
@@ -6,7 +7,9 @@ function App() {
       <header className="header">
         <h1>My Collection</h1>
       </header>
-      <section className="main">{/* add your code here */}</section>
+      <section className="main">
+        <AddPokeHumans />
+      </section>
     </>
   )
 }
