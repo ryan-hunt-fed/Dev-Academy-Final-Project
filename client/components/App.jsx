@@ -6,6 +6,7 @@ import Nav from './Nav'
 import AddPokeHumans from './AddPokeHumans'
 import Dex from './Dex'
 import DexEntry from './DexEntry'
+import About from './About'
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<AddPokeHumans />} />
-        <Route path='/dex' element={<Dex />}/>
+        <Route path="/dex" element={<Dex />} />
         <Route path="/dex/:id" element={<DexEntry />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </>
   )
