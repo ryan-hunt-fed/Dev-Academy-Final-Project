@@ -7,6 +7,8 @@ import { postAddPokehuman } from '../actions/pokehumansActions'
 function AddPokeHumans() {
   const dispatch = useDispatch()
   const [formData, setFormData] = useState()
+  const [images, setImages] = useState([])
+
   const handleSubmit = (evt) => {
     evt.preventDefault()
     dispatch(postAddPokehuman(formData))
@@ -19,23 +21,12 @@ function AddPokeHumans() {
     })
   }
 
-  const [images, setImages] = useState([])
-
-  const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex)
-
-    // const imageBuffer = Buffer.from(imageList[0].data_url, 'base64')
-    // console.log(imageBuffer)
-
+  const onChange = (imageList) => {
     setImages(imageList)
-
     setFormData({
       ...formData,
       image: imageList[0].data_url,
     })
-
-    console.log(formData)
   }
 
   return (
