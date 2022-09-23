@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import ImageUploading from 'react-images-uploading'
 import { useNavigate } from 'react-router-dom'
-import { postAddPokehumanThunk } from '../actions/pokehumansActions'
+import { postAddPokehumanThunk } from '../actions/pokehumans'
 
 function AddPokeHumans() {
   const navigate = useNavigate()
