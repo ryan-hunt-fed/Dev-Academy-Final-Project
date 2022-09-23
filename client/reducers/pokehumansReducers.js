@@ -1,4 +1,4 @@
-import { ADD_POKEHUMANS, GET_POKEHUMANS } from '../actions/pokehumans'
+import { ADD_POKEHUMANS, GET_POKEHUMANS } from '../actions/pokehumansActions'
 
 const reducer = (state = [], action) => {
   const { type, payload } = action

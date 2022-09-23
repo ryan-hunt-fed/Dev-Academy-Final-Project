@@ -1,4 +1,4 @@
-import { addPokeHumanApi, getAllPokesApi } from '../apis/pokehumans'
+import { addPokeHumanApi, getAllPokesApi } from '../apis/pokehumansApi'
 
 //Variable
 
