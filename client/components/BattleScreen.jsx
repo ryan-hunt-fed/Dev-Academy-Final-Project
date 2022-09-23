@@ -2,6 +2,38 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 
 export default function BattleScreen() {
+
+    const physicalMoveArr = [
+      'Tackle', 
+      'Pound', 
+      'Thunder Punch', 
+      'Low Kick', 
+      'Fly', 
+      'Mega Kick', 
+    ]
+
+    const specialMoveArr = [
+      'Flamethrower', 
+      'Hyper Beam', 
+      'Psychic', 
+      'Solar Beam',
+      'Moonblast',
+      'Ice Beam',
+    ]
+
+    const randomMoveOne = physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)]
+    const randomMoveTwo = specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
+
+
+    let turn = true
+    
+    function handleTurn(){
+      turn = !turn 
+    }
+
+  
+  
+
   const location = useLocation()
 
   console.log(location)
@@ -20,8 +52,8 @@ export default function BattleScreen() {
       </div>
       <div>These are placeholder images for where the teams might appear</div>
       <button>Generate Team</button>
-      <button>Physical Attack</button>
-      <button>Special Attack</button>
+      <button onClick={handleTurn}>{randomMoveOne}</button>
+      <button onClick={handleTurn}>{randomMoveTwo}</button>
     </>
   )
 }
