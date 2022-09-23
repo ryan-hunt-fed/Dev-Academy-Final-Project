@@ -6,7 +6,6 @@ import { getAllPokehumansThunk } from '../actions/pokehumans'
 export default function TeamSelect() {
   const dispatch = useDispatch()
   const humans = useSelector((store) => store.pokehumans)
-  const [team, setTeam] = useState([])
 
   useEffect(() => {
     dispatch(getAllPokehumansThunk())
