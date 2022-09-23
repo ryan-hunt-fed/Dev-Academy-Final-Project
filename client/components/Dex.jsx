@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { getAllPokehumansThunk } from '../actions/pokehumansActions'
+import { getAllPokehumansThunk } from '../actions/pokehumans'
 
 function Dex() {
   const dispatch = useDispatch()
