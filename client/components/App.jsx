@@ -8,6 +8,7 @@ import Dex from './Dex'
 import DexEntry from './DexEntry'
 import About from './About'
 import BattleScreen from './BattleScreen'
+import TeamSelect from './TeamSelect'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/dex/:id" element={<DexEntry />} />
         <Route path="/about" element={<About />} />
         <Route path="/battle" element={<BattleScreen />} />
+        <Route path="/team" element={<TeamSelect />} />
       </Routes>
     </>
   )
