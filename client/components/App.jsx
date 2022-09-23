@@ -7,7 +7,7 @@ import AddPokeHumans from './AddPokeHumans'
 import Dex from './Dex'
 import DexEntry from './DexEntry'
 import About from './About'
-
+import BattleScreen from './BattleScreen'
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
         <Route path="/dex" element={<Dex />} />
         <Route path="/dex/:id" element={<DexEntry />} />
         <Route path="/about" element={<About />} />
+        <Route path="/battle" element={<BattleScreen />} />
       </Routes>
     </>
   )

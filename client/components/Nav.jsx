@@ -9,6 +9,7 @@ function Nav() {
         <Link to="/dex">Dex</Link>
         <Link to="/add">Add</Link>
         <Link to="/about">About</Link>
+        <Link to="/battle">Battle</Link>
       </div>
     </>
   )
