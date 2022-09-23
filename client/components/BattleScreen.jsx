@@ -8,7 +8,7 @@ export default function BattleScreen() {
   return (
     <>
       <div>BattleScreen</div>
-      {location.state.map((pokes) => {
+      {location.state?.map((pokes) => {
         return <img src={pokes.image} alt={pokes.name} key={pokes.id} />
       })}
       <div>
