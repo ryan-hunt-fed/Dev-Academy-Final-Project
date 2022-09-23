@@ -8,6 +8,8 @@ import AddPokeHumans from './AddPokeHumans'
 import Dex from './Dex'
 import DexEntry from './DexEntry'
 import About from './About'
+import BattleScreen from './BattleScreen'
+import TeamSelect from './TeamSelect'
 import Login from './Login'
 import Register from './Register'
 
@@ -38,6 +40,8 @@ function App() {
         <Route path="/dex" element={<Dex />} />
         <Route path="/dex/:id" element={<DexEntry />} />
         <Route path="/about" element={<About />} />
+        <Route path="/battle" element={<BattleScreen />} />
+        <Route path="/team" element={<TeamSelect />} />
       </Routes>
     </>
   )
