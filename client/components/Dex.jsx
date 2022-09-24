@@ -14,7 +14,7 @@ function Dex() {
 
   return (
     <>
-      <h2>Pokehumans Dex</h2>
+      <h2 className="dex-title">PokeHumans Dex</h2>
       <div className="dex-card">
         {humans.map((pokes) => {
           return (

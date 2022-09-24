@@ -15,7 +15,7 @@ function About() {
       <div className="about-text">
         <p>
           Hi all welcome to FameGreak we are small team of full stack developer
-          and this our final project for Dev-Academy. Here me the team.
+          and this our final project for Dev-Academy. Here meet the team.
         </p>
       </div>
       <div className="about-card"></div>
