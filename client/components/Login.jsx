@@ -14,6 +14,7 @@ function Login() {
   })
 
   useEffect(() => {
+    console.log('Login', auth)
     dispatch(loginError(''))
   }, [])
 
