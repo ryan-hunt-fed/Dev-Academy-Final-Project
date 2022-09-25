@@ -24,7 +24,7 @@ function Home() {
 
       <div className="intro-container">
         <h4>Welcome to PokeHuman, From FameGreak Studios</h4>
-        <p>Welcome {state.auth.user ? state.auth.user.username : '!'}</p>
+
         <p>
           Pokemon have finally risen up and have decided to be the new Pokemon
           masters. They have created a new Pokedex filled with Pokehumans and

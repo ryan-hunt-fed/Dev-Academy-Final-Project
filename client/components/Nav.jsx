@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { logoutUser } from '../actions/auth'
-import { useDispatch, useSelector } from 'react-redux'
 
 function Nav() {
   const navigateTo = useNavigate()
