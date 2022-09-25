@@ -36,13 +36,32 @@ export default function BattleScreen() {
 
   // let turn = true
 
-  // function handleTurn() {
-  //   turn = !turn
-  // }
+  let turn = true
+
+  function combatLogger(e) {
+    if (e.target.id == 'physical-move') {
+      document
+        .getElementById('combat-log')
+        .append('Player used ' + randomMoveOne + ' ')
+    } else if (e.target.id == 'special-move') {
+      document
+        .getElementById('combat-log')
+        .append('Player used ' + randomMoveTwo + ' ')
+    }
+    console.log(turn)
+  }
+
+  function handleTurn(e) {
+    // e.preventDefault()
+
+    turn = !turn
+    combatLogger(e)
+    console.log(e.target.id)
+  }
 
   // AI needs to use moves to deal damage
-  // player needs to use moves to deal damage 
-  // We need to target hp data and take away damage result 
+  // player needs to use moves to deal damage
+  // We need to target hp data and take away damage result
   // The moves need damage assigned to them - done
   // We need to work out if the move hits or not
 
@@ -64,8 +83,10 @@ export default function BattleScreen() {
     'Ice Beam',
   ]
 
-  const physicalMove = physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)] 
-  const specialMove = specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
+  const physicalMove =
+    physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)]
+  const specialMove =
+    specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
 
   let physicalDamage = 1
 
@@ -95,49 +116,40 @@ export default function BattleScreen() {
     }
   }
 
-
   const [alive, setAlive] = useState(true)
   const [active, setActive] = useState(true)
-  
 
   // pokehuman dies
- const faint = () => {
+  const faint = () => {
+    //player health
+    if (pokehumans.HP <= 0) {
+      // console.log(pokehuman.name, 'has died')
+      setAlive(false)
+      for (i = 0; (i = pokehumans.length); i++) {
+        if ((alive = false)) {
+          console.log('You Lose')
+        }
+      }
+    }
 
-  //player health 
-  if (pokehumans.HP <= 0 ) {
-    // console.log(pokehuman.name, 'has died')
-    setAlive(false)
-    for (i = 0; i = pokehumans.length; i++){
-      if (alive = false) {
-        console.log('You Lose')
+    //Ai health - need to differentiate between pokehuman ai and player
+    else if (pokehumans.HP <= 0) {
+      // console.log(pokehuman.name, 'has died')
+      setAlive(false)
+      if ((alive = false)) {
+        console.log('You Win')
       }
     }
   }
 
-  //Ai health - need to differentiate between pokehuman ai and player
-  else if (pokehumans.HP <= 0) {
-    // console.log(pokehuman.name, 'has died')
-    setAlive(false)
-    if (alive = false) {
-      console.log('You Win')
+  //switch pokehumans
+  function switchPokehuman() {
+    if ((active = false)) {
+      return setActive(true)
+    } else if ((active = true)) {
+      return setActive(false)
     }
   }
-
- }
-
- //switch pokehumans
-function switchPokehuman () {
-  if (active = false) {
-    return setActive(true)
-  }
-  else if (active = true){
-    return setActive(false)
-  }
- 
-}
-
-
-  
 
   return (
     <>
@@ -146,14 +158,14 @@ function switchPokehuman () {
         <>
           <PokeHumanOne pokehuman={location.state[0]} />
           <button>
-          {physicalMove}
-          {physicalDamageCalc()}
-        </button>
-        <button>
-          {specialMove}
-          {specialDamageCalc()}
-        </button>
-          
+            {physicalMove}
+            {physicalDamageCalc()}
+          </button>
+          <button>
+            {specialMove}
+            {specialDamageCalc()}
+          </button>
+
           {/* <PokeHumanTwo pokehuman={location.state[1]} /> */}
           {/* <PokeHumanThree pokehuman={location.state[2]} /> */}
         </>
@@ -166,7 +178,6 @@ function switchPokehuman () {
         teams.
       </div>
       <div>
-
         These are placeholder images for where the teams might appear
         {aiTeam.length > 1 && (
           <>
@@ -176,7 +187,17 @@ function switchPokehuman () {
           </>
         )}
       </div>
-      <button onClick={generateAiTeam}>Generate Opponents Team</button>
+      <button onClick={generateAiTeam}>Generate Team</button>
+      <button id="physical-move" onClick={handleTurn}>
+        {physicalMove}
+      </button>
+      <button id="special-move" onClick={handleTurn}>
+        {specialMove}
+      </button>
+
+      <div>
+        <p id="combat-log">Combat Log: </p>
+      </div>
     </>
   )
 }
