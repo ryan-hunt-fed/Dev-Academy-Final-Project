@@ -26,7 +26,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 0px 100px;
+  margin: 10px 150px;
   text-align: center;
 }
 
@@ -37,6 +37,8 @@ body {
   background-color: #E54222;
   padding: 30px;
   text-align: right;
+  text-align: center;
+  
  
   & a{
     text-decoration: none;
@@ -51,7 +53,12 @@ body {
   
 }
 
+
 //DEX
+
+.dex-title{
+  text-align: center;
+}
 
 .dex-card{
   display: flex;
@@ -187,6 +194,12 @@ body {
   text-align: center;
   font-size: 2.2em;
   margin: 4rem;
+  display: inline;
+  & p {
+    // border-radius: 6px;
+    // box-shadow: black;
+    text-align: center;
+  }
 }
 
 //ADD
@@ -210,6 +223,7 @@ body {
   & label {
     margin: 10px;
   }
+
   & input {
     margin: 10px;
   }
@@ -263,6 +277,8 @@ body {
 
 .speed-label{
   padding-right: 35px;
+}
+
 //ABOUT
 
 .about-h2 {
@@ -287,11 +303,199 @@ body {
 }
 
  // Dex Entry
+//DEXENTRY
 
-//  .dexentry-container {
-//   display: flex;
-//  }
-
-
-
+.entry-container{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
+
+.entry-button-container{
+  display:flex;
+  justify-content:space-between;
+  margin: 20px 60px 0px 60px;
+  
+}
+
+
+.entry-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 35px 250px;
+  padding: 25px 0px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px #383c3d;
+
+  & img{
+    flex: auto;
+    max-width: 500px;
+    min-height: 450px;
+  }
+}
+
+.entry-display-types{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+//TEAMSELECT
+
+.select-title{
+  text-align: center;
+}
+
+.select-button-start{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+//TYPE
+
+.type-Normal{
+ background-color: #A8A77A;
+ border-radius: 6px;
+ box-shadow: black;
+ padding: 3px;
+}
+
+.type-Fire{
+  background-color: #EE8130;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Water{
+  background-color: #6390F0;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Grass{
+  background-color: #7AC74C;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Electric{
+  background-color: #F7D02C;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Ice{
+  background-color: #96D9D6;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Fighting{
+  background-color: #C22E28;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Poison{
+  background-color: #A33EA1;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Ground{
+  background-color: #E2BF65;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Flying{
+  background-color: #A98FF3;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Psychic{
+  background-color: #F95587;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Bug{
+  background-color: #A6B91A;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Rock{
+  background-color: #B6A136;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Ghost{
+  background-color: #735797;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Dark{
+  background-color: #705746;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Dragon{
+  background-color: #6F35FC;
+  color:white;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Steel{
+  background-color: #B7B7CE;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+ .type-Fairy{
+  background-color: #D685AD;
+  border-radius: 6px;
+  box-shadow: black;
+  padding: 3px;
+ }
+
+

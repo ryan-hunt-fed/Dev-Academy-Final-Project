@@ -26,8 +26,19 @@ export default function TeamSelect() {
 
   return (
     <>
-      <h1>Select 3 PokeHumans to form your team!</h1>
-      <div>TeamSelect</div>
+      <h1 className='select-title'>Select 3 PokeHumans to form your team!</h1>
+      <div className='select-button-start'>
+        <p>Team Select</p>
+        {team.length === 3 && (
+          // button conditionally appears if a full team is selected
+          // state is used to pass the team to the battle component
+          <Link to="/battle" state={team}>
+            <button className='select-button-start'>Start Battle</button>
+          </Link>
+          
+        )}
+      </div>
+      <br />
       <div className="dex-card">
         {humans.map((pokes) => {
           return (
@@ -51,14 +62,9 @@ export default function TeamSelect() {
             </div>
           )
         })}
+        
       </div>
-      {team.length === 3 && (
-        // button conditionally appears if a full team is selected
-        // state is used to pass the team to the battle component
-        <Link to="/battle" state={team}>
-          <button>Start Battle</button>
-        </Link>
-      )}
+    
     </>
   )
 }
