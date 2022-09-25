@@ -8,8 +8,8 @@ import PokeHumanOne from './PokeHumanOne'
 import PokeHumanTwo from './PokeHumanTwo'
 import PokeHumanThree from './PokeHumanThree'
 import AiPokehumanOne from './AiPokehumanOne'
-import AiPokehumanThree from './AiPokehumanThree'
 import AiPokehumanTwo from './AiPokehumanTwo'
+import AiPokehumanThree from './AiPokehumanThree'
 
 export default function BattleScreen() {
   const location = useLocation()
@@ -59,8 +59,18 @@ export default function BattleScreen() {
 
   let turn = true
 
-  function handleTurn() {
+  function combatLogger() {
+    document.getElementById('combat-log').append('Player used ' + randomMoveOne)
+
+    console.log(turn)
+  }
+
+  function handleTurn(e) {
+    // e.preventDefault()
+
     turn = !turn
+    combatLogger()
+    console.log(e.target.name)
   }
 
   // AI needs to use moves to deal damage
@@ -91,6 +101,10 @@ export default function BattleScreen() {
       <button onClick={generateAiTeam}>Generate Team</button>
       <button onClick={handleTurn}>{randomMoveOne}</button>
       <button onClick={handleTurn}>{randomMoveTwo}</button>
+
+      <div>
+        <p id="combat-log"></p>
+      </div>
     </>
   )
 }
