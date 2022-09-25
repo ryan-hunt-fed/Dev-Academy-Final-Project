@@ -19,14 +19,14 @@ export default function DexEntry() {
       <div className='entry-container'>
         <div className='entry-button-container'>
           <Link to={`/dex/${Number(id) - 1}`}>
-            <button className='previous-button'>Previous</button>
+            <button className='previous-button'>&laquo; Previous</button>
           </Link>
           <Link to={`/dex/${Number(id) + 1}`}>
-            <button className='next-button'>Next</button>
+            <button className='next-button'>Next &raquo;</button>
           </Link>
         </div>
         <div className='entry-content'>
-        <h1>{pokehuman?.name}</h1>
+          <h1>{pokehuman?.name}</h1>
           <img src={pokehuman?.image} alt="A pokehuman!" />
           <div className='entry-display-types'>
             <p className={`type-${pokehuman?.type_1}`}>{pokehuman?.type_1}</p>

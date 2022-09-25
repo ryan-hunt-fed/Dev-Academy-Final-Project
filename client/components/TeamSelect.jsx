@@ -28,7 +28,6 @@ export default function TeamSelect() {
     <>
       <h1 className='select-title'>Select 3 PokeHumans to form your team!</h1>
       <div className='select-button-start'>
-        <p>Team Select</p>
         {team.length === 3 && (
           // button conditionally appears if a full team is selected
           // state is used to pass the team to the battle component
