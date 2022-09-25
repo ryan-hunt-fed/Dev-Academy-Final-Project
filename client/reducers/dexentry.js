@@ -1,6 +1,6 @@
 import { GET_ENTRY } from '../actions/dexentry'
 
-const reducer = (state = {}, action) => {
+export default function reducer(state = {}, action) {
   const { type, payload } = action
   
   switch (type) {
@@ -10,5 +10,3 @@ const reducer = (state = {}, action) => {
       return state
   }
 }
-
-export default reducer

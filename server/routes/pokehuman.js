@@ -6,6 +6,7 @@ const db = require('../db/db')
 //snakes case to camel case
 //ekans is snake
 //numel is camel
+//classic pokemon jokes
 function ekansToNumelPost(ekans) {
   let numelCasePost = {
     id: ekans.id,
