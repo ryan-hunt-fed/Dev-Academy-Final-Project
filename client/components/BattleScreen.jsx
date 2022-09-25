@@ -38,10 +38,10 @@ export default function BattleScreen() {
   }
 
   // AI needs to use moves to deal damage
-  // player needs to use moves to deal damage
-  // We need to target hp data and take away damage result
-  // The moves need damage assigned to them
-  // We need to work out if the move hits or not
+  // player needs to use moves to deal damage 
+  // We need to target hp data and take away damage result 
+  // The moves need damage assigned to them - done
+  // We need to work out if the move hits or not - 
 
   return (
     <>
