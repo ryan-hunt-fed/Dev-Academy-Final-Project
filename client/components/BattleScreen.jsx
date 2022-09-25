@@ -66,15 +66,39 @@ export default function BattleScreen() {
   // AI needs to use moves to deal damage
   // player needs to use moves to deal damage 
   // We need to target hp data and take away damage result 
-  // The moves need damage assigned to them - done
-  // We need to work out if the move hits or not - 
+  // The moves need damage assigned to them 
+  // We need to work out if the move hits or not
+
+  
+  
+
+  // pokehuman dies
+//  const faint = () => {
+
+  //player health 
+  if (pokehuman.HP <= 0 ) {
+    console.log(pokehuman.name, 'has died')
+  }
+  //Ai health
+  else if (pokehuman.HP <= 0) {
+    console.log(pokehuman.name, 'has died')
+  }
+
+//  }
+
+
+  
 
   return (
     <>
       <div>BattleScreen</div>
-      <PokeHumanOne pokehuman={location.state[0]} />
-      <PokeHumanTwo pokehuman={location.state[1]} />
-      <PokeHumanThree pokehuman={location.state[2]} />
+      {location.state && (
+        <>
+        <PokeHumanOne pokehuman={location.state[0]} />
+        <PokeHumanTwo pokehuman={location.state[1]} />
+        <PokeHumanThree pokehuman={location.state[2]} />
+        </>
+      )}
       <div>
         Here is where we will show two pokehumans battling each other. One will
         be player controlled and the other will be run by the computer. You will
@@ -83,6 +107,7 @@ export default function BattleScreen() {
         teams.
       </div>
       <div>
+
         These are placeholder images for where the teams might appear
         <AiPokehumanOne pokehuman={aiTeam[0]} />
         <AiPokehumanTwo pokehuman={aiTeam[1]} />
