@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
+
+import { getAllPokehumansThunk } from '../actions/pokehumans'
 
 import PokeHumanOne from './PokeHumanOne'
 import PokeHumanTwo from './PokeHumanTwo'
 import PokeHumanThree from './PokeHumanThree'
+import AiPokehumanOne from './AiPokehumanOne'
+import AiPokehumanThree from './AiPokehumanThree'
+import AiPokehumanTwo from './AiPokehumanTwo'
 
 export default function BattleScreen() {
   const location = useLocation()
+  const dispatch = useDispatch()
+  const humans = useSelector((store) => store.pokehumans)
+  const [aiTeam, setAiTeam] = useState([])
+
+  useEffect(() => {
+    dispatch(getAllPokehumansThunk())
+  }, [])
+
+  function getMultipleRandom(arr, num) {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random())
+
+    return shuffled.slice(0, num)
+  }
+
+  function generateAiTeam(e) {
+    e.preventDefault()
+    setAiTeam(getMultipleRandom(humans, 3))
+  }
+
+  console.log(aiTeam)
 
   const physicalMoveArr = [
     'Tackle',
@@ -56,8 +82,13 @@ export default function BattleScreen() {
         implemented you will be able to save teams and battle using your custom
         teams.
       </div>
-      <div>These are placeholder images for where the teams might appear</div>
-      <button>Generate Team</button>
+      <div>
+        These are placeholder images for where the teams might appear
+        <AiPokehumanOne pokehuman={aiTeam[0]} />
+        <AiPokehumanTwo pokehuman={aiTeam[1]} />
+        <AiPokehumanThree pokehuman={aiTeam[2]} />
+      </div>
+      <button onClick={generateAiTeam}>Generate Team</button>
       <button onClick={handleTurn}>{randomMoveOne}</button>
       <button onClick={handleTurn}>{randomMoveTwo}</button>
     </>
