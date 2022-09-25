@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { getAllPokehumansThunk } from '../actions/pokehumansActions'
+import { getAllPokehumansThunk } from '../actions/pokehumans'
 
 function Dex() {
   const dispatch = useDispatch()
@@ -14,7 +14,7 @@ function Dex() {
 
   return (
     <>
-      <h2>Pokehumans Dex</h2>
+      <h2 className="dex-title">PokeHumans Dex</h2>
       <div className="dex-card">
         {humans.map((pokes) => {
           return (
@@ -22,11 +22,11 @@ function Dex() {
               <Link to={`/dex/${pokes.id}`}>
                 <img src={pokes.image} alt={pokes.name} />
               </Link>
-              <p>{pokes.name}</p>
+              <p className="dex-name">{pokes.name}</p>
               <div className="Type-box">
                 <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
                 {pokes.type1 === pokes.type2 ? (
-                  <p></p>
+                  <></>
                 ) : (
                   <p className={`type-${pokes.type2}`}>{pokes.type2}</p>
                 )}

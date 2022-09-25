@@ -1,4 +1,4 @@
-import { addPokeHumanApi, getAllPokesApi } from '../apis/pokehumansApi'
+import { addPokeHumanApi, getAllPokesApi } from '../apis/pokehumans'
 
 //Variable
 
@@ -27,20 +27,25 @@ export function getAllPokehumansThunk() {
   // api call
   // dispatch action
 
-  return async (dispatch) => {
-    try {
-      const humans = await getAllPokesApi()
-      dispatch(getPokehumansAction(humans))
-    } catch (err) {
-      console.log(err.message)
-    }
+  return (dispatch) => {
+      return getAllPokesApi()
+        .then((humans) => {
+        dispatch(getPokehumansAction(humans))
+        })
+        .catch((err) => {
+          ((err.message)) 
+        })
   }
 }
 
 export function postAddPokehumanThunk(data) {
   return (dispatch) => {
-    return addPokeHumanApi(data).then((human) => {
+    return addPokeHumanApi(data)
+      .then((human) => {
       dispatch(addPokeHumanAction(human))
+    })
+      .catch((err) => {
+        ((err.message)) 
     })
   }
 }

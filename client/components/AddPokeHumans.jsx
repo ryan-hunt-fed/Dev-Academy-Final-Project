@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import ImageUploading from 'react-images-uploading'
 import { useNavigate } from 'react-router-dom'
-import { postAddPokehumanThunk } from '../actions/pokehumansActions'
+
+import { postAddPokehumanThunk } from '../actions/pokehumans'
 
 function AddPokeHumans() {
   const navigate = useNavigate()
@@ -84,9 +85,12 @@ function AddPokeHumans() {
               <option>--Please choose your type--</option>
               <option value="Normal">Normal</option>
               <option value="Fighting">Fighting</option>
+              <option value="Flying">Flying</option>
+              <option value="Poison">Poison</option>
               <option value="Ground">Ground</option>
               <option value="Rock">Rock</option>
               <option value="Bug">Bug</option>
+              <option value="Ghost">Ghost</option>
               <option value="Steel">Steel</option>
               <option value="Fire">Fire</option>
               <option value="Water">Water</option>
@@ -107,9 +111,12 @@ function AddPokeHumans() {
               <option>--Please choose your type--</option>
               <option value="Normal">Normal</option>
               <option value="Fighting">Fighting</option>
+              <option value="Flying">Flying</option>
+              <option value="Poison">Poison</option>
               <option value="Ground">Ground</option>
               <option value="Rock">Rock</option>
               <option value="Bug">Bug</option>
+              <option value="Ghost">Ghost</option>
               <option value="Steel">Steel</option>
               <option value="Fire">Fire</option>
               <option value="Water">Water</option>

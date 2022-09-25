@@ -1,6 +1,6 @@
-import { ADD_POKEHUMANS, GET_POKEHUMANS } from '../actions/pokehumansActions'
+import { ADD_POKEHUMANS, GET_POKEHUMANS } from '../actions/pokehumans'
 
-const reducer = (state = [], action) => {
+export default function reducer(state = [], action) {
   const { type, payload } = action
 
   switch (type) {
@@ -12,5 +12,3 @@ const reducer = (state = [], action) => {
       return state
   }
 }
-
-export default reducer
