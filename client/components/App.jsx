@@ -18,7 +18,6 @@ import { checkAuth } from '../actions/auth'
 function App() {
   const dispatch = useDispatch()
   const auth = useSelector((state) => state.auth)
-  console.log('is auth ', auth)
 
   useEffect(() => {
     const confirmSuccess = () => {}
