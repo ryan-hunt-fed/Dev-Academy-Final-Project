@@ -36,7 +36,8 @@ body {
 .nav-container{
   background-color: #E54222;
   padding: 30px;
-  text-align: center;
+  text-align: right;
+  //text-align: center;
   
  
   & a{
@@ -52,6 +53,60 @@ body {
   
 }
 
+//LOGIN
+
+.login-from{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 35px 250px;
+  padding: 25px 0px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px #383c3d;
+  
+  & label {
+    margin: 10px;
+  }
+
+  & button {
+    margin: 10px;
+  }
+
+  & input {
+    margin: 10px;
+  }
+
+}
+
+//REGISTER
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 35px 250px;
+  padding: 25px 0px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px #383c3d;
+  
+  & label {
+    margin: 10px;
+  }
+
+  & button {
+    margin: 10px;
+  }
+
+  & input {
+    margin: 10px;
+  }
+}
 
 //DEX
 
@@ -71,15 +126,128 @@ body {
   background-color: white;
   }
   & p {
+    // max-width: 100px;
+    min-width: 100px;
+    margin: 10px;
+    border-radius: 5px;
     text-align: center;
   }
+
+  .dex-img:hover {
+    opacity: 0.5;
+    color: rgb(255, 193, 8);
+    cursor: pointer;
+  }
+
+
+  //TYPE
+
+  & .type-Normal{
+   background-color: #A8A77A;
+  }
+
+  & .type-Fire{
+  background-color: #EE8130;
+  color:white;
+ }
+
+ & .type-Water{
+  background-color: #6390F0;
+  color:white;
+ }
+
+ 
+ & .type-Grass{
+  background-color: #7AC74C;
+ }
+
+ & .type-Electric{
+  background-color: #F7D02C;
+ }
+
+ & .type-Ice{
+  background-color: #96D9D6;
+ }
+
+ & .type-Fighting{
+  background-color: #C22E28;
+  color:white;
+ }
+
+ & .type-Poison{
+  background-color: #A33EA1;
+  color:white;
+ }
+
+ & .type-Ground{
+  background-color: #E2BF65;
+ }
+
+ & .type-Flying{
+  background-color: #A98FF3;
+  color:white;
+ }
+
+ & .type-Psychic{
+  background-color: #F95587;
+  color:white;
+ }
+
+ & .type-Bug{
+  background-color: #A6B91A;
+  color:white;
+ }
+
+ & .type-Rock{
+  background-color: #B6A136;
+  color:white;
+ }
+
+ & .type-Ghost{
+  background-color: #735797;
+  color:white;
+ }
+
+ & .type-Dark{
+  background-color: #705746;
+  color:white;
+ }
+
+ & .type-Dragon{
+  background-color: #6F35FC;
+  color:white;
+ }
+
+ & .type-Steel{
+  background-color: #B7B7CE;
+ }
+
+ & .type-Fairy{
+  background-color: #D685AD;
+ }
+
+}
+
+.dex-name {
+  max-width: none;
 }
 
 .dex-wapper {
-   margin: 5px;
+  min-width: 320px;
+   margin: 15px;
 }
 
 .Type-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.dex-h2 {
+  text-align: center;
+  font-size: 2.2em;
+  margin: 4rem;
   display: inline;
   & p {
     // border-radius: 6px;
@@ -188,6 +356,7 @@ body {
   font-size: 1.5em;
 }
 
+ // Dex Entry
 //DEXENTRY
 
 .entry-container{

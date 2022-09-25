@@ -33,17 +33,16 @@ function Login() {
   }
 
   return (
-    <form className="form box" onSubmit={handleSubmit}>
-      <h1 className="title is-2">Login</h1>
+    <form className="login-from" onSubmit={handleSubmit}>
+      <h2 className="login-title">Login</h2>
       <hr />
       {auth.errorMessage && (
-        <span className="has-text-danger is-large">{auth.errorMessage}</span>
+        <span className="login-error">{auth.errorMessage}</span>
       )}
-      <label className="label is-large has-text-centered">
+      <label className="login-user">
         Username
         <input
           required
-          className="input has-text-centered is-large is-fullwidth"
           placeholder="User Name"
           type="text"
           name="username"
@@ -52,11 +51,10 @@ function Login() {
           onChange={handleChange}
         />
       </label>
-      <label className="label is-large has-text-centered">
+      <label className="login-password">
         Password
         <input
           required
-          className="input has-text-centered is-large is-fullwidth"
           placeholder="Password"
           type="password"
           name="password"
@@ -65,11 +63,7 @@ function Login() {
           onChange={handleChange}
         />
       </label>
-      <input
-        className="button is-large is-fullwidth is-success"
-        value="Login"
-        type="submit"
-      />
+      <input className="login-button" value="Login" type="submit" />
     </form>
   )
 }

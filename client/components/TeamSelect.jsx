@@ -48,7 +48,7 @@ export default function TeamSelect() {
                 handleSelection(pokes.id)
               }}
             >
-              <img src={pokes.image} alt={pokes.name} />
+              <img className="dex-img" src={pokes.image} alt={pokes.name} />
               <p>{pokes.name}</p>
               <div className="Type-box">
                 <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
