@@ -1,48 +1,54 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 
+import PokeHumanOne from './PokeHumanOne'
+import PokeHumanTwo from './PokeHumanTwo'
+import PokeHumanThree from './PokeHumanThree'
+
 export default function BattleScreen() {
-
-    const physicalMoveArr = [
-      'Tackle', 
-      'Pound', 
-      'Thunder Punch', 
-      'Low Kick', 
-      'Fly', 
-      'Mega Kick', 
-    ]
-
-    const specialMoveArr = [
-      'Flamethrower', 
-      'Hyper Beam', 
-      'Psychic', 
-      'Solar Beam',
-      'Moonblast',
-      'Ice Beam',
-    ]
-
-    const randomMoveOne = physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)]
-    const randomMoveTwo = specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
-
-
-    let turn = true
-    
-    function handleTurn(){
-      turn = !turn 
-    }
-
-  
-  
-
   const location = useLocation()
 
-  console.log(location)
+  const physicalMoveArr = [
+    'Tackle',
+    'Pound',
+    'Thunder Punch',
+    'Low Kick',
+    'Fly',
+    'Mega Kick',
+  ]
+
+  const specialMoveArr = [
+    'Flamethrower',
+    'Hyper Beam',
+    'Psychic',
+    'Solar Beam',
+    'Moonblast',
+    'Ice Beam',
+  ]
+
+  const randomMoveOne =
+    physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)]
+  const randomMoveTwo =
+    specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
+
+  let turn = true
+
+  function handleTurn() {
+    turn = !turn
+  }
+
+  // AI needs to use moves to deal damage
+  // player needs to use moves to deal damage
+  // We need to target hp data and take away damage result
+  // The moves need damage assigned to them
+  // We need to work out if the move hits or not
+
   return (
     <>
       <div>BattleScreen</div>
-      {location.state?.map((pokes) => {
-        return <img src={pokes.image} alt={pokes.name} key={pokes.id} />
-      })}
+      <PokeHumanOne pokehuman={location.state[0]} />
+      <PokeHumanTwo pokehuman={location.state[1]} />
+      <PokeHumanThree pokehuman={location.state[2]} />
       <div>
         Here is where we will show two pokehumans battling each other. One will
         be player controlled and the other will be run by the computer. You will
