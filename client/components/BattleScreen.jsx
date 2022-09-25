@@ -12,6 +12,7 @@ import AiPokehumanThree from './AiPokehumanThree'
 import AiPokehumanTwo from './AiPokehumanTwo'
 
 export default function BattleScreen() {
+  const location = useLocation()
   const dispatch = useDispatch()
   const humans = useSelector((store) => store.pokehumans)
   const [aiTeam, setAiTeam] = useState([])
@@ -30,6 +31,7 @@ export default function BattleScreen() {
     e.preventDefault()
     setAiTeam(getMultipleRandom(humans, 3))
   }
+
   console.log(aiTeam)
 
   const physicalMoveArr = [
