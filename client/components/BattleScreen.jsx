@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
 import { getAllPokehumansThunk } from '../actions/pokehumans'
+
+import PokeHumanOne from './PokeHumanOne'
+import PokeHumanTwo from './PokeHumanTwo'
+import PokeHumanThree from './PokeHumanThree'
 import AiPokehumanOne from './AiPokehumanOne'
 import AiPokehumanThree from './AiPokehumanThree'
 import AiPokehumanTwo from './AiPokehumanTwo'
@@ -57,15 +61,18 @@ export default function BattleScreen() {
     turn = !turn
   }
 
-  const location = useLocation()
+  // AI needs to use moves to deal damage
+  // player needs to use moves to deal damage
+  // We need to target hp data and take away damage result
+  // The moves need damage assigned to them
+  // We need to work out if the move hits or not
 
-  // console.log(location)
   return (
     <>
       <div>BattleScreen</div>
-      {location.state?.map((pokes) => {
-        return <img src={pokes.image} alt={pokes.name} key={pokes.id} />
-      })}
+      <PokeHumanOne pokehuman={location.state[0]} />
+      <PokeHumanTwo pokehuman={location.state[1]} />
+      <PokeHumanThree pokehuman={location.state[2]} />
       <div>
         Here is where we will show two pokehumans battling each other. One will
         be player controlled and the other will be run by the computer. You will
