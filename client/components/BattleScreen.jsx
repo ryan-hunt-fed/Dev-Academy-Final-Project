@@ -32,36 +32,13 @@ export default function BattleScreen() {
     setAiTeam(getMultipleRandom(humans, 3))
   }
 
-  console.log(aiTeam)
+  // Potential turn taking system
 
-  const physicalMoveArr = [
-    'Tackle',
-    'Pound',
-    'Thunder Punch',
-    'Low Kick',
-    'Fly',
-    'Mega Kick',
-  ]
+  // let turn = true
 
-  const specialMoveArr = [
-    'Flamethrower',
-    'Hyper Beam',
-    'Psychic',
-    'Solar Beam',
-    'Moonblast',
-    'Ice Beam',
-  ]
-
-  const randomMoveOne =
-    physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)]
-  const randomMoveTwo =
-    specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
-
-  let turn = true
-
-  function handleTurn() {
-    turn = !turn
-  }
+  // function handleTurn() {
+  //   turn = !turn
+  // }
 
   // AI needs to use moves to deal damage
   // player needs to use moves to deal damage 
@@ -94,9 +71,9 @@ export default function BattleScreen() {
       <div>BattleScreen</div>
       {location.state && (
         <>
-        <PokeHumanOne pokehuman={location.state[0]} />
-        <PokeHumanTwo pokehuman={location.state[1]} />
-        <PokeHumanThree pokehuman={location.state[2]} />
+          <PokeHumanOne pokehuman={location.state[0]} />
+          <PokeHumanTwo pokehuman={location.state[1]} />
+          <PokeHumanThree pokehuman={location.state[2]} />
         </>
       )}
       <div>
@@ -109,13 +86,15 @@ export default function BattleScreen() {
       <div>
 
         These are placeholder images for where the teams might appear
-        <AiPokehumanOne pokehuman={aiTeam[0]} />
-        <AiPokehumanTwo pokehuman={aiTeam[1]} />
-        <AiPokehumanThree pokehuman={aiTeam[2]} />
+        {aiTeam.length > 1 && (
+          <>
+            <AiPokehumanOne pokehuman={aiTeam[0]} />
+            <AiPokehumanTwo pokehuman={aiTeam[1]} />
+            <AiPokehumanThree pokehuman={aiTeam[2]} />
+          </>
+        )}
       </div>
       <button onClick={generateAiTeam}>Generate Team</button>
-      <button onClick={handleTurn}>{randomMoveOne}</button>
-      <button onClick={handleTurn}>{randomMoveTwo}</button>
     </>
   )
 }
