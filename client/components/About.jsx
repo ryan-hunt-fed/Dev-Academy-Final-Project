@@ -26,7 +26,7 @@ function About() {
             src="/images/Jeff-head-shot-03.jpeg"
             alt="jeff head proflic"
           />
-          <h2>Jeff</h2>
+          <h2>Jeff - Scrum Lead</h2>
         </div>
         <div>
           <img
@@ -34,7 +34,7 @@ function About() {
             src="/images/Ryan-head-shot-02.jpeg"
             alt="ryan head proflic"
           />
-          <h2>Ryan</h2>
+          <h2>Ryan - Product Owner</h2>
         </div>
         <div>
           <img
@@ -42,7 +42,7 @@ function About() {
             src="/images/Jordan-head-shot-05.jpeg"
             alt="jordan head proflic"
           />
-          <h2>Jordan</h2>
+          <h2>Jordan - Git Keeper</h2>
         </div>
         <div>
           <img
@@ -50,7 +50,7 @@ function About() {
             src="/images/Kris-head-shot-01.jpeg"
             alt="kris head proflic"
           />
-          <h2>Kris</h2>
+          <h2>Kris - Vibes Watcher</h2>
         </div>
         <div>
           <img
@@ -58,7 +58,7 @@ function About() {
             src="/images/Ming-head-shot-04.jpeg"
             alt="ming head proflic"
           />
-          <h2>Ming</h2>
+          <h2>Ming - Fungineer</h2>
         </div>
       </div>
     </>
