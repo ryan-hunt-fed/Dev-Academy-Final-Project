@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db/db')
 
-
 router.get('/saved/:userId', (req, res) => {
   const userId = req.params.userId
+  //console.log(userId)
   db.getUserTeam(userId)
     .then((pokehumans) => {
       res.json(pokehumans)
@@ -15,9 +15,8 @@ router.get('/saved/:userId', (req, res) => {
 })
 
 router.post('/saved/:userId', (req, res) => {
-
   const userId = req.params.userId
-  const postId = req.body.postId
+  const postId = req.body.pokeId
 
   db.insertUsersTeam(userId, postId)
     .then(() => {

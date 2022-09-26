@@ -12,6 +12,7 @@ import BattleScreen from './BattleScreen'
 import TeamSelect from './TeamSelect'
 import Login from './Login'
 import Register from './Register'
+import UserTeam from './UserTeam'
 
 import { checkAuth } from '../actions/auth'
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/battle" element={<BattleScreen />} />
         <Route path="/team" element={<TeamSelect />} />
+        <Route path="/userteam/:id" element={<UserTeam />} />
       </Routes>
     </>
   )

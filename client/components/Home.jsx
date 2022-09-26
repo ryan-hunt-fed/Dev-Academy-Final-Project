@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 
 function Home() {
   const state = useSelector((state) => state)
-  console.log('home', state)
   return (
     <>
       <div className="title-container">

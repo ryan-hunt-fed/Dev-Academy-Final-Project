@@ -8,6 +8,7 @@ function Nav() {
   const navigateTo = useNavigate()
   const dispatch = useDispatch()
   const auth = useSelector((state) => state.auth)
+
   const logout = () => {
     const confirmSuccess = () => navigateTo('/')
     dispatch(logoutUser(confirmSuccess))
@@ -22,8 +23,10 @@ function Nav() {
         <Link to="/about">About</Link>
         <Link to="/team">Team Select</Link>
         <Link to="/battle">Battle</Link>
+
         {auth.isAuthenticated ? (
           <>
+            <Link to={`/userteam/${auth.user.id}`}>My Team</Link>
             <Link to="/" onClick={logout}>
               Logout
             </Link>
