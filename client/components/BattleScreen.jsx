@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { useInRouterContext, useLocation } from 'react-router-dom'
 
 import { getAllPokehumansThunk } from '../actions/pokehumans'
-
-import PokeHumanOne from './PokeHumanOne'
-// import PokeHumanTwo from './PokeHumanTwo'
-// import PokeHumanThree from './PokeHumanThree'
-import AiPokehumanOne from './AiPokehumanOne'
-// import AiPokehumanThree from './AiPokehumanThree'
-// import AiPokehumanTwo from './AiPokehumanTwo'
 
 export default function BattleScreen() {
   const location = useLocation()
@@ -17,8 +10,11 @@ export default function BattleScreen() {
   const pokehumans = useSelector((store) => store.pokehumans)
   const [aiTeam, setAiTeam] = useState([])
 
+  const userPokehuman = location.state[0]
+  const aiPokehuman = aiTeam[0]
+  const [userHP, setUserHP] = useState(userPokehuman?.HP)
+  const [aiHP, setAiHP] = useState()
 
-  //AI TEAM
   useEffect(() => {
     dispatch(getAllPokehumansThunk())
   }, [])
@@ -31,6 +27,7 @@ export default function BattleScreen() {
   function generateAiTeam(e) {
     e.preventDefault()
     setAiTeam(getMultipleRandom(pokehumans, 2))
+    setAiHP(10)
   }
 
   // Potential turn taking system
@@ -38,6 +35,11 @@ export default function BattleScreen() {
   let turn = true
 
   function combatLogger(e) {
+    var combatLog = document.getElementById('combat-log')
+    const linebreak = document.createElement('br')
+
+    console.log(turn)
+
     if (e.target.id == 'physical-move') {
       document
         .getElementById('combat-log')
@@ -46,19 +48,90 @@ export default function BattleScreen() {
       document
         .getElementById('combat-log')
         .append('Player used ' + specialMove + ' ')
+      combatLog.append('Player used ' + physicalMove + ' ')
+      combatLog.appendChild(linebreak)
+
+      if (physicalDamage == 1) {
+        combatLog.append(physicalMove + ' dealt 1 damage')
+        combatLog.appendChild(linebreak)
+      } else if (physicalDamage == 2) {
+        combatLog.append(physicalMove + ' dealt 2 damage')
+        combatLog.appendChild(linebreak)
+      } else if (physicalDamage == 3) {
+        combatLog.append(physicalMove + ' dealt 3 damage')
+        combatLog.appendChild(linebreak)
+      } else if (physicalDamage == 4) {
+        combatLog.append(physicalMove + ' dealt 4 damage')
+        combatLog.appendChild(linebreak)
+      }
     }
+
+    if (e.target.id == 'special-move') {
+      combatLog.append('Player used ' + specialMove + ' ')
+      combatLog.appendChild(linebreak)
+
+      if (specialDamage == 1) {
+        combatLog.append(specialMove + ' dealt 1 damage')
+        combatLog.appendChild(linebreak)
+      } else if (specialDamage == 2) {
+        combatLog.append(specialMove + ' dealt 2 damage')
+        combatLog.appendChild(linebreak)
+      } else if (specialDamage == 3) {
+        combatLog.append(specialMove + ' dealt 3 damage')
+        combatLog.appendChild(linebreak)
+      } else if (specialDamage == 4) {
+        combatLog.append(specialMove + ' dealt 4 damage')
+        combatLog.appendChild(linebreak)
+      }
+    }
+  }
+
+  function handlePhysicalDamage(e) {
+    // e.preventDefault()
+    // - damage from ai hp
+    let currentAiHP = aiHP - physicalDamage
+
+    setAiHP(currentAiHP)
+    aiFaint(currentAiHP)
+    turn = !turn
+    if (turn == true) {
+      playerTurn()
+    } else {
+      cpuTurn()
+    }
+    combatLogger(e)
+    console.log(e.target.id)
     console.log(turn)
   }
 
-  function handleTurn(e) {
+  function handleSpecialDamage(e) {
     // e.preventDefault()
     turn = !turn
     
     combatLogger(e)
-    // console.log(e.target.id)
-    // console.log(turn)
-    aiTurn()
+   
 
+    // - damage from ai hp
+    let currentAiHP = aiHP - specialDamage
+
+    setAiHP(currentAiHP)
+    aiFaint(currentAiHP)
+  }
+
+  function playerTurn() {
+    var combatLog = document.getElementById('combat-log')
+    const linebreak = document.createElement('br')
+
+    combatLog.append('Players turn, choose an attack')
+    combatLog.appendChild(linebreak)
+  }
+
+  function cpuTurn() {
+    var combatLog = document.getElementById('combat-log')
+    const linebreak = document.createElement('br')
+
+    combatLog.append('CPU turn')
+    combatLog.appendChild(linebreak)
   }
 
   //TODO
@@ -69,20 +142,19 @@ export default function BattleScreen() {
   // We need to work out if the move hits or not
 
   //AI
-  function aiTurn(){
+  function aiAttack(){
     
-      if (location.state[0].attack <= 100) {
+      if (userPokehuman.attack <= aiPokehuman.attack) {
         console.log(specialMove)
       // physicalDamageCalc()
       // specialMove
       // specialDamageCalc()
-      // turn = true
-      // handleTurn()
+      
+      
     }
-    else if (location.state[0].spAttack <= 50){
+    else if (userPokehuman.spAttack <= aiPokehuman.spAttack){
       console.log(physicalMove)
-      // turn = true
-      // handleTurn()
+      
       
     }
 }
@@ -116,11 +188,11 @@ export default function BattleScreen() {
   let physicalDamage = 1
 
   const physicalDamageCalc = () => {
-    if (location.state[0].attack > 75) {
+    if (userPokehuman.attack > 75) {
       return (physicalDamage = 4)
-    } else if (location.state[0].attack > 50) {
+    } else if (userPokehuman.attack > 50) {
       return (physicalDamage = 3)
-    } else if (location.state[0].attack > 25) {
+    } else if (userPokehuman.attack > 25) {
       return (physicalDamage = 2)
     } else {
       return physicalDamage
@@ -130,11 +202,11 @@ export default function BattleScreen() {
   let specialDamage = 1
 
   const specialDamageCalc = () => {
-    if (location.state[0].spAttack > 75) {
+    if (userPokehuman.spAttack > 75) {
       return (specialDamage = 4)
-    } else if (location.state[0].spAttack > 50) {
+    } else if (userPokehuman.spAttack > 50) {
       return (specialDamage = 3)
-    } else if (location.state[0].spAttack > 25) {
+    } else if (userPokehuman.spAttack > 25) {
       return (specialDamage = 2)
     } else {
       return specialDamage
@@ -142,53 +214,69 @@ export default function BattleScreen() {
   }
 
 
-  const [playerAlive, setPlayerAlive] = useState(true)
-  const [aiAlive, setAiAlive] = useState(true)
+  // const [playerAlive, setPlayerAlive] = useState(true)
+  // const [aiAlive, setAiAlive] = useState(true)
 
-  // NO HP
-  const faint = () => {
-    if (pokehumans.HP <= 0) {
-      setPlayerAlive(false)
-      if (playerAlive = false){
-        alert('You Lose')
-      }
-      }
-    else if (pokehumans.HP <= 0) {
-      setAiAlive(false)
-      if (aiAlive = false) {
-        alert('You Win')
-      }
+  // Ryan's code for reference for team losing
+  // const faint = () => {
+  //   if (pokehumans.HP <= 0) {
+  //     setPlayerAlive(false)
+  //     if (playerAlive = false){
+  //       alert('You Lose')
+  //     }
+  //     }
+  //   else if (pokehumans.HP <= 0) {
+  //     setAiAlive(false)
+  //     if (aiAlive = false) {
+  //       alert('You Win')
+  //     }
+  //   }
+  // }
+
+
+  // pokehuman dies
+  const aiFaint = (currentAiHP) => {
+    //ai health
+    if (currentAiHP <= 0) {
+      console.log(aiPokehuman, 'has died')
+      aiTeam.shift()
+      console.log(aiTeam)
+      setAiHP(10)
+    } else {
+      console.log(aiHP)
     }
   }
 
-  //SWITCH ACTIVE POKEHUMAN
-  // function switchPokehuman() {
-  //   if ((active = false)) {
-  //     return setActive(true)
-  //   } else if ((active = true)) {
-  //     return setActive(false)
-  //   }
-  // }
+  const userFaint = () => {
+    //ai health
+    if (aiHP <= 0) {
+      // console.log(pokehuman.name, 'has died')
+      aiTeam.shift()
+      console.log(aiTeam)
+      setAiHP(10)
+    }
+  }
 
   return (
     <>
       <div>BattleScreen</div>
-      {location.state && (
-        <>
-          <PokeHumanOne pokehuman={location.state[0]} />
-          <button id="physical-move"  onClick={handleTurn}>
-            {physicalMove}: 
-            {physicalDamageCalc()}
-          </button>
-          <button id="special-move" onClick={handleTurn}>
-            {specialMove}: 
-            {specialDamageCalc()}
-          </button>
+      <div>
+        <img src={userPokehuman.image} alt="A human pokehuman" />
+        <p>{userPokehuman.name}</p>
+        <p>{userPokehuman.HP}</p>
+        <button onClick={handlePhysicalDamage}>
+          {physicalMove}
+          {physicalDamageCalc()}
+        </button>
+        <button onClick={handleSpecialDamage}>
+          {specialMove}
+          {specialDamageCalc()}
+        </button>
+      </div>
 
-          {/* <PokeHumanTwo pokehuman={location.state[1]} /> */}
-          {/* <PokeHumanThree pokehuman={location.state[2]} /> */}
-        </>
-      )}
+      {/* <PokeHumanTwo pokehuman={location.state[1]} /> */}
+      {/* <PokeHumanThree pokehuman={location.state[2]} /> */}
+
       <div>
         Here is where we will show two pokehumans battling each other. One will
         be player controlled and the other will be run by the computer. You will
@@ -198,25 +286,15 @@ export default function BattleScreen() {
       </div>
       <div>
         These are placeholder images for where the teams might appear
-        {aiTeam.length > 1 && (
-          <>
-            <AiPokehumanOne pokehuman={aiTeam[0]} />
-            {/* <AiPokehumanTwo pokehuman={aiTeam[1]} /> */}
-            {/* <AiPokehumanThree pokehuman={aiTeam[2]} /> */}
-          </>
-        )}
+        <img src={aiPokehuman?.image} alt="ai Pokehuman" />
+        <p>{aiHP}</p>
+        <p>{aiPokehuman?.name}</p>
       </div>
       <button onClick={generateAiTeam}>Generate Team</button>
-      <button id="physical-move" onClick={handleTurn}>
-        {physicalMove}
-      </button>
-      <button id="special-move" onClick={handleTurn}>
-        {specialMove}
-      </button>
+      <button id="physical-move">{physicalMove}</button>
+      <button id="special-move">{specialMove}</button>
 
-      <div>
-        <p id="combat-log">Combat Log: </p>
-      </div>
+      <div id="combat-log"></div>
     </>
   )
 }
