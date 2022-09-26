@@ -20,13 +20,13 @@ export default function DexEntry() {
         <div className="entry-button-container">
           {/* These currently break if they go below 1 or above 5. Future endeavour for us to fix during our end of day coding */}
           <Link to={`/dex/${Number(id) - 1}`}>
-            <button className="previous-button">Previous</button>
+            <button className='previous-button'>&laquo; Previous</button>
           </Link>
           <Link to={`/dex/${Number(id) + 1}`}>
-            <button className="next-button">Next</button>
+            <button className='next-button'>Next &raquo;</button>
           </Link>
         </div>
-        <div className="entry-content">
+        <div className='entry-content'>
           <h1>{pokehuman?.name}</h1>
           <img src={pokehuman?.image} alt="A pokehuman!" />
           <div className="entry-display-types">
