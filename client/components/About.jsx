@@ -35,6 +35,15 @@ function About() {
             alt="ryan head proflic"
           />
           <h2>Ryan - Product Owner</h2>
+          <p>
+            Hello there, as Product Owner I drove us 
+            towards making sure our MVP was 
+            achieved. Other code responsibilities I had 
+            during this project were setting 
+            up components, styling pages,  
+            research and working with others on the  
+            battle system we created.
+          </p>
         </div>
         <div className="about-wapper">
           <img

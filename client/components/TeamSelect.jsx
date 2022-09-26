@@ -26,7 +26,7 @@ export default function TeamSelect() {
 
   return (
     <>
-      <h1 className="select-title">Select A PokeHuman to form your team!</h1>
+      <h1 className="select-title">Select 2 PokeHuman to form your team!</h1>
       <div className="select-button-start">
         <p>Team Select</p>
         {team.length === 2 && (

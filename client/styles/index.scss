@@ -159,9 +159,6 @@ html {
     text-align: center;
   }
 
-
-  //TYPE
-
   & .type-Normal{
    background-color: #A8A77A;
   }
@@ -424,13 +421,14 @@ html {
   object-fit: cover;
 }
 
+
 .about-wapper {
   text-align: center;
   min-width: 250px;
   max-width: 250px;
 }
 
- // Dex Entry
+ 
 //DEXENTRY
 
 .entry-container{
@@ -463,7 +461,7 @@ html {
   & img{
     flex: auto;
     max-width: 500px;
-    min-height: 450px;
+    max-height: 500px;
   }
 }
 
@@ -505,8 +503,16 @@ html {
   justify-content: flex-start;
   align-items: center;
   margin: 10px 10px;
-  margin-left: 200px;
+  margin-left: 250px;
   padding: 10px;
+  background-color: rgb(62, 76, 164);
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px #383c3d;
+
+  & button{
+    border-radius: 5px;
+    background-color: rgb(253, 204, 140);
+  }
 }
 
 .ai-container{
@@ -515,33 +521,65 @@ html {
   justify-content: flex-end;
   align-items: center;
   margin: 10px 10px;
-  margin-right: 200px;
+  margin-right: 250px;
   margin-bottom: 30px;
-  padding: 20px;
-
-
+  padding: 18px;
+  background-color: rgb(201, 53, 53);
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px #383c3d;
+  width: 250px;
 }
 
 .battle-images{
   max-width: 450px;
   max-height: 450px;
   border-radius: 6px;
-  // object-fit: cover;
 }
 
 .health{
-  color: green;
+  color: rgb(135, 255, 135);
+}
+
+.combat-text{
+color: white;
 }
 
 .combat{
-  margin: 15px 5px;
+  margin: auto;
+  left: 600px;
+  top: 200px;
+  position: absolute;
   background-color: white;
   border-radius: 6px;
-  // outline: black solid 2px;
-  // padding: 20px;
+  text-align: center;
+  width: 150px;
+  height: 400px;
+  outline: black solid 2px;
+  padding: 20px;
+  overflow:auto;
 }
 
-//TYPE
+
+//USERTEAM
+
+.user-container{
+  display: flex;
+  flex-direction: row;
+  h2{
+    text-align: center;
+  }
+  img{
+    max-width: 300px;
+   max-height: 300px;
+  }
+}
+
+.user-content{
+  display: flex;
+  flex-direction: column;
+}
+
+//TYPES
 
 .type-Normal{
  background-color: #A8A77A;
