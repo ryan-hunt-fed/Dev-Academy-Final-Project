@@ -21,9 +21,8 @@ function Nav() {
           <Link to="/">Home</Link>
           <Link to="/dex">Dex</Link>
           <Link to="/add">Add</Link>
-          <Link to="/about">About</Link>
           <Link to="/team">Team Select</Link>
-          <Link to="/battle">Battle</Link>
+          <Link to="/about">About</Link>
         </div>
         <div className="nav-log">
           {auth.isAuthenticated ? (
