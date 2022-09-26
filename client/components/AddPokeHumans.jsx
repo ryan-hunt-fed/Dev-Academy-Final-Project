@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import ImageUploading from 'react-images-uploading'
 import { useNavigate } from 'react-router-dom'
 
-import { postAddPokehumanThunk } from '../actions/pokehumans'
+import { addPokehumanThunk } from '../actions/pokehumans'
 
 function AddPokeHumans() {
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ function AddPokeHumans() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    dispatch(postAddPokehumanThunk(formData))
+    dispatch(addPokehumanThunk(formData))
     navigate('/dex')
   }
 
