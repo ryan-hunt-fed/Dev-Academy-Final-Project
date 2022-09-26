@@ -11,7 +11,7 @@ function Dex() {
   const alreadyAddedIds = useSelector((store) =>
     store.pokehumans.map((pokes) => pokes.id)
   )
-  console.log('whats in this ', alreadyAddedIds)
+  // console.log('whats in this ', alreadyAddedIds)
 
   const auth = useSelector((state) => state.auth)
 

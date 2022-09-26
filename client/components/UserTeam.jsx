@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { getUserTeamThunk } from '../actions/userTeams'
+import { deleteUserTeamThunk, getUserTeamThunk } from '../actions/userTeams'
 
 function UserTeam() {
   const dispatch = useDispatch()
@@ -14,6 +14,11 @@ function UserTeam() {
     dispatch(getUserTeamThunk(id))
   }, [])
 
+  const handleClick = (pokehumans_id) => {
+    console.log(pokehumans_id)
+    dispatch(deleteUserTeamThunk(pokehumans_id))
+  }
+
   return (
     <>
       <div>
@@ -24,6 +29,14 @@ function UserTeam() {
               <div key={idx} className="dex-wapper">
                 <img src={poke.image} alt={poke.name} />
                 <p>{poke.name}</p>
+                <button
+                  onClick={() => {
+                    handleClick(poke.id)
+                  }}
+                >
+                  Release
+                </button>
+
                 <div className="Type-box">
                   <p className={`type-${poke.type_1}`}>{poke.type_1}</p>
                   {poke.type_1 === poke.type_2 ? (
