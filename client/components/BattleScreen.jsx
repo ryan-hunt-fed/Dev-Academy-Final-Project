@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { useInRouterContext, useLocation } from 'react-router-dom'
 
 import { getAllPokehumansThunk } from '../actions/pokehumans'
 
@@ -31,13 +31,14 @@ export default function BattleScreen() {
     setAiHP(10)
   }
 
-  // Potential turn taking system
-
-  // let turn = true
-
   let turn = true
 
   function combatLogger(e) {
+    var combatLog = document.getElementById('combat-log')
+    const linebreak = document.createElement('br')
+
+    console.log(turn)
+
     if (e.target.id == 'physical-move') {
       document
         .getElementById('combat-log')
@@ -46,8 +47,42 @@ export default function BattleScreen() {
       document
         .getElementById('combat-log')
         .append('Player used ' + specialMove + ' ')
+      combatLog.append('Player used ' + physicalMove + ' ')
+      combatLog.appendChild(linebreak)
+
+      if (physicalDamage == 1) {
+        combatLog.append(physicalMove + ' dealt 1 damage')
+        combatLog.appendChild(linebreak)
+      } else if (physicalDamage == 2) {
+        combatLog.append(physicalMove + ' dealt 2 damage')
+        combatLog.appendChild(linebreak)
+      } else if (physicalDamage == 3) {
+        combatLog.append(physicalMove + ' dealt 3 damage')
+        combatLog.appendChild(linebreak)
+      } else if (physicalDamage == 4) {
+        combatLog.append(physicalMove + ' dealt 4 damage')
+        combatLog.appendChild(linebreak)
+      }
     }
-    console.log(turn)
+
+    if (e.target.id == 'special-move') {
+      combatLog.append('Player used ' + specialMove + ' ')
+      combatLog.appendChild(linebreak)
+
+      if (specialDamage == 1) {
+        combatLog.append(specialMove + ' dealt 1 damage')
+        combatLog.appendChild(linebreak)
+      } else if (specialDamage == 2) {
+        combatLog.append(specialMove + ' dealt 2 damage')
+        combatLog.appendChild(linebreak)
+      } else if (specialDamage == 3) {
+        combatLog.append(specialMove + ' dealt 3 damage')
+        combatLog.appendChild(linebreak)
+      } else if (specialDamage == 4) {
+        combatLog.append(specialMove + ' dealt 4 damage')
+        combatLog.appendChild(linebreak)
+      }
+    }
   }
 
   function handlePhysicalDamage(e) {
@@ -56,8 +91,13 @@ export default function BattleScreen() {
     let currentAiHP = aiHP - physicalDamage
 
     setAiHP(currentAiHP)
-    aiFaint()
+    aiFaint(currentAiHP)
     turn = !turn
+    if (turn == true) {
+      playerTurn()
+    } else {
+      cpuTurn()
+    }
     combatLogger(e)
     console.log(e.target.id)
   }
@@ -69,9 +109,22 @@ export default function BattleScreen() {
 
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
-    turn = !turn
-    combatLogger(e)
-    console.log(e.target.id)
+  }
+
+  function playerTurn() {
+    var combatLog = document.getElementById('combat-log')
+    const linebreak = document.createElement('br')
+
+    combatLog.append('Players turn, choose an attack')
+    combatLog.appendChild(linebreak)
+  }
+
+  function cpuTurn() {
+    var combatLog = document.getElementById('combat-log')
+    const linebreak = document.createElement('br')
+
+    combatLog.append('CPU turn')
+    combatLog.appendChild(linebreak)
   }
 
   // AI needs to use moves to deal damage
@@ -191,9 +244,7 @@ export default function BattleScreen() {
       <button id="physical-move">{physicalMove}</button>
       <button id="special-move">{specialMove}</button>
 
-      <div>
-        <p id="combat-log">Combat Log: </p>
-      </div>
+      <div id="combat-log"></div>
     </>
   )
 }
