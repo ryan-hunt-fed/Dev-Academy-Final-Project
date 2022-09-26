@@ -17,7 +17,9 @@ router.get('/saved/:userId', (req, res) => {
 router.post('/saved/:userId', (req, res) => {
 
   const userId = req.params.userId
-  const postId = req.body.postId
+  const postId = req.body.pokehumansId
+
+  console.log();
 
   db.insertUsersTeam(userId, postId)
     .then(() => {
