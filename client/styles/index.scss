@@ -413,6 +413,55 @@ body {
  
 }
 
+//BATTLESCREEN
+
+.battle-title{
+  text-align: center;
+}
+
+.game-container{
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 5px;
+}
+
+.player-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px 10px;
+  margin-left: 100px;
+  padding: 10px;
+}
+
+.ai-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px 10px;
+  margin-right: 100px;
+  margin-bottom: 30px;
+  padding: 20px;
+
+
+}
+
+.battle-images{
+  max-width: 450px;
+  min-height: 450px;
+  // object-fit: cover;
+}
+
+.health{
+  color: green;
+}
+
+.combat{
+  margin: 15px 5px;
+}
+
 //TYPE
 
 .type-Normal{
