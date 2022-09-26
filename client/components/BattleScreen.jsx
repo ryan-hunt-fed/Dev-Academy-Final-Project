@@ -100,6 +100,7 @@ export default function BattleScreen() {
     }
     combatLogger(e)
     console.log(e.target.id)
+    console.log(turn)
   }
 
   function handleSpecialDamage(e) {
