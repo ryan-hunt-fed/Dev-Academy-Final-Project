@@ -9,6 +9,7 @@ function Home() {
         <img src="./images/Pokehuman-title.png" alt="Pokehuman"></img>
       </div>
 
+      {/* Placeholder video. Will be replaced with our theme song. */}
       <div className="theme-container">
         <iframe
           width="560"

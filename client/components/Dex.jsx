@@ -21,7 +21,6 @@ function Dex() {
 
   return (
     <>
-      {/* <h2 className="dex-h2">Pokehumans Dex</h2> */}
       <h2 className="dex-title">PokeHumans Dex</h2>
       <div className="dex-card">
         {humans.map((pokes) => {
@@ -34,7 +33,6 @@ function Dex() {
               <div className="Type-box">
                 <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
                 {pokes.type1 === pokes.type2 ? (
-                  // <p></p>
                   <></>
                 ) : (
                   <p className={`type-${pokes.type2}`}>{pokes.type2}</p>
