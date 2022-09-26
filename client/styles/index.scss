@@ -426,7 +426,7 @@ body {
   & img{
     flex: auto;
     max-width: 500px;
-    min-height: 450px;
+    max-height: 500px;
   }
 }
 
@@ -473,6 +473,11 @@ body {
   background-color: rgb(62, 76, 164);
   border-radius: 6px;
   box-shadow: 3px 3px 10px #383c3d;
+
+  & button{
+    border-radius: 5px;
+    background-color: rgb(253, 204, 140);
+  }
 }
 
 .ai-container{
@@ -483,7 +488,7 @@ body {
   margin: 10px 10px;
   margin-right: 250px;
   margin-bottom: 30px;
-  padding: 20px;
+  padding: 18px;
   background-color: rgb(201, 53, 53);
   border-radius: 6px;
   box-shadow: 3px 3px 10px #383c3d;
@@ -513,10 +518,30 @@ color: white;
   border-radius: 6px;
   text-align: center;
   width: 150px;
-  height:500px;
+  height: 400px;
   outline: black solid 2px;
   padding: 20px;
   overflow:auto;
+}
+
+
+//USERTEAM
+
+.user-container{
+  display: flex;
+  flex-direction: row;
+  h2{
+    text-align: center;
+  }
+  img{
+    max-width: 300px;
+   max-height: 300px;
+  }
+}
+
+.user-content{
+  display: flex;
+  flex-direction: column;
 }
 
 //TYPES

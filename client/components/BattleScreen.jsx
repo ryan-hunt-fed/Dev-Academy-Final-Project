@@ -12,7 +12,7 @@ export default function BattleScreen() {
 
   const userPokehuman = location.state[0]
   const aiPokehuman = aiTeam[0]
-  // const [userHP, setUserHP] = useState(userPokehuman?.HP)
+  const [userHP, setUserHP] = useState(userPokehuman.HP)
   const [aiHP, setAiHP] = useState()
 
   useEffect(() => {
@@ -24,11 +24,10 @@ export default function BattleScreen() {
     return shuffled.slice(0, num)
   }
 
-  function generateAiTeam(e) {
-    e.preventDefault()
+  useEffect(() => {
     setAiTeam(getMultipleRandom(pokehumans, 3))
     setAiHP(10)
-  }
+  }, [])
 
   // Potential turn taking system
 
@@ -85,15 +84,9 @@ export default function BattleScreen() {
 
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
-    turn = false
-    if (turn == true) {
-      playerTurn()
-    } else {
-      cpuTurn()
-    }
     combatLogger(e)
-    console.log(e.target.id)
-    console.log(turn)
+    turn = false
+    cpuTurn()
     aiAttack()
   }
 
@@ -102,13 +95,9 @@ export default function BattleScreen() {
 
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
-    turn = !turn
-    if (turn == true) {
-      playerTurn()
-    } else {
-      cpuTurn()
-    }
     combatLogger(e)
+    turn = false
+    cpuTurn()
     aiAttack()
   }
 
@@ -128,27 +117,22 @@ export default function BattleScreen() {
     combatLog.appendChild(linebreak)
   }
 
-  //TODO
-  // AI needs to use moves to deal damage - half
-  // player needs to use moves to deal damage - done
-  // We need to target hp data and take away damage result -
-  // The moves need damage assigned to them - done
-  // We need to work out if the move hits or not
-
   //AI
   function aiAttack() {
-    if (userPokehuman.attack <= aiPokehuman.attack) {
-      console.log(specialMove)
-      aiPhysicalDamageCalc()
-      aiSpecialDamageCalc()
-      userFaint()
-      // physicalDamageCalc()
-      // specialMove
-      // specialDamageCalc()
-    } else if (userPokehuman.spAttack <= aiPokehuman.spAttack) {
-      console.log(physicalMove)
+    let attackChoice = Math.floor(Math.random() * 10)
+    if (attackChoice > 5) {
+      let currentUserHP = userHP - aiSpecialDamageCalc()
+      setUserHP(currentUserHP)
+      userFaint(currentUserHP)
+      combatLogger()
+      playerTurn()
+    } else {
+      let currentUserHP = userHP - aiPhysicalDamageCalc()
+      setUserHP(currentUserHP)
+      userFaint(currentUserHP)
+      combatLogger()
+      playerTurn()
     }
-    turn = true
   }
 
   //MOVES
@@ -176,6 +160,7 @@ export default function BattleScreen() {
     specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
 
   //DAMAGE CALCULATION
+
   let physicalDamage = 1
 
   const physicalDamageCalc = () => {
@@ -204,7 +189,6 @@ export default function BattleScreen() {
     }
   }
 
-  
   let aiPhysicalDamage = 1
 
   const aiPhysicalDamageCalc = () => {
@@ -233,76 +217,63 @@ export default function BattleScreen() {
     }
   }
 
-  // Ryan's code for reference for team losing  
-  // const [playerAlive, setPlayerAlive] = useState(true)
-  // const [aiAlive, setAiAlive] = useState(true)
-
-
-  // const faint = () => {
-  //   if (pokehumans.HP <= 0) {
-  //     setPlayerAlive(false)
-  //     if (playerAlive = false){
-  //       alert('You Lose')
-  //     }
-  //     }
-  //   else if (pokehumans.HP <= 0) {
-  //     setAiAlive(false)
-  //     if (aiAlive = false) {
-  //       alert('You Win')
-  //     }
-  //   }
-  // }
-
-  // pokehuman dies
   const aiFaint = (currentAiHP) => {
-    //ai health
     if (currentAiHP <= 0) {
-      console.log(aiPokehuman, 'has died')
       aiTeam.shift()
-      console.log(aiTeam)
+      if (aiTeam.length === 0) {
+        alert('You have won the battle')
+      }
       setAiHP(10)
     } else {
       console.log(aiHP)
     }
   }
 
-  const userFaint = () => {
-    //ai health
-    if (aiHP <= 0) {
-      // console.log(pokehuman.name, 'has died')
-      aiTeam.shift()
-      console.log(aiTeam)
-      setAiHP(10)
+  const userFaint = (currentUserHP) => {
+    if (currentUserHP <= 0) {
+      location.state.shift()
+      if (location.state.length === 0) {
+        alert('You have lost the battle')
+      }
+      setUserHP(10)
     }
   }
 
   return (
     <>
-      <div className='battle-title'>
+      <div className="battle-title">
         <h1>The Battle Games</h1>
-        <button onClick={generateAiTeam}>Generate Opponent</button>
       </div>
-      <div className='game-container'>
-        <div className='player-container'>
-          <img className='battle-images'src={userPokehuman?.image} alt="A human pokehuman" />
+      <div className="game-container">
+        <div className="player-container">
+          <img
+            className="battle-images"
+            src={userPokehuman?.image}
+            alt="A human pokehuman"
+          />
           <p className='combat-text'>{userPokehuman?.name}</p>
-          <p className='health'>{userPokehuman?.HP}</p>
+          <p className="health">{userHP}</p>
           <button onClick={handlePhysicalDamage}>
             {physicalMove}
             {physicalDamageCalc()}
           </button>
+          <br />
           <button onClick={handleSpecialDamage}>
             {specialMove} 
             {specialDamageCalc()}
           </button>
         </div>
-        <div className='combat' id="combat-log"></div>
-        <div className='ai-container'>
-          <img className='battle-images' src={aiPokehuman?.image} alt="ai Pokehuman" />
-          <p className='health'>{aiHP}</p>
+        <div className="combat" id="combat-log"></div>
+        <div className="ai-container">
+          <img
+            className="battle-images"
+            src={aiPokehuman?.image}
+            alt="ai Pokehuman"
+          />
           <p className='combat-text'>{aiPokehuman?.name}</p>
+          <p className="health">{aiHP}</p>
         </div>
-      </div>      
+      </div>
     </>
   )
 }
