@@ -20,7 +20,7 @@ function About() {
         </div>
       </div>
       <div className="about-card">
-        <div>
+        <div className="about-wapper">
           <img
             className="about-heat-shot"
             src="/images/Jeff-head-shot-03.jpeg"
@@ -28,7 +28,7 @@ function About() {
           />
           <h2>Jeff - Scrum Lead</h2>
         </div>
-        <div>
+        <div className="about-wapper">
           <img
             className="about-heat-shot"
             src="/images/Ryan-head-shot-02.jpeg"
@@ -36,7 +36,7 @@ function About() {
           />
           <h2>Ryan - Product Owner</h2>
         </div>
-        <div>
+        <div className="about-wapper">
           <img
             className="about-heat-shot"
             src="/images/Jordan-head-shot-05.jpeg"
@@ -44,15 +44,22 @@ function About() {
           />
           <h2>Jordan - Git Keeper</h2>
         </div>
-        <div>
+        <div className="about-wapper">
           <img
             className="about-heat-shot"
             src="/images/Kris-head-shot-01.jpeg"
             alt="kris head proflic"
           />
           <h2>Kris - Vibes Watcher</h2>
+          <p>
+            Hey there, is your local trash gremlin and Vides watcher. As the
+            vides watcher, my goal is to make sure that the team energy and
+            spirit are high. by doing regular check-ins and having stress,
+            profile i can keep an eye out for team member stress and then act
+            according to their tips on how to them.
+          </p>
         </div>
-        <div>
+        <div className="about-wapper">
           <img
             className="about-heat-shot"
             src="/images/Ming-head-shot-04.jpeg"
