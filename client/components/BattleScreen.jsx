@@ -33,10 +33,11 @@ export default function BattleScreen() {
 
   let turn = true
 
-  function combatLogger(e) {
-    var combatLog = document.getElementById('combat-log')
-    const linebreak = document.createElement('br')
+  // COMBAT LOG
+  const combatLog = document.getElementById('combat-log')
+  const linebreak = document.createElement('br')
 
+  function combatLogger(e) {
     if (e.target.id == 'physical-move') {
       combatLog.append('Player used ' + physicalMove + ' ')
       combatLog.appendChild(linebreak)
@@ -46,36 +47,31 @@ export default function BattleScreen() {
     }
 
     if (physicalDamage == 1) {
-      combatLog.append(physicalMove + ' dealt 1 damage')
+      combatLog.append(physicalMove + ' dealt 1 damage ')
       combatLog.appendChild(linebreak)
     } else if (physicalDamage == 2) {
-      combatLog.append(physicalMove + ' dealt 2 damage')
+      combatLog.append(physicalMove + ' dealt 2 damage ')
       combatLog.appendChild(linebreak)
     } else if (physicalDamage == 3) {
-      combatLog.append(physicalMove + ' dealt 3 damage')
+      combatLog.append(physicalMove + ' dealt 3 damage ')
       combatLog.appendChild(linebreak)
     } else if (physicalDamage == 4) {
-      combatLog.append(physicalMove + ' dealt 4 damage')
+      combatLog.append(physicalMove + ' dealt 4 damage ')
       combatLog.appendChild(linebreak)
     }
 
-    if (e.target.id == 'special-move') {
-      combatLog.append('Player used ' + specialMove + ' ')
+    if (specialDamage == 1) {
+      combatLog.append(specialMove + ' dealt 1 damage ')
       combatLog.appendChild(linebreak)
-
-      if (specialDamage == 1) {
-        combatLog.append(specialMove + ' dealt 1 damage')
-        combatLog.appendChild(linebreak)
-      } else if (specialDamage == 2) {
-        combatLog.append(specialMove + ' dealt 2 damage')
-        combatLog.appendChild(linebreak)
-      } else if (specialDamage == 3) {
-        combatLog.append(specialMove + ' dealt 3 damage')
-        combatLog.appendChild(linebreak)
-      } else if (specialDamage == 4) {
-        combatLog.append(specialMove + ' dealt 4 damage')
-        combatLog.appendChild(linebreak)
-      }
+    } else if (specialDamage == 2) {
+      combatLog.append(specialMove + ' dealt 2 damage ')
+      combatLog.appendChild(linebreak)
+    } else if (specialDamage == 3) {
+      combatLog.append(specialMove + ' dealt 3 damage ')
+      combatLog.appendChild(linebreak)
+    } else if (specialDamage == 4) {
+      combatLog.append(specialMove + ' dealt 4 damage ')
+      combatLog.appendChild(linebreak)
     }
   }
 
@@ -102,36 +98,31 @@ export default function BattleScreen() {
   }
 
   function playerTurn() {
-    var combatLog = document.getElementById('combat-log')
-    const linebreak = document.createElement('br')
-
-    combatLog.append('Players turn, choose an attack')
+    combatLog.append('Players turn, choose an attack ')
     combatLog.appendChild(linebreak)
   }
 
   function cpuTurn() {
-    var combatLog = document.getElementById('combat-log')
-    const linebreak = document.createElement('br')
-
-    combatLog.append('CPU turn')
+    combatLog.append('CPU turn ')
     combatLog.appendChild(linebreak)
   }
 
   //AI
   function aiAttack() {
     let attackChoice = Math.floor(Math.random() * 10)
+    playerTurn()
     if (attackChoice > 5) {
       let currentUserHP = userHP - aiSpecialDamageCalc()
       setUserHP(currentUserHP)
       userFaint(currentUserHP)
-      combatLogger()
-      playerTurn()
+      combatLog.appendChild(linebreak)
+      combatLog.append('CPU used ' + specialMove)
     } else {
       let currentUserHP = userHP - aiPhysicalDamageCalc()
       setUserHP(currentUserHP)
       userFaint(currentUserHP)
-      combatLogger()
-      playerTurn()
+      combatLog.appendChild(linebreak)
+      combatLog.append('CPU used ' + physicalMove)
     }
   }
 
