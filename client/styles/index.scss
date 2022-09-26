@@ -4,7 +4,13 @@ body {
   left: 0;
   margin: 0;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #e8e8e8;
+  background-color: #f0f0f0;
+  //background-image: url(https://w.wallha.com/ws/14/vKrsgRJI.png);
+  // background-size: 100% 100%;
+}
+
+html {
+  //height: 100%
 }
 
 //HOME
@@ -34,10 +40,11 @@ body {
 //NAV
 
 .nav-container{
-  background-color: #E54222;
+  background-color: #ee1515;
   padding: 30px;
-  text-align: right;
-  //text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   
  
   & a{
@@ -48,9 +55,17 @@ body {
   }
 
   & a:hover{
-    color: #2a75bb;
+    color: #222224;
   }
   
+}
+
+.nav-main {
+  text-align: left;
+}
+
+.nav-log {
+  text-align: right;
 }
 
 //LOGIN
@@ -119,11 +134,14 @@ body {
   flex-wrap: wrap;
   font-size: 1.2em;
   justify-content: space-around;
+  
   & img {
   max-width: 300px;
   min-height: 300px;
   object-fit: cover;
+  padding: 10px;
   background-color: white;
+  
   }
 
   & button {
@@ -254,7 +272,11 @@ body {
 
 .dex-wapper {
   min-width: 320px;
-   margin: 15px;
+  margin: 15px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 3px 3px 2px #21222228;
+  text-align: center;
 }
 
 .Type-box {
@@ -379,7 +401,7 @@ body {
 
 .about-card {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap:  wrap;
   justify-content: space-between;
   margin: 25px;
   & img {
