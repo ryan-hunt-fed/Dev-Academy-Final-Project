@@ -29,7 +29,6 @@ router.get('/', async (req, res) => {
   try {
     const humans = await db.getAllPokesDb()
     const numel = humans.map((obj) => ekansToNumelPost(obj))
-    //console.log(numel)
     res.json(numel)
   } catch (err) {
     res.status(500).json({ msg: err.message })
