@@ -16,12 +16,13 @@ async function insertPokeHumanDb(newData, db = conn) {
   return await db('pokehumans').insert(newData)
 }
 
-// USER SAVED TEAM
-async function getUserTeam(userId, db = conn) {
-  const userTeam = await db('teams')
-    .select('pokehumans_id')
+// USER GET TEAM
+function getUserTeam(userId, db = conn) {
+  return db('teams')
+    .select()
     .where('user_id', userId)
-  return userTeam.map((x) => x.pokehumans_id)
+    .join('pokehumans', 'pokehumans.id', 'pokehumans_id')
+  //return userTeam.map((x) => x.pokehumans_id)
 }
 
 // USER SAVING TEAM
@@ -30,11 +31,10 @@ async function insertUsersTeam(userId, pokehumansId, db = conn) {
   return await db('teams').select().insert(data)
 }
 
-
 module.exports = {
   insertPokeHumanDb,
   getAllPokesDb,
   getDexEntryDb,
   getUserTeam,
-  insertUsersTeam
+  insertUsersTeam,
 }

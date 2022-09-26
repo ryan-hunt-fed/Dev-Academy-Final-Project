@@ -133,14 +133,23 @@ function AddPokeHumans() {
             <label htmlFor="HP" className="hp-label">
               HP:{' '}
             </label>
-            <input type="text" id="HP" name="HP" onChange={handleChange} />
+            <input
+              type="number"
+              min="1"
+              max="10"
+              id="HP"
+              name="HP"
+              onChange={handleChange}
+            />
           </div>
           <div>
             <label htmlFor="attack" className="attack-label">
               Attack:{' '}
             </label>
             <input
-              type="text"
+              type="number"
+              min="1"
+              max="100"
               id="attack"
               name="attack"
               onChange={handleChange}
@@ -151,7 +160,9 @@ function AddPokeHumans() {
               Defence:{' '}
             </label>
             <input
-              type="text"
+              type="number"
+              min="1"
+              max="100"
               id="defence"
               name="defence"
               onChange={handleChange}
@@ -162,7 +173,9 @@ function AddPokeHumans() {
               Sp_attack:{' '}
             </label>
             <input
-              type="text"
+              type="number"
+              min="1"
+              max="100"
               id="Sp_attack"
               name="Sp_attack"
               onChange={handleChange}
@@ -173,7 +186,9 @@ function AddPokeHumans() {
               Sp_defence:{' '}
             </label>
             <input
-              type="text"
+              type="number"
+              min="1"
+              max="100"
               id="Sp_defence"
               name="Sp_defence"
               onChange={handleChange}
@@ -184,14 +199,18 @@ function AddPokeHumans() {
               Speed:{' '}
             </label>
             <input
-              type="text"
+              type="number"
+              min="1"
+              max="100"
               id="speed"
               name="speed"
               onChange={handleChange}
             />
           </div>
 
-          <button disabled={!formData}>Add PokeHuman</button>
+          <button disabled={!formData || formData.name === ''}>
+            Add PokeHuman
+          </button>
         </form>
       </div>
     </>
