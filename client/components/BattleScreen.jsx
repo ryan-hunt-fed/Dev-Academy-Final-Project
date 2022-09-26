@@ -165,11 +165,11 @@ export default function BattleScreen() {
 
   const physicalDamageCalc = () => {
     if (userPokehuman.attack > 75) {
-      return (physicalDamage = 4)
+      return (physicalDamage = Math.floor(Math.random() * 6))
     } else if (userPokehuman.attack > 50) {
-      return (physicalDamage = 3)
+      return (physicalDamage = Math.floor(Math.random() * 4))
     } else if (userPokehuman.attack > 25) {
-      return (physicalDamage = 2)
+      return (physicalDamage = Math.floor(Math.random() * 3))
     } else {
       return physicalDamage
     }
@@ -179,11 +179,11 @@ export default function BattleScreen() {
 
   const specialDamageCalc = () => {
     if (userPokehuman.spAttack > 75) {
-      return (specialDamage = 4)
+      return (specialDamage = Math.floor(Math.random() * 6))
     } else if (userPokehuman.spAttack > 50) {
-      return (specialDamage = 3)
+      return (specialDamage = Math.floor(Math.random() * 4))
     } else if (userPokehuman.spAttack > 25) {
-      return (specialDamage = 2)
+      return (specialDamage = Math.floor(Math.random() * 3))
     } else {
       return specialDamage
     }
@@ -193,11 +193,11 @@ export default function BattleScreen() {
 
   const aiPhysicalDamageCalc = () => {
     if (userPokehuman.attack > 75) {
-      return (aiPhysicalDamage = 4)
+      return (aiPhysicalDamage = Math.floor(Math.random() * 6))
     } else if (userPokehuman.attack > 50) {
-      return (aiPhysicalDamage = 3)
+      return (aiPhysicalDamage = Math.floor(Math.random() * 4))
     } else if (userPokehuman.attack > 25) {
-      return (aiPhysicalDamage = 2)
+      return (aiPhysicalDamage = Math.floor(Math.random() * 3))
     } else {
       return aiPhysicalDamage
     }
@@ -207,11 +207,11 @@ export default function BattleScreen() {
 
   const aiSpecialDamageCalc = () => {
     if (userPokehuman.spAttack > 75) {
-      return (aiSpecialDamage = 4)
+      return (aiSpecialDamage = Math.floor(Math.random() * 6))
     } else if (userPokehuman.spAttack > 50) {
-      return (aiSpecialDamage = 3)
+      return (aiSpecialDamage = Math.floor(Math.random() * 4))
     } else if (userPokehuman.spAttack > 25) {
-      return (aiSpecialDamage = 2)
+      return (aiSpecialDamage = Math.floor(Math.random() * 3))
     } else {
       return aiSpecialDamage
     }
