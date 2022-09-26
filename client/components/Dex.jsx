@@ -8,8 +8,12 @@ import { postUserTeamThunk } from '../actions/userTeams'
 function Dex() {
   const dispatch = useDispatch()
   const humans = useSelector((store) => store.pokehumans)
+  const alreadyAddedIds = useSelector((store) =>
+    store.pokehumans.map((pokes) => pokes.name)
+  )
+  console.log('whats in this ', alreadyAddedIds)
+
   const auth = useSelector((state) => state.auth)
-  //const [teamData, setTeamData] = useState()
 
   const handleAdd = (id, pokeId) => {
     dispatch(postUserTeamThunk(id, pokeId))
@@ -39,9 +43,16 @@ function Dex() {
                 )}
               </div>
               {auth.isAuthenticated ? (
-                <button onClick={() => handleAdd(auth.user.id, pokes.id)}>
-                  ADD
-                </button>
+                <div className="dex-add-container">
+                  <p>Add to your team:</p>
+                  <button
+                    className="dex-add"
+                    onClick={() => handleAdd(auth.user.id, pokes.id)}
+                    disabled={alreadyAddedIds.includes(pokes.name)}
+                  >
+                    ADD
+                  </button>
+                </div>
               ) : (
                 <></>
               )}
