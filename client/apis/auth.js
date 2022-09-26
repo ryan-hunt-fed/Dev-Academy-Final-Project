@@ -11,19 +11,17 @@ const errorMessages = {
 
 export function register(creds) {
   return authRegister(creds, { baseUrl })
-    .then((mystery) => {
-      console.log('then', mystery)
-      return mystery
+    .then((newUser) => {
+      return newUser
     })
     .catch((err) => {
-      console.log(err.message)
       throw errorMessages[err.message]
     })
 }
 
 export function login(creds) {
-  return authLogin(creds, { baseUrl }).catch((err) => {
-    console.log(err.message)
-    throw errorMessages[err.message]
+  return authLogin(creds, { baseUrl })
+    .catch((err) => {
+      throw errorMessages[err.message]
   })
 }

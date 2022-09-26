@@ -32,7 +32,9 @@ export default function BattleScreen() {
     setAiTeam(getMultipleRandom(humans, 3))
   }
 
-  console.log(aiTeam)
+  // Potential turn taking system
+
+  // let turn = true
 
   const physicalMoveArr = [
     'Tackle',
@@ -59,9 +61,16 @@ export default function BattleScreen() {
 
   let turn = true
 
-  function combatLogger() {
-    document.getElementById('combat-log').append('Player used ' + randomMoveOne)
-
+  function combatLogger(e) {
+    if (e.target.id == 'physical-move') {
+      document
+        .getElementById('combat-log')
+        .append('Player used ' + randomMoveOne + ' ')
+    } else if (e.target.id == 'special-move') {
+      document
+        .getElementById('combat-log')
+        .append('Player used ' + randomMoveTwo + ' ')
+    }
     console.log(turn)
   }
 
@@ -69,8 +78,8 @@ export default function BattleScreen() {
     // e.preventDefault()
 
     turn = !turn
-    combatLogger()
-    console.log(e.target.name)
+    combatLogger(e)
+    console.log(e.target.id)
   }
 
   // AI needs to use moves to deal damage
@@ -82,9 +91,13 @@ export default function BattleScreen() {
   return (
     <>
       <div>BattleScreen</div>
-      <PokeHumanOne pokehuman={location.state[0]} />
-      <PokeHumanTwo pokehuman={location.state[1]} />
-      <PokeHumanThree pokehuman={location.state[2]} />
+      {location.state && (
+        <>
+          <PokeHumanOne pokehuman={location.state[0]} />
+          <PokeHumanTwo pokehuman={location.state[1]} />
+          <PokeHumanThree pokehuman={location.state[2]} />
+        </>
+      )}
       <div>
         Here is where we will show two pokehumans battling each other. One will
         be player controlled and the other will be run by the computer. You will
@@ -94,16 +107,24 @@ export default function BattleScreen() {
       </div>
       <div>
         These are placeholder images for where the teams might appear
-        <AiPokehumanOne pokehuman={aiTeam[0]} />
-        <AiPokehumanTwo pokehuman={aiTeam[1]} />
-        <AiPokehumanThree pokehuman={aiTeam[2]} />
+        {aiTeam.length > 1 && (
+          <>
+            <AiPokehumanOne pokehuman={aiTeam[0]} />
+            <AiPokehumanTwo pokehuman={aiTeam[1]} />
+            <AiPokehumanThree pokehuman={aiTeam[2]} />
+          </>
+        )}
       </div>
       <button onClick={generateAiTeam}>Generate Team</button>
-      <button onClick={handleTurn}>{randomMoveOne}</button>
-      <button onClick={handleTurn}>{randomMoveTwo}</button>
+      <button id="physical-move" onClick={handleTurn}>
+        {randomMoveOne}
+      </button>
+      <button id="special-move" onClick={handleTurn}>
+        {randomMoveTwo}
+      </button>
 
       <div>
-        <p id="combat-log"></p>
+        <p id="combat-log">Combat Log: </p>
       </div>
     </>
   )
