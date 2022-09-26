@@ -12,7 +12,7 @@ export default function BattleScreen() {
 
   const userPokehuman = location.state[0]
   const aiPokehuman = aiTeam[0]
-  // const [userHP, setUserHP] = useState(userPokehuman?.HP)
+  const [userHP, setUserHP] = useState(userPokehuman.HP)
   const [aiHP, setAiHP] = useState()
 
   useEffect(() => {
@@ -92,8 +92,6 @@ export default function BattleScreen() {
       cpuTurn()
     }
     combatLogger(e)
-    console.log(e.target.id)
-    console.log(turn)
     aiAttack()
   }
 
@@ -128,27 +126,20 @@ export default function BattleScreen() {
     combatLog.appendChild(linebreak)
   }
 
-  //TODO
-  // AI needs to use moves to deal damage - half
-  // player needs to use moves to deal damage - done
-  // We need to target hp data and take away damage result -
-  // The moves need damage assigned to them - done
-  // We need to work out if the move hits or not
-
   //AI
   function aiAttack() {
-    if (userPokehuman.attack <= aiPokehuman.attack) {
-      console.log(specialMove)
-      aiPhysicalDamageCalc()
-      aiSpecialDamageCalc()
-      userFaint()
-      // physicalDamageCalc()
-      // specialMove
-      // specialDamageCalc()
-    } else if (userPokehuman.spAttack <= aiPokehuman.spAttack) {
-      console.log(physicalMove)
+    let attackChoice = Math.floor(Math.random() * 10)
+    if (attackChoice > 5) {
+      let currentUserHP = userHP - aiSpecialDamageCalc()
+      setUserHP(currentUserHP)
+      userFaint(currentUserHP)
+    } else {
+      let currentUserHP = userHP - aiPhysicalDamageCalc()
+      setUserHP(currentUserHP)
+      userFaint(currentUserHP)
     }
-    turn = true
+    cpuTurn()
+    combatLogger()
   }
 
   //MOVES
@@ -254,23 +245,28 @@ export default function BattleScreen() {
   // pokehuman dies
   const aiFaint = (currentAiHP) => {
     //ai health
+
     if (currentAiHP <= 0) {
       console.log(aiPokehuman, 'has died')
       aiTeam.shift()
-      console.log(aiTeam)
+      if (aiTeam.length === 0) {
+        alert('You have won the battle')
+      }
       setAiHP(10)
     } else {
       console.log(aiHP)
     }
   }
 
-  const userFaint = () => {
+  const userFaint = (currentUserHP) => {
     //ai health
-    if (aiHP <= 0) {
+    if (currentUserHP <= 0) {
       // console.log(pokehuman.name, 'has died')
-      aiTeam.shift()
-      console.log(aiTeam)
-      setAiHP(10)
+      location.state.shift()
+      if (location.state.length === 0) {
+        alert('You have lost the battle')
+      }
+      setUserHP(10)
     }
   }
 
@@ -280,7 +276,7 @@ export default function BattleScreen() {
       <div>
         <img src={userPokehuman.image} alt="A human pokehuman" />
         <p>{userPokehuman.name}</p>
-        <p>{userPokehuman.HP}</p>
+        <p>{userHP}</p>
         <button id="physical-move" onClick={handlePhysicalDamage}>
           {physicalMove}
           {physicalDamageCalc()}
