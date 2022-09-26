@@ -6,6 +6,7 @@ const db = require('../db/db')
 //snakes case to camel case
 //ekans is snake
 //numel is camel
+//classic pokemon jokes
 function ekansToNumelPost(ekans) {
   let numelCasePost = {
     id: ekans.id,
@@ -18,7 +19,7 @@ function ekansToNumelPost(ekans) {
     spAttack: ekans.Sp_attack,
     spDefence: ekans.Sp_defence,
     speed: ekans.speed,
-    image: ekans.image
+    image: ekans.image,
   }
   return numelCasePost
 }
@@ -27,7 +28,7 @@ function ekansToNumelPost(ekans) {
 router.get('/', async (req, res) => {
   try {
     const humans = await db.getAllPokesDb()
-    const numel = humans.map(obj => ekansToNumelPost(obj))
+    const numel = humans.map((obj) => ekansToNumelPost(obj))
     //console.log(numel)
     res.json(numel)
   } catch (err) {

@@ -55,9 +55,9 @@ export default function PokeHumanTwo(props) {
   return (
     <>
       <div>
-        <img src={props.pokehuman.image} alt="some words" />
-        <p>{props.pokehuman.name}</p>
-        <p>{props.pokehuman.HP}</p>
+        <img src={props?.pokehuman.image} alt="some words" />
+        <p>{props?.pokehuman.name}</p>
+        <p>{props?.pokehuman.HP}</p>
 
         <button>
           {physicalMove}
