@@ -26,7 +26,7 @@ export default function BattleScreen() {
 
   function generateAiTeam(e) {
     e.preventDefault()
-    setAiTeam(getMultipleRandom(pokehumans, 2))
+    setAiTeam(getMultipleRandom(pokehumans, 3))
     setAiHP(10)
   }
 
@@ -223,10 +223,10 @@ export default function BattleScreen() {
     }
   }
 
+  // Ryan's code for reference for team losing
   // const [playerAlive, setPlayerAlive] = useState(true)
   // const [aiAlive, setAiAlive] = useState(true)
 
-  // Ryan's code for reference for team losing
   // const faint = () => {
   //   if (pokehumans.HP <= 0) {
   //     setPlayerAlive(false)
@@ -272,37 +272,39 @@ export default function BattleScreen() {
 
   return (
     <>
-      <div>BattleScreen</div>
-      <div>
-        <img src={userPokehuman.image} alt="A human pokehuman" />
-        <p>{userPokehuman.name}</p>
-        <p>{userHP}</p>
-        <button id="physical-move" onClick={handlePhysicalDamage}>
-          {physicalMove}
-          {physicalDamageCalc()}
-        </button>
-        <button id="special-move" onClick={handleSpecialDamage}>
-          {specialMove}
-          {specialDamageCalc()}
-        </button>
+      <div className="battle-title">
+        <h1>The Battle Games</h1>
+        <button onClick={generateAiTeam}>Generate Opponent</button>
       </div>
-
-      <div>
-        Here is where we will show two pokehumans battling each other. One will
-        be player controlled and the other will be run by the computer. You will
-        be able to win or lose battles and use random teams. If users are
-        implemented you will be able to save teams and battle using your custom
-        teams.
+      <div className="game-container">
+        <div className="player-container">
+          <img
+            className="battle-images"
+            src={userPokehuman?.image}
+            alt="A human pokehuman"
+          />
+          <p>{userPokehuman?.name}</p>
+          <p className="health">{userHP}</p>
+          <button onClick={handlePhysicalDamage}>
+            {physicalMove}
+            {physicalDamageCalc()}
+          </button>
+          <button onClick={handleSpecialDamage}>
+            {specialMove}
+            {specialDamageCalc()}
+          </button>
+        </div>
+        <div className="combat" id="combat-log"></div>
+        <div className="ai-container">
+          <img
+            className="battle-images"
+            src={aiPokehuman?.image}
+            alt="ai Pokehuman"
+          />
+          <p className="health">{aiHP}</p>
+          <p>{aiPokehuman?.name}</p>
+        </div>
       </div>
-      <div>
-        These are placeholder images for where the teams might appear
-        <img src={aiPokehuman?.image} alt="ai Pokehuman" />
-        <p>{aiHP}</p>
-        <p>{aiPokehuman?.name}</p>
-      </div>
-      <button onClick={generateAiTeam}>Generate Team</button>
-
-      <div id="combat-log"></div>
     </>
   )
 }
