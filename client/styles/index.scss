@@ -4,7 +4,16 @@ body {
   left: 0;
   margin: 0;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #e8e8e8;
+  background-color: #f0f0f0;
+  //background-image: url(https://c4.wallpaperflare.com/wallpaper/931/229/236/pokemon-tile-cartoon-pattern-hd-wallpaper-thumb.jpg);
+}
+
+html {
+  height: 100%
+}
+
+.user-h2 {
+  text-align: center;
 }
 
 //HOME
@@ -34,10 +43,11 @@ body {
 //NAV
 
 .nav-container{
-  background-color: #E54222;
+  background-color: #ee1515;
   padding: 30px;
-  text-align: right;
-  //text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   
  
   & a{
@@ -48,9 +58,17 @@ body {
   }
 
   & a:hover{
-    color: #2a75bb;
+    color: #222224;
   }
   
+}
+
+.nav-main {
+  text-align: left;
+}
+
+.nav-log {
+  text-align: right;
 }
 
 //LOGIN
@@ -119,11 +137,14 @@ body {
   flex-wrap: wrap;
   font-size: 1.2em;
   justify-content: space-around;
+  
   & img {
   max-width: 300px;
   min-height: 300px;
   object-fit: cover;
+  padding: 10px;
   background-color: white;
+  
   }
 
   & button {
@@ -137,9 +158,6 @@ body {
     border-radius: 5px;
     text-align: center;
   }
-
-
-  //TYPE
 
   & .type-Normal{
    background-color: #A8A77A;
@@ -254,7 +272,11 @@ body {
 
 .dex-wapper {
   min-width: 320px;
-   margin: 15px;
+  margin: 15px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 3px 3px 2px #21222228;
+  text-align: center;
 }
 
 .Type-box {
@@ -379,7 +401,7 @@ body {
 
 .about-card {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap:  wrap;
   justify-content: space-between;
   margin: 25px;
   & img {
@@ -387,6 +409,9 @@ body {
     max-height: 300px;
     object-fit: cover;
     border-radius: 100%;
+  }
+  & p {
+    text-align: left;
   }
 }
 
@@ -396,7 +421,14 @@ body {
   object-fit: cover;
 }
 
- // Dex Entry
+
+.about-wapper {
+  text-align: center;
+  min-width: 250px;
+  max-width: 250px;
+}
+
+ 
 //DEXENTRY
 
 .entry-container{
@@ -429,7 +461,7 @@ body {
   & img{
     flex: auto;
     max-width: 500px;
-    min-height: 450px;
+    max-height: 500px;
   }
 }
 
@@ -471,8 +503,16 @@ body {
   justify-content: flex-start;
   align-items: center;
   margin: 10px 10px;
-  margin-left: 200px;
+  margin-left: 250px;
   padding: 10px;
+  background-color: rgb(62, 76, 164);
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px #383c3d;
+
+  & button{
+    border-radius: 5px;
+    background-color: rgb(253, 204, 140);
+  }
 }
 
 .ai-container{
@@ -481,33 +521,65 @@ body {
   justify-content: flex-end;
   align-items: center;
   margin: 10px 10px;
-  margin-right: 200px;
+  margin-right: 250px;
   margin-bottom: 30px;
-  padding: 20px;
-
-
+  padding: 18px;
+  background-color: rgb(201, 53, 53);
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px #383c3d;
+  width: 250px;
 }
 
 .battle-images{
   max-width: 450px;
   max-height: 450px;
   border-radius: 6px;
-  // object-fit: cover;
 }
 
 .health{
-  color: green;
+  color: rgb(135, 255, 135);
+}
+
+.combat-text{
+color: white;
 }
 
 .combat{
-  margin: 15px 5px;
+  margin: auto;
+  left: 600px;
+  top: 200px;
+  position: absolute;
   background-color: white;
   border-radius: 6px;
-  // outline: black solid 2px;
-  // padding: 20px;
+  text-align: center;
+  width: 150px;
+  height: 400px;
+  outline: black solid 2px;
+  padding: 20px;
+  overflow:auto;
 }
 
-//TYPE
+
+//USERTEAM
+
+.user-container{
+  display: flex;
+  flex-direction: row;
+  h2{
+    text-align: center;
+  }
+  img{
+    max-width: 300px;
+   max-height: 300px;
+  }
+}
+
+.user-content{
+  display: flex;
+  flex-direction: column;
+}
+
+//TYPES
 
 .type-Normal{
  background-color: #A8A77A;
