@@ -18,10 +18,11 @@ function UserTeam() {
     <>
       <div>
         <h2>My Team</h2>
-        {useTeam?.map((poke) => {
+        {useTeam?.map((poke, idx) => {
           return (
-            <div>
+            <div key={idx}>
               <p>{poke.name}</p>
+              {/* <img src={poke.image} alt={poke.name} /> */}
             </div>
           )
         })}

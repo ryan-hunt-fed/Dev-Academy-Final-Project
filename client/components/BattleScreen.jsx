@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useInRouterContext, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 import { getAllPokehumansThunk } from '../actions/pokehumans'
 
@@ -12,7 +12,7 @@ export default function BattleScreen() {
 
   const userPokehuman = location.state[0]
   const aiPokehuman = aiTeam[0]
-  const [userHP, setUserHP] = useState(userPokehuman?.HP)
+  // const [userHP, setUserHP] = useState(userPokehuman?.HP)
   const [aiHP, setAiHP] = useState()
 
   useEffect(() => {
@@ -38,32 +38,26 @@ export default function BattleScreen() {
     var combatLog = document.getElementById('combat-log')
     const linebreak = document.createElement('br')
 
-    console.log(turn)
-
     if (e.target.id == 'physical-move') {
-      document
-        .getElementById('combat-log')
-        .append('Player used ' + physicalMove + ' ')
-    } else if (e.target.id == 'special-move') {
-      document
-        .getElementById('combat-log')
-        .append('Player used ' + specialMove + ' ')
       combatLog.append('Player used ' + physicalMove + ' ')
       combatLog.appendChild(linebreak)
+    } else if (e.target.id == 'special-move') {
+      combatLog.append('Player used ' + specialMove + ' ')
+      combatLog.appendChild(linebreak)
+    }
 
-      if (physicalDamage == 1) {
-        combatLog.append(physicalMove + ' dealt 1 damage')
-        combatLog.appendChild(linebreak)
-      } else if (physicalDamage == 2) {
-        combatLog.append(physicalMove + ' dealt 2 damage')
-        combatLog.appendChild(linebreak)
-      } else if (physicalDamage == 3) {
-        combatLog.append(physicalMove + ' dealt 3 damage')
-        combatLog.appendChild(linebreak)
-      } else if (physicalDamage == 4) {
-        combatLog.append(physicalMove + ' dealt 4 damage')
-        combatLog.appendChild(linebreak)
-      }
+    if (physicalDamage == 1) {
+      combatLog.append(physicalMove + ' dealt 1 damage')
+      combatLog.appendChild(linebreak)
+    } else if (physicalDamage == 2) {
+      combatLog.append(physicalMove + ' dealt 2 damage')
+      combatLog.appendChild(linebreak)
+    } else if (physicalDamage == 3) {
+      combatLog.append(physicalMove + ' dealt 3 damage')
+      combatLog.appendChild(linebreak)
+    } else if (physicalDamage == 4) {
+      combatLog.append(physicalMove + ' dealt 4 damage')
+      combatLog.appendChild(linebreak)
     }
 
     if (e.target.id == 'special-move') {
@@ -87,9 +81,24 @@ export default function BattleScreen() {
   }
 
   function handlePhysicalDamage(e) {
-    // e.preventDefault()
-    // - damage from ai hp
     let currentAiHP = aiHP - physicalDamage
+
+    setAiHP(currentAiHP)
+    aiFaint(currentAiHP)
+    turn = false
+    if (turn == true) {
+      playerTurn()
+    } else {
+      cpuTurn()
+    }
+    combatLogger(e)
+    console.log(e.target.id)
+    console.log(turn)
+    aiAttack()
+  }
+
+  function handleSpecialDamage(e) {
+    let currentAiHP = aiHP - specialDamage
 
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
@@ -100,22 +109,7 @@ export default function BattleScreen() {
       cpuTurn()
     }
     combatLogger(e)
-    console.log(e.target.id)
-    console.log(turn)
-  }
-
-  function handleSpecialDamage(e) {
-    // e.preventDefault()
-    turn = !turn
-
-    combatLogger(e)
-
-
-    // - damage from ai hp
-    let currentAiHP = aiHP - specialDamage
-
-    setAiHP(currentAiHP)
-    aiFaint(currentAiHP)
+    aiAttack()
   }
 
   function playerTurn() {
@@ -137,24 +131,24 @@ export default function BattleScreen() {
   //TODO
   // AI needs to use moves to deal damage - half
   // player needs to use moves to deal damage - done
-  // We need to target hp data and take away damage result - 
+  // We need to target hp data and take away damage result -
   // The moves need damage assigned to them - done
   // We need to work out if the move hits or not
 
   //AI
   function aiAttack() {
-
     if (userPokehuman.attack <= aiPokehuman.attack) {
       console.log(specialMove)
+      aiPhysicalDamageCalc()
+      aiSpecialDamageCalc()
+      userFaint()
       // physicalDamageCalc()
       // specialMove
       // specialDamageCalc()
-    }
-    else if (userPokehuman.spAttack <= aiPokehuman.spAttack) {
+    } else if (userPokehuman.spAttack <= aiPokehuman.spAttack) {
       console.log(physicalMove)
-
-
     }
+    turn = true
   }
 
   //MOVES
@@ -180,7 +174,6 @@ export default function BattleScreen() {
     physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)]
   const specialMove =
     specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
-
 
   //DAMAGE CALCULATION
   let physicalDamage = 1
@@ -211,6 +204,35 @@ export default function BattleScreen() {
     }
   }
 
+  
+  let aiPhysicalDamage = 1
+
+  const aiPhysicalDamageCalc = () => {
+    if (userPokehuman.attack > 75) {
+      return (aiPhysicalDamage = 4)
+    } else if (userPokehuman.attack > 50) {
+      return (aiPhysicalDamage = 3)
+    } else if (userPokehuman.attack > 25) {
+      return (aiPhysicalDamage = 2)
+    } else {
+      return aiPhysicalDamage
+    }
+  }
+
+  let aiSpecialDamage = 1
+
+  const aiSpecialDamageCalc = () => {
+    if (userPokehuman.spAttack > 75) {
+      return (aiSpecialDamage = 4)
+    } else if (userPokehuman.spAttack > 50) {
+      return (aiSpecialDamage = 3)
+    } else if (userPokehuman.spAttack > 25) {
+      return (aiSpecialDamage = 2)
+    } else {
+      return aiSpecialDamage
+    }
+  }
+
   // Ryan's code for reference for team losing  
   // const [playerAlive, setPlayerAlive] = useState(true)
   // const [aiAlive, setAiAlive] = useState(true)
@@ -230,7 +252,6 @@ export default function BattleScreen() {
   //     }
   //   }
   // }
-
 
   // pokehuman dies
   const aiFaint = (currentAiHP) => {

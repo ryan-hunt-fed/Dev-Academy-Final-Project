@@ -24,8 +24,6 @@ function addPokeHumanAction(human) {
 //THUNK
 
 export function getAllPokehumansThunk() {
-  // api call
-  // dispatch action
 
   return (dispatch) => {
       return getAllPokesApi()
@@ -38,7 +36,7 @@ export function getAllPokehumansThunk() {
   }
 }
 
-export function postAddPokehumanThunk(data) {
+export function addPokehumanThunk(data) {
   return (dispatch) => {
     return addPokeHumanApi(data)
       .then((human) => {
