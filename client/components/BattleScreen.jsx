@@ -24,11 +24,10 @@ export default function BattleScreen() {
     return shuffled.slice(0, num)
   }
 
-  function generateAiTeam(e) {
-    e.preventDefault()
+  useEffect(() => {
     setAiTeam(getMultipleRandom(pokehumans, 3))
     setAiHP(10)
-  }
+  }, [])
 
   // Potential turn taking system
 
@@ -85,13 +84,9 @@ export default function BattleScreen() {
 
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
-    turn = false
-    if (turn == true) {
-      playerTurn()
-    } else {
-      cpuTurn()
-    }
     combatLogger(e)
+    turn = false
+    cpuTurn()
     aiAttack()
   }
 
@@ -100,13 +95,9 @@ export default function BattleScreen() {
 
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
-    turn = !turn
-    if (turn == true) {
-      playerTurn()
-    } else {
-      cpuTurn()
-    }
     combatLogger(e)
+    turn = false
+    cpuTurn()
     aiAttack()
   }
 
@@ -133,13 +124,15 @@ export default function BattleScreen() {
       let currentUserHP = userHP - aiSpecialDamageCalc()
       setUserHP(currentUserHP)
       userFaint(currentUserHP)
+      combatLogger()
+      playerTurn()
     } else {
       let currentUserHP = userHP - aiPhysicalDamageCalc()
       setUserHP(currentUserHP)
       userFaint(currentUserHP)
+      combatLogger()
+      playerTurn()
     }
-    cpuTurn()
-    combatLogger()
   }
 
   //MOVES
@@ -167,6 +160,7 @@ export default function BattleScreen() {
     specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
 
   //DAMAGE CALCULATION
+
   let physicalDamage = 1
 
   const physicalDamageCalc = () => {
@@ -223,31 +217,8 @@ export default function BattleScreen() {
     }
   }
 
-  // Ryan's code for reference for team losing
-  // const [playerAlive, setPlayerAlive] = useState(true)
-  // const [aiAlive, setAiAlive] = useState(true)
-
-  // const faint = () => {
-  //   if (pokehumans.HP <= 0) {
-  //     setPlayerAlive(false)
-  //     if (playerAlive = false){
-  //       alert('You Lose')
-  //     }
-  //     }
-  //   else if (pokehumans.HP <= 0) {
-  //     setAiAlive(false)
-  //     if (aiAlive = false) {
-  //       alert('You Win')
-  //     }
-  //   }
-  // }
-
-  // pokehuman dies
   const aiFaint = (currentAiHP) => {
-    //ai health
-
     if (currentAiHP <= 0) {
-      console.log(aiPokehuman, 'has died')
       aiTeam.shift()
       if (aiTeam.length === 0) {
         alert('You have won the battle')
@@ -259,9 +230,7 @@ export default function BattleScreen() {
   }
 
   const userFaint = (currentUserHP) => {
-    //ai health
     if (currentUserHP <= 0) {
-      // console.log(pokehuman.name, 'has died')
       location.state.shift()
       if (location.state.length === 0) {
         alert('You have lost the battle')
@@ -274,7 +243,6 @@ export default function BattleScreen() {
     <>
       <div className="battle-title">
         <h1>The Battle Games</h1>
-        <button onClick={generateAiTeam}>Generate Opponent</button>
       </div>
       <div className="game-container">
         <div className="player-container">
