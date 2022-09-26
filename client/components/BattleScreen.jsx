@@ -17,13 +17,14 @@ export default function BattleScreen() {
   const pokehumans = useSelector((store) => store.pokehumans)
   const [aiTeam, setAiTeam] = useState([])
 
+
+  //AI TEAM
   useEffect(() => {
     dispatch(getAllPokehumansThunk())
   }, [])
 
   function getMultipleRandom(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random())
-
     return shuffled.slice(0, num)
   }
 
@@ -34,37 +35,59 @@ export default function BattleScreen() {
 
   // Potential turn taking system
 
-  // let turn = true
-
   let turn = true
 
   function combatLogger(e) {
     if (e.target.id == 'physical-move') {
       document
         .getElementById('combat-log')
-        .append('Player used ' + randomMoveOne + ' ')
+        .append('Player used ' + physicalMove + ' ')
     } else if (e.target.id == 'special-move') {
       document
         .getElementById('combat-log')
-        .append('Player used ' + randomMoveTwo + ' ')
+        .append('Player used ' + specialMove + ' ')
     }
     console.log(turn)
   }
 
   function handleTurn(e) {
     // e.preventDefault()
-
     turn = !turn
+    
     combatLogger(e)
-    console.log(e.target.id)
+    // console.log(e.target.id)
+    // console.log(turn)
+    aiTurn()
+
   }
 
-  // AI needs to use moves to deal damage
-  // player needs to use moves to deal damage
-  // We need to target hp data and take away damage result
+  //TODO
+  // AI needs to use moves to deal damage - half
+  // player needs to use moves to deal damage - done
+  // We need to target hp data and take away damage result - 
   // The moves need damage assigned to them - done
   // We need to work out if the move hits or not
 
+  //AI
+  function aiTurn(){
+    
+      if (location.state[0].attack <= 100) {
+        console.log(specialMove)
+      // physicalDamageCalc()
+      // specialMove
+      // specialDamageCalc()
+      // turn = true
+      // handleTurn()
+    }
+    else if (location.state[0].spAttack <= 50){
+      console.log(physicalMove)
+      // turn = true
+      // handleTurn()
+      
+    }
+}
+  
+  //MOVES
   const physicalMoveArr = [
     'Tackle',
     'Pound',
@@ -88,6 +111,8 @@ export default function BattleScreen() {
   const specialMove =
     specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
 
+
+  //DAMAGE CALCULATION
   let physicalDamage = 1
 
   const physicalDamageCalc = () => {
@@ -116,40 +141,34 @@ export default function BattleScreen() {
     }
   }
 
-  const [alive, setAlive] = useState(true)
-  const [active, setActive] = useState(true)
 
-  // pokehuman dies
+  const [playerAlive, setPlayerAlive] = useState(true)
+  const [aiAlive, setAiAlive] = useState(true)
+
+  // NO HP
   const faint = () => {
-    //player health
     if (pokehumans.HP <= 0) {
-      // console.log(pokehuman.name, 'has died')
-      setAlive(false)
-      for (i = 0; (i = pokehumans.length); i++) {
-        if ((alive = false)) {
-          console.log('You Lose')
-        }
+      setPlayerAlive(false)
+      if (playerAlive = false){
+        alert('You Lose')
       }
-    }
-
-    //Ai health - need to differentiate between pokehuman ai and player
+      }
     else if (pokehumans.HP <= 0) {
-      // console.log(pokehuman.name, 'has died')
-      setAlive(false)
-      if ((alive = false)) {
-        console.log('You Win')
+      setAiAlive(false)
+      if (aiAlive = false) {
+        alert('You Win')
       }
     }
   }
 
-  //switch pokehumans
-  function switchPokehuman() {
-    if ((active = false)) {
-      return setActive(true)
-    } else if ((active = true)) {
-      return setActive(false)
-    }
-  }
+  //SWITCH ACTIVE POKEHUMAN
+  // function switchPokehuman() {
+  //   if ((active = false)) {
+  //     return setActive(true)
+  //   } else if ((active = true)) {
+  //     return setActive(false)
+  //   }
+  // }
 
   return (
     <>
@@ -157,12 +176,12 @@ export default function BattleScreen() {
       {location.state && (
         <>
           <PokeHumanOne pokehuman={location.state[0]} />
-          <button>
-            {physicalMove}
+          <button id="physical-move"  onClick={handleTurn}>
+            {physicalMove}: 
             {physicalDamageCalc()}
           </button>
-          <button>
-            {specialMove}
+          <button id="special-move" onClick={handleTurn}>
+            {specialMove}: 
             {specialDamageCalc()}
           </button>
 
