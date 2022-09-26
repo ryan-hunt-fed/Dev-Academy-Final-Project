@@ -17,26 +17,28 @@ function Nav() {
   return (
     <>
       <div className="nav-container">
-        <Link to="/">Home</Link>
-        <Link to="/dex">Dex</Link>
-        <Link to="/add">Add</Link>
-        <Link to="/about">About</Link>
-        <Link to="/team">Team Select</Link>
-        <Link to="/battle">Battle</Link>
-
-        {auth.isAuthenticated ? (
-          <>
-            <Link to={`/userteam/${auth.user.id}`}>My Team</Link>
-            <Link to="/" onClick={logout}>
-              Logout
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
-        )}
+        <div className="nav-main">
+          <Link to="/">Home</Link>
+          <Link to="/dex">Dex</Link>
+          <Link to="/add">Add</Link>
+          <Link to="/team">Team Select</Link>
+          <Link to="/about">About</Link>
+        </div>
+        <div className="nav-log">
+          {auth.isAuthenticated ? (
+            <>
+              <Link to={`/userteam/${auth.user.id}`}>My Team</Link>
+              <Link to="/" onClick={logout}>
+                Logout
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </>
+          )}
+        </div>
       </div>
     </>
   )
