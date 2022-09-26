@@ -4,11 +4,11 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable('teams', (table) => {
-    table.increments('id')
+    table.increments('id').primary()
     table.integer('user_id')
     table.integer('pokehumans_id')
   })
-};
+}
 
 /**
  * @param { import("knex").Knex } knex
@@ -16,4 +16,4 @@ exports.up = function (knex) {
  */
 exports.down = function (knex) {
   return knex.schema.dropTable('teams')
-};
+}
