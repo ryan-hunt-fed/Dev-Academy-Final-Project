@@ -53,7 +53,6 @@ export default function BattleScreen() {
 
   function handlePhysicalDamage(e) {
     let currentAiHP = aiHP - physicalDamage
-
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
@@ -64,7 +63,6 @@ export default function BattleScreen() {
 
   function handleSpecialDamage(e) {
     let currentAiHP = aiHP - specialDamage
-
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
