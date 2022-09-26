@@ -12,7 +12,7 @@ export default function BattleScreen() {
 
   const userPokehuman = location.state[0]
   const aiPokehuman = aiTeam[0]
-  // const [userHP, setUserHP] = useState(userPokehuman?.HP)
+  const [userHP, setUserHP] = useState(userPokehuman.HP)
   const [aiHP, setAiHP] = useState()
 
   useEffect(() => {
@@ -92,8 +92,6 @@ export default function BattleScreen() {
       cpuTurn()
     }
     combatLogger(e)
-    console.log(e.target.id)
-    console.log(turn)
     aiAttack()
   }
 
@@ -128,27 +126,20 @@ export default function BattleScreen() {
     combatLog.appendChild(linebreak)
   }
 
-  //TODO
-  // AI needs to use moves to deal damage - half
-  // player needs to use moves to deal damage - done
-  // We need to target hp data and take away damage result -
-  // The moves need damage assigned to them - done
-  // We need to work out if the move hits or not
-
   //AI
   function aiAttack() {
-    if (userPokehuman.attack <= aiPokehuman.attack) {
-      console.log(specialMove)
-      aiPhysicalDamageCalc()
-      aiSpecialDamageCalc()
-      userFaint()
-      // physicalDamageCalc()
-      // specialMove
-      // specialDamageCalc()
-    } else if (userPokehuman.spAttack <= aiPokehuman.spAttack) {
-      console.log(physicalMove)
+    let attackChoice = Math.floor(Math.random() * 10)
+    if (attackChoice > 5) {
+      let currentUserHP = userHP - aiSpecialDamageCalc()
+      setUserHP(currentUserHP)
+      userFaint(currentUserHP)
+    } else {
+      let currentUserHP = userHP - aiPhysicalDamageCalc()
+      setUserHP(currentUserHP)
+      userFaint(currentUserHP)
     }
-    turn = true
+    cpuTurn()
+    combatLogger()
   }
 
   //MOVES
@@ -204,7 +195,6 @@ export default function BattleScreen() {
     }
   }
 
-  
   let aiPhysicalDamage = 1
 
   const aiPhysicalDamageCalc = () => {
@@ -233,10 +223,9 @@ export default function BattleScreen() {
     }
   }
 
-  // Ryan's code for reference for team losing  
+  // Ryan's code for reference for team losing
   // const [playerAlive, setPlayerAlive] = useState(true)
   // const [aiAlive, setAiAlive] = useState(true)
-
 
   // const faint = () => {
   //   if (pokehumans.HP <= 0) {
@@ -256,37 +245,46 @@ export default function BattleScreen() {
   // pokehuman dies
   const aiFaint = (currentAiHP) => {
     //ai health
+
     if (currentAiHP <= 0) {
       console.log(aiPokehuman, 'has died')
       aiTeam.shift()
-      console.log(aiTeam)
+      if (aiTeam.length === 0) {
+        alert('You have won the battle')
+      }
       setAiHP(10)
     } else {
       console.log(aiHP)
     }
   }
 
-  const userFaint = () => {
+  const userFaint = (currentUserHP) => {
     //ai health
-    if (aiHP <= 0) {
+    if (currentUserHP <= 0) {
       // console.log(pokehuman.name, 'has died')
-      aiTeam.shift()
-      console.log(aiTeam)
-      setAiHP(10)
+      location.state.shift()
+      if (location.state.length === 0) {
+        alert('You have lost the battle')
+      }
+      setUserHP(10)
     }
   }
 
   return (
     <>
-      <div className='battle-title'>
+      <div className="battle-title">
         <h1>The Battle Games</h1>
         <button onClick={generateAiTeam}>Generate Opponent</button>
       </div>
-      <div className='game-container'>
-        <div className='player-container'>
-          <img className='battle-images'src={userPokehuman?.image} alt="A human pokehuman" />
+      <div className="game-container">
+        <div className="player-container">
+          <img
+            className="battle-images"
+            src={userPokehuman?.image}
+            alt="A human pokehuman"
+          />
           <p>{userPokehuman?.name}</p>
-          <p className='health'>{userPokehuman?.HP}</p>
+          <p className="health">{userHP}</p>
           <button onClick={handlePhysicalDamage}>
             {physicalMove}
             {physicalDamageCalc()}
@@ -296,13 +294,17 @@ export default function BattleScreen() {
             {specialDamageCalc()}
           </button>
         </div>
-        <div className='combat' id="combat-log"></div>
-        <div className='ai-container'>
-          <img className='battle-images' src={aiPokehuman?.image} alt="ai Pokehuman" />
-          <p className='health'>{aiHP}</p>
+        <div className="combat" id="combat-log"></div>
+        <div className="ai-container">
+          <img
+            className="battle-images"
+            src={aiPokehuman?.image}
+            alt="ai Pokehuman"
+          />
+          <p className="health">{aiHP}</p>
           <p>{aiPokehuman?.name}</p>
         </div>
-      </div>      
+      </div>
     </>
   )
 }
