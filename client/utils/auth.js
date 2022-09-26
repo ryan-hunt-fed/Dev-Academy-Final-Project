@@ -5,7 +5,7 @@ import {
 } from 'authenticare/client'
 
 export function isAuthenticated() {
-  return authIsAuthenticated
+  return authIsAuthenticated()
 }
 
 export function getUserTokenInfo() {
