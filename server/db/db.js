@@ -31,10 +31,15 @@ async function insertUsersTeam(userId, pokehumansId, db = conn) {
   return await db('teams').select().insert(data)
 }
 
+// DEL USER SAVING TEAM
+async function removeUsersTeamDb(id, db = conn) {
+  return await db('teams').del().where('id', id)
+}
 module.exports = {
   insertPokeHumanDb,
   getAllPokesDb,
   getDexEntryDb,
   getUserTeam,
   insertUsersTeam,
+  removeUsersTeamDb,
 }
