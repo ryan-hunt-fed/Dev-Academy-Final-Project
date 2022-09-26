@@ -9,7 +9,7 @@ function Dex() {
   const dispatch = useDispatch()
   const humans = useSelector((store) => store.pokehumans)
   const alreadyAddedIds = useSelector((store) =>
-    store.pokehumans.map((pokes) => pokes.name)
+    store.pokehumans.map((pokes) => pokes.id)
   )
   // console.log('whats in this ', alreadyAddedIds)
 
@@ -48,7 +48,7 @@ function Dex() {
                   <button
                     className="dex-add"
                     onClick={() => handleAdd(auth.user.id, pokes.id)}
-                    disabled={alreadyAddedIds.includes(pokes.name)}
+                    disabled={alreadyAddedIds.includes(pokes)}
                   >
                     ADD
                   </button>

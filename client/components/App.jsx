@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import Home from './Home'
 import Nav from './Nav'
@@ -18,8 +18,6 @@ import { checkAuth } from '../actions/auth'
 
 function App() {
   const dispatch = useDispatch()
-  const auth = useSelector((state) => state.auth)
-  // console.log('is auth ', auth)
 
   useEffect(() => {
     const confirmSuccess = () => {}
@@ -31,8 +29,6 @@ function App() {
       <header className="header">
         <Nav />
       </header>
-
-      {/* <section className="main"></section> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

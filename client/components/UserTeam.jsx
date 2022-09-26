@@ -22,21 +22,25 @@ function UserTeam() {
   return (
     <>
       <div>
-        <h2>My Team</h2>
-        {useTeam?.map((poke, idx) => {
-          return (
-            <div key={idx}>
-              <p>{poke.name}</p>
-              <button
-                onClick={() => {
-                  handleClick(poke.id)
-                }}
-              >
-                Release
-              </button>
-            </div>
-          )
-        })}
+        <h2 className="user-h2">My Team</h2>
+        <div className="dex-card">
+          {useTeam?.map((poke, idx) => {
+            return (
+              <div key={idx} className="dex-wapper">
+                <img src={poke.image} alt={poke.name} />
+                <p>{poke.name}</p>
+                <div className="Type-box">
+                  <p className={`type-${poke.type_1}`}>{poke.type_1}</p>
+                  {poke.type_1 === poke.type_2 ? (
+                    <></>
+                  ) : (
+                    <p className={`type-${poke.type_2}`}>{poke.type_2}</p>
+                  )}
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </>
   )
