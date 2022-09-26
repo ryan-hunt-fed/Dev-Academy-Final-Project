@@ -139,6 +139,9 @@ export default function BattleScreen() {
   function aiAttack() {
     if (userPokehuman.attack <= aiPokehuman.attack) {
       console.log(specialMove)
+      aiPhysicalDamageCalc()
+      aiSpecialDamageCalc()
+      userFaint()
       // physicalDamageCalc()
       // specialMove
       // specialDamageCalc()
@@ -201,6 +204,34 @@ export default function BattleScreen() {
     }
   }
 
+  let aiPhysicalDamage = 1
+
+  const aiPhysicalDamageCalc = () => {
+    if (userPokehuman.attack > 75) {
+      return (aiPhysicalDamage = 4)
+    } else if (userPokehuman.attack > 50) {
+      return (aiPhysicalDamage = 3)
+    } else if (userPokehuman.attack > 25) {
+      return (aiPhysicalDamage = 2)
+    } else {
+      return aiPhysicalDamage
+    }
+  }
+
+  let aiSpecialDamage = 1
+
+  const aiSpecialDamageCalc = () => {
+    if (userPokehuman.spAttack > 75) {
+      return (aiSpecialDamage = 4)
+    } else if (userPokehuman.spAttack > 50) {
+      return (aiSpecialDamage = 3)
+    } else if (userPokehuman.spAttack > 25) {
+      return (aiSpecialDamage = 2)
+    } else {
+      return aiSpecialDamage
+    }
+  }
+
   // const [playerAlive, setPlayerAlive] = useState(true)
   // const [aiAlive, setAiAlive] = useState(true)
 
@@ -254,7 +285,7 @@ export default function BattleScreen() {
           {physicalMove}
           {physicalDamageCalc()}
         </button>
-        <button onClick={handleSpecialDamage}>
+        <button id="special-move" onClick={handleSpecialDamage}>
           {specialMove}
           {specialDamageCalc()}
         </button>
@@ -274,8 +305,6 @@ export default function BattleScreen() {
         <p>{aiPokehuman?.name}</p>
       </div>
       <button onClick={generateAiTeam}>Generate Team</button>
-      <button id="physical-move">{physicalMove}</button>
-      <button id="special-move">{specialMove}</button>
 
       <div id="combat-log"></div>
     </>

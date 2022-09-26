@@ -9,7 +9,6 @@ const bodyParser = require('body-parser')
 
 const server = express()
 
-// server.use(express.json())
 server.use(bodyParser.json({ limit: '50mb' }))
 
 server.use(express.static(path.join(__dirname, 'public')))
