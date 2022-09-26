@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useInRouterContext, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 import { getAllPokehumansThunk } from '../actions/pokehumans'
 
@@ -40,29 +40,25 @@ export default function BattleScreen() {
     console.log(turn)
 
     if (e.target.id == 'physical-move') {
-      document
-        .getElementById('combat-log')
-        .append('Player used ' + physicalMove + ' ')
-    } else if (e.target.id == 'special-move') {
-      document
-        .getElementById('combat-log')
-        .append('Player used ' + specialMove + ' ')
       combatLog.append('Player used ' + physicalMove + ' ')
       combatLog.appendChild(linebreak)
+    } else if (e.target.id == 'special-move') {
+      combatLog.append('Player used ' + specialMove + ' ')
+      combatLog.appendChild(linebreak)
+    }
 
-      if (physicalDamage == 1) {
-        combatLog.append(physicalMove + ' dealt 1 damage')
-        combatLog.appendChild(linebreak)
-      } else if (physicalDamage == 2) {
-        combatLog.append(physicalMove + ' dealt 2 damage')
-        combatLog.appendChild(linebreak)
-      } else if (physicalDamage == 3) {
-        combatLog.append(physicalMove + ' dealt 3 damage')
-        combatLog.appendChild(linebreak)
-      } else if (physicalDamage == 4) {
-        combatLog.append(physicalMove + ' dealt 4 damage')
-        combatLog.appendChild(linebreak)
-      }
+    if (physicalDamage == 1) {
+      combatLog.append(physicalMove + ' dealt 1 damage')
+      combatLog.appendChild(linebreak)
+    } else if (physicalDamage == 2) {
+      combatLog.append(physicalMove + ' dealt 2 damage')
+      combatLog.appendChild(linebreak)
+    } else if (physicalDamage == 3) {
+      combatLog.append(physicalMove + ' dealt 3 damage')
+      combatLog.appendChild(linebreak)
+    } else if (physicalDamage == 4) {
+      combatLog.append(physicalMove + ' dealt 4 damage')
+      combatLog.appendChild(linebreak)
     }
 
     if (e.target.id == 'special-move') {
@@ -215,7 +211,7 @@ export default function BattleScreen() {
         <img src={userPokehuman.image} alt="A human pokehuman" />
         <p>{userPokehuman.name}</p>
         <p>{userPokehuman.HP}</p>
-        <button onClick={handlePhysicalDamage}>
+        <button id="physical-move" onClick={handlePhysicalDamage}>
           {physicalMove}
           {physicalDamageCalc()}
         </button>
