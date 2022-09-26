@@ -138,9 +138,6 @@ body {
     text-align: center;
   }
 
-
-  //TYPE
-
   & .type-Normal{
    background-color: #A8A77A;
   }
@@ -396,7 +393,7 @@ body {
   object-fit: cover;
 }
 
- // Dex Entry
+
 //DEXENTRY
 
 .entry-container{
@@ -471,8 +468,11 @@ body {
   justify-content: flex-start;
   align-items: center;
   margin: 10px 10px;
-  margin-left: 200px;
+  margin-left: 250px;
   padding: 10px;
+  background-color: rgb(62, 76, 164);
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px #383c3d;
 }
 
 .ai-container{
@@ -481,33 +481,45 @@ body {
   justify-content: flex-end;
   align-items: center;
   margin: 10px 10px;
-  margin-right: 200px;
+  margin-right: 250px;
   margin-bottom: 30px;
   padding: 20px;
-
-
+  background-color: rgb(201, 53, 53);
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px #383c3d;
+  width: 250px;
 }
 
 .battle-images{
   max-width: 450px;
   max-height: 450px;
   border-radius: 6px;
-  // object-fit: cover;
 }
 
 .health{
-  color: green;
+  color: rgb(135, 255, 135);
+}
+
+.combat-text{
+color: white;
 }
 
 .combat{
-  margin: 15px 5px;
+  margin: auto;
+  left: 600px;
+  top: 200px;
+  position: absolute;
   background-color: white;
   border-radius: 6px;
-  // outline: black solid 2px;
-  // padding: 20px;
+  text-align: center;
+  width: 150px;
+  height:500px;
+  outline: black solid 2px;
+  padding: 20px;
+  overflow:auto;
 }
 
-//TYPE
+//TYPES
 
 .type-Normal{
  background-color: #A8A77A;

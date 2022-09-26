@@ -285,14 +285,14 @@ export default function BattleScreen() {
       <div className='game-container'>
         <div className='player-container'>
           <img className='battle-images'src={userPokehuman?.image} alt="A human pokehuman" />
-          <p>{userPokehuman?.name}</p>
+          <p className='combat-text'>{userPokehuman?.name}</p>
           <p className='health'>{userPokehuman?.HP}</p>
           <button onClick={handlePhysicalDamage}>
             {physicalMove}
             {physicalDamageCalc()}
           </button>
           <button onClick={handleSpecialDamage}>
-            {specialMove}
+            {specialMove} 
             {specialDamageCalc()}
           </button>
         </div>
@@ -300,7 +300,7 @@ export default function BattleScreen() {
         <div className='ai-container'>
           <img className='battle-images' src={aiPokehuman?.image} alt="ai Pokehuman" />
           <p className='health'>{aiHP}</p>
-          <p>{aiPokehuman?.name}</p>
+          <p className='combat-text'>{aiPokehuman?.name}</p>
         </div>
       </div>      
     </>
