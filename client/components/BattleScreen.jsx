@@ -21,7 +21,6 @@ export default function BattleScreen() {
 
   function getMultipleRandom(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random())
-
     return shuffled.slice(0, num)
   }
 
@@ -30,6 +29,8 @@ export default function BattleScreen() {
     setAiTeam(getMultipleRandom(pokehumans, 2))
     setAiHP(10)
   }
+
+  // Potential turn taking system
 
   let turn = true
 
@@ -105,6 +106,11 @@ export default function BattleScreen() {
 
   function handleSpecialDamage(e) {
     // e.preventDefault()
+    turn = !turn
+    
+    combatLogger(e)
+   
+
     // - damage from ai hp
     let currentAiHP = aiHP - specialDamage
 
@@ -128,12 +134,32 @@ export default function BattleScreen() {
     combatLog.appendChild(linebreak)
   }
 
-  // AI needs to use moves to deal damage
-  // player needs to use moves to deal damage
-  // We need to target hp data and take away damage result
+  //TODO
+  // AI needs to use moves to deal damage - half
+  // player needs to use moves to deal damage - done
+  // We need to target hp data and take away damage result - 
   // The moves need damage assigned to them - done
   // We need to work out if the move hits or not
 
+  //AI
+  function aiAttack(){
+    
+      if (userPokehuman.attack <= aiPokehuman.attack) {
+        console.log(specialMove)
+      // physicalDamageCalc()
+      // specialMove
+      // specialDamageCalc()
+      
+      
+    }
+    else if (userPokehuman.spAttack <= aiPokehuman.spAttack){
+      console.log(physicalMove)
+      
+      
+    }
+}
+  
+  //MOVES
   const physicalMoveArr = [
     'Tackle',
     'Pound',
@@ -157,6 +183,8 @@ export default function BattleScreen() {
   const specialMove =
     specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
 
+
+  //DAMAGE CALCULATION
   let physicalDamage = 1
 
   const physicalDamageCalc = () => {
@@ -184,6 +212,27 @@ export default function BattleScreen() {
       return specialDamage
     }
   }
+
+
+  // const [playerAlive, setPlayerAlive] = useState(true)
+  // const [aiAlive, setAiAlive] = useState(true)
+
+  // Ryan's code for reference for team losing
+  // const faint = () => {
+  //   if (pokehumans.HP <= 0) {
+  //     setPlayerAlive(false)
+  //     if (playerAlive = false){
+  //       alert('You Lose')
+  //     }
+  //     }
+  //   else if (pokehumans.HP <= 0) {
+  //     setAiAlive(false)
+  //     if (aiAlive = false) {
+  //       alert('You Win')
+  //     }
+  //   }
+  // }
+
 
   // pokehuman dies
   const aiFaint = (currentAiHP) => {
