@@ -41,36 +41,12 @@ export default function BattleScreen() {
     if (e.target.id == 'physical-move') {
       combatLog.append('Player used ' + physicalMove + ' ')
       combatLog.appendChild(linebreak)
+      combatLog.append(physicalMove + ' dealt ' + physicalDamage + ' damage!')
+      combatLog.appendChild(linebreak)
     } else if (e.target.id == 'special-move') {
       combatLog.append('Player used ' + specialMove + ' ')
       combatLog.appendChild(linebreak)
-    }
-
-    if (physicalDamage == 1) {
-      combatLog.append(physicalMove + ' dealt 1 damage ')
-      combatLog.appendChild(linebreak)
-    } else if (physicalDamage == 2) {
-      combatLog.append(physicalMove + ' dealt 2 damage ')
-      combatLog.appendChild(linebreak)
-    } else if (physicalDamage == 3) {
-      combatLog.append(physicalMove + ' dealt 3 damage ')
-      combatLog.appendChild(linebreak)
-    } else if (physicalDamage == 4) {
-      combatLog.append(physicalMove + ' dealt 4 damage ')
-      combatLog.appendChild(linebreak)
-    }
-
-    if (specialDamage == 1) {
-      combatLog.append(specialMove + ' dealt 1 damage ')
-      combatLog.appendChild(linebreak)
-    } else if (specialDamage == 2) {
-      combatLog.append(specialMove + ' dealt 2 damage ')
-      combatLog.appendChild(linebreak)
-    } else if (specialDamage == 3) {
-      combatLog.append(specialMove + ' dealt 3 damage ')
-      combatLog.appendChild(linebreak)
-    } else if (specialDamage == 4) {
-      combatLog.append(specialMove + ' dealt 4 damage ')
+      combatLog.append(specialMove + ' dealt ' + specialDamage + ' damage!')
       combatLog.appendChild(linebreak)
     }
   }
@@ -110,20 +86,26 @@ export default function BattleScreen() {
   //AI
   function aiAttack() {
     let attackChoice = Math.floor(Math.random() * 10)
-    playerTurn()
     if (attackChoice > 5) {
-      let currentUserHP = userHP - aiSpecialDamageCalc()
+      let aiSpecialDamage = aiSpecialDamageCalc()
+      let currentUserHP = userHP - aiSpecialDamage
       setUserHP(currentUserHP)
       userFaint(currentUserHP)
       combatLog.appendChild(linebreak)
       combatLog.append('CPU used ' + specialMove)
+      combatLog.append(specialMove + ' dealt ' + aiSpecialDamage + ' damage!')
+      combatLog.appendChild(linebreak)
     } else {
-      let currentUserHP = userHP - aiPhysicalDamageCalc()
+      let aiPhysicalDamage = aiPhysicalDamageCalc()
+      let currentUserHP = userHP - aiPhysicalDamage
       setUserHP(currentUserHP)
       userFaint(currentUserHP)
       combatLog.appendChild(linebreak)
       combatLog.append('CPU used ' + physicalMove)
+      combatLog.append(physicalMove + ' dealt ' + aiPhysicalDamage + ' damage!')
+      combatLog.appendChild(linebreak)
     }
+    playerTurn()
   }
 
   //MOVES
@@ -244,11 +226,11 @@ export default function BattleScreen() {
           />
           <p>{userPokehuman?.name}</p>
           <p className="health">{userHP}</p>
-          <button onClick={handlePhysicalDamage}>
+          <button id="physical-move" onClick={handlePhysicalDamage}>
             {physicalMove}
             {physicalDamageCalc()}
           </button>
-          <button onClick={handleSpecialDamage}>
+          <button id="special-move" onClick={handleSpecialDamage}>
             {specialMove}
             {specialDamageCalc()}
           </button>
