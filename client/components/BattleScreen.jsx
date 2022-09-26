@@ -4,18 +4,16 @@ import { useLocation } from 'react-router-dom'
 
 import { getAllPokehumansThunk } from '../actions/pokehumans'
 
-import PokeHumanOne from './PokeHumanOne'
-// import PokeHumanTwo from './PokeHumanTwo'
-// import PokeHumanThree from './PokeHumanThree'
-import AiPokehumanOne from './AiPokehumanOne'
-// import AiPokehumanThree from './AiPokehumanThree'
-// import AiPokehumanTwo from './AiPokehumanTwo'
-
 export default function BattleScreen() {
   const location = useLocation()
   const dispatch = useDispatch()
   const pokehumans = useSelector((store) => store.pokehumans)
   const [aiTeam, setAiTeam] = useState([])
+
+  const userPokehuman = location.state[0]
+  const aiPokehuman = aiTeam[0]
+  const [userHP, setUserHP] = useState(userPokehuman?.HP)
+  const [aiHP, setAiHP] = useState()
 
   useEffect(() => {
     dispatch(getAllPokehumansThunk())
@@ -30,6 +28,7 @@ export default function BattleScreen() {
   function generateAiTeam(e) {
     e.preventDefault()
     setAiTeam(getMultipleRandom(pokehumans, 2))
+    setAiHP(10)
   }
 
   // Potential turn taking system
@@ -42,18 +41,34 @@ export default function BattleScreen() {
     if (e.target.id == 'physical-move') {
       document
         .getElementById('combat-log')
-        .append('Player used ' + randomMoveOne + ' ')
+        .append('Player used ' + physicalMove + ' ')
     } else if (e.target.id == 'special-move') {
       document
         .getElementById('combat-log')
-        .append('Player used ' + randomMoveTwo + ' ')
+        .append('Player used ' + specialMove + ' ')
     }
     console.log(turn)
   }
 
-  function handleTurn(e) {
+  function handlePhysicalDamage(e) {
     // e.preventDefault()
+    // - damage from ai hp
+    let currentAiHP = aiHP - physicalDamage
 
+    setAiHP(currentAiHP)
+    aiFaint()
+    turn = !turn
+    combatLogger(e)
+    console.log(e.target.id)
+  }
+
+  function handleSpecialDamage(e) {
+    // e.preventDefault()
+    // - damage from ai hp
+    let currentAiHP = aiHP - specialDamage
+
+    setAiHP(currentAiHP)
+    aiFaint(currentAiHP)
     turn = !turn
     combatLogger(e)
     console.log(e.target.id)
@@ -91,11 +106,11 @@ export default function BattleScreen() {
   let physicalDamage = 1
 
   const physicalDamageCalc = () => {
-    if (location.state[0].attack > 75) {
+    if (userPokehuman.attack > 75) {
       return (physicalDamage = 4)
-    } else if (location.state[0].attack > 50) {
+    } else if (userPokehuman.attack > 50) {
       return (physicalDamage = 3)
-    } else if (location.state[0].attack > 25) {
+    } else if (userPokehuman.attack > 25) {
       return (physicalDamage = 2)
     } else {
       return physicalDamage
@@ -105,71 +120,60 @@ export default function BattleScreen() {
   let specialDamage = 1
 
   const specialDamageCalc = () => {
-    if (location.state[0].spAttack > 75) {
+    if (userPokehuman.spAttack > 75) {
       return (specialDamage = 4)
-    } else if (location.state[0].spAttack > 50) {
+    } else if (userPokehuman.spAttack > 50) {
       return (specialDamage = 3)
-    } else if (location.state[0].spAttack > 25) {
+    } else if (userPokehuman.spAttack > 25) {
       return (specialDamage = 2)
     } else {
       return specialDamage
     }
   }
 
-  const [alive, setAlive] = useState(true)
-  const [active, setActive] = useState(true)
-
   // pokehuman dies
-  const faint = () => {
-    //player health
-    if (pokehumans.HP <= 0) {
-      // console.log(pokehuman.name, 'has died')
-      setAlive(false)
-      for (i = 0; (i = pokehumans.length); i++) {
-        if ((alive = false)) {
-          console.log('You Lose')
-        }
-      }
-    }
-
-    //Ai health - need to differentiate between pokehuman ai and player
-    else if (pokehumans.HP <= 0) {
-      // console.log(pokehuman.name, 'has died')
-      setAlive(false)
-      if ((alive = false)) {
-        console.log('You Win')
-      }
+  const aiFaint = (currentAiHP) => {
+    //ai health
+    if (currentAiHP <= 0) {
+      console.log(aiPokehuman, 'has died')
+      aiTeam.shift()
+      console.log(aiTeam)
+      setAiHP(10)
+    } else {
+      console.log(aiHP)
     }
   }
 
-  //switch pokehumans
-  function switchPokehuman() {
-    if ((active = false)) {
-      return setActive(true)
-    } else if ((active = true)) {
-      return setActive(false)
+  const userFaint = () => {
+    //ai health
+    if (aiHP <= 0) {
+      // console.log(pokehuman.name, 'has died')
+      aiTeam.shift()
+      console.log(aiTeam)
+      setAiHP(10)
     }
   }
 
   return (
     <>
       <div>BattleScreen</div>
-      {location.state && (
-        <>
-          <PokeHumanOne pokehuman={location.state[0]} />
-          <button>
-            {physicalMove}
-            {physicalDamageCalc()}
-          </button>
-          <button>
-            {specialMove}
-            {specialDamageCalc()}
-          </button>
+      <div>
+        <img src={userPokehuman.image} alt="A human pokehuman" />
+        <p>{userPokehuman.name}</p>
+        <p>{userPokehuman.HP}</p>
+        <button onClick={handlePhysicalDamage}>
+          {physicalMove}
+          {physicalDamageCalc()}
+        </button>
+        <button onClick={handleSpecialDamage}>
+          {specialMove}
+          {specialDamageCalc()}
+        </button>
+      </div>
 
-          {/* <PokeHumanTwo pokehuman={location.state[1]} /> */}
-          {/* <PokeHumanThree pokehuman={location.state[2]} /> */}
-        </>
-      )}
+      {/* <PokeHumanTwo pokehuman={location.state[1]} /> */}
+      {/* <PokeHumanThree pokehuman={location.state[2]} /> */}
+
       <div>
         Here is where we will show two pokehumans battling each other. One will
         be player controlled and the other will be run by the computer. You will
@@ -179,21 +183,13 @@ export default function BattleScreen() {
       </div>
       <div>
         These are placeholder images for where the teams might appear
-        {aiTeam.length > 1 && (
-          <>
-            <AiPokehumanOne pokehuman={aiTeam[0]} />
-            {/* <AiPokehumanTwo pokehuman={aiTeam[1]} /> */}
-            {/* <AiPokehumanThree pokehuman={aiTeam[2]} /> */}
-          </>
-        )}
+        <img src={aiPokehuman?.image} alt="ai Pokehuman" />
+        <p>{aiHP}</p>
+        <p>{aiPokehuman?.name}</p>
       </div>
       <button onClick={generateAiTeam}>Generate Team</button>
-      <button id="physical-move" onClick={handleTurn}>
-        {physicalMove}
-      </button>
-      <button id="special-move" onClick={handleTurn}>
-        {specialMove}
-      </button>
+      <button id="physical-move">{physicalMove}</button>
+      <button id="special-move">{specialMove}</button>
 
       <div>
         <p id="combat-log">Combat Log: </p>
