@@ -11,3 +11,9 @@ export async function postUserTeamApi(id, pokeId) {
 
   return team.body
 }
+
+export async function removeUserTeamApi(id) {
+  const resp = await request.delete('/api/v1/' + id + '/remove')
+  console.log('api', resp)
+  return resp
+}

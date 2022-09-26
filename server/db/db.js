@@ -19,10 +19,9 @@ async function insertPokeHumanDb(newData, db = conn) {
 // USER GET TEAM
 function getUserTeam(userId, db = conn) {
   return db('teams')
-    .select()
+    .select('*')
     .where('user_id', userId)
     .join('pokehumans', 'pokehumans.id', 'pokehumans_id')
-  //return userTeam.map((x) => x.pokehumans_id)
 }
 
 // USER SAVING TEAM
@@ -32,7 +31,7 @@ async function insertUsersTeam(userId, pokehumansId, db = conn) {
 }
 
 // DEL USER SAVING TEAM
-async function removeUsersTeamDb(id, db = conn) {
+async function removeUserTeamDb(id, db = conn) {
   return await db('teams').del().where('id', id)
 }
 module.exports = {
@@ -41,5 +40,5 @@ module.exports = {
   getDexEntryDb,
   getUserTeam,
   insertUsersTeam,
-  removeUsersTeamDb,
+  removeUserTeamDb,
 }

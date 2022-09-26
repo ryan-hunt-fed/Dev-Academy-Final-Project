@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { getUserTeamThunk } from '../actions/userTeams'
+import { deleteUserTeamThunk, getUserTeamThunk } from '../actions/userTeams'
 
 function UserTeam() {
   const dispatch = useDispatch()
@@ -14,6 +14,10 @@ function UserTeam() {
     dispatch(getUserTeamThunk(id))
   }, [])
 
+  const handleClick = (team) => {
+    dispatch(deleteUserTeamThunk(team))
+  }
+
   return (
     <>
       <div>
@@ -22,6 +26,13 @@ function UserTeam() {
           return (
             <div>
               <p>{poke.name}</p>
+              <button
+                onClick={() => {
+                  handleClick(poke.id)
+                }}
+              >
+                Release
+              </button>
             </div>
           )
         })}
