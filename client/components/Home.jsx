@@ -16,8 +16,8 @@ function Home() {
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/kTHNpusq654"
-          title="YouTube video player"
+          src="https://www.youtube.com/embed/rg6CiPI6h2g"
+          title="Pokémon Theme Song (Music Video)"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
