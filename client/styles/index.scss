@@ -5,6 +5,10 @@ body {
   margin: 0;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f0f0f0;
+  background-image: url('/server/public/images/stripes-light.png');
+  background-position: center;
+  background-size: cover;
+  
 }
 
 html {
@@ -505,8 +509,18 @@ html {
 
 //BATTLESCREEN
 
+.background{
+  background-image: url('https://ichef.bbci.co.uk/images/ic/1200x675/p0bp1ctb.jpg');
+  background-repeat: no-repeat;
+  background-size:  cover;
+  background-position: center;
+}
+
 .battle-title{
   text-align: center;
+  padding-top: 10px;
+  // color: white;
+  font-size: 24px;
 }
 
 .game-container{
@@ -558,22 +572,22 @@ html {
   color: rgb(135, 255, 135);
 }
 
-.combat-text{
+.pokehuman-text{
 color: white;
 }
 
-.combat{
+.combat-log{
   margin: auto;
   left: 600px;
-  top: 200px;
+  top: 230px;
   position: absolute;
   background-color: white;
   border-radius: 6px;
   text-align: center;
   width: 150px;
-  height: 400px;
+  height: 480px;
   outline: black solid 2px;
-  padding: 20px;
+  padding: 25px;
   overflow:auto;
 }
 
