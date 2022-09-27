@@ -60,7 +60,6 @@ export default function BattleScreen() {
 
   function handlePhysicalDamage(e) {
     let currentAiHP = aiHP - physicalDamage
-
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
@@ -71,7 +70,6 @@ export default function BattleScreen() {
 
   function handleSpecialDamage(e) {
     let currentAiHP = aiHP - specialDamage
-
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
@@ -206,15 +204,20 @@ export default function BattleScreen() {
     }
   }
 
+  let victory = false
+
   const aiFaint = (currentAiHP) => {
     if (currentAiHP <= 0) {
       aiTeam.shift()
       if (aiTeam.length === 0) {
-        alert('You have won the battle')
+        // need to change to a victory screen here
+        victory = true
+        console.log(victory)
+        console.log(victory)
+      } else {
+        console.log(aiHP)
       }
       setAiHP(10)
-    } else {
-      console.log(aiHP)
     }
   }
 
@@ -222,7 +225,7 @@ export default function BattleScreen() {
     if (currentUserHP <= 0) {
       location.state.shift()
       if (location.state.length === 0) {
-        alert('You have lost the battle')
+        alert('You have lost!')
       }
       setUserHP(10)
     }
@@ -230,40 +233,40 @@ export default function BattleScreen() {
 
   return (
     <>
-    <div className='background'>
-      <div className="battle-title">
-        <h1>The Battle Games</h1>
-      </div>
-      <div className="game-container">
-        <div className="player-container">
-          <img
-            className="battle-images"
-            src={userPokehuman?.image}
-            alt="A human pokehuman"
-          />
-          <p className='pokehuman-text'>{userPokehuman?.name}</p>
-          <p className="health">{userHP}</p>
-          <button id="physical-move" onClick={handlePhysicalDamage}>
-            {physicalMove}
-            {physicalDamageCalc()}
-          </button>
-          <br />
-          <button id="special-move" onClick={handleSpecialDamage}>
-            {specialMove}
-            {specialDamageCalc()}
-          </button>
+      <div className="background">
+        <div className="battle-title">
+          <h1>The Battle Games</h1>
         </div>
-        <div className="combat-log" id="combat-log"></div>
-        <div className="ai-container">
-          <img
-            className="battle-images"
-            src={aiPokehuman?.image}
-            alt="ai Pokehuman"
-          />
-          <p className='pokehuman-text'>{aiPokehuman?.name}</p>
-          <p className="health">{aiHP}</p>
+        <div className="game-container">
+          <div className="player-container">
+            <img
+              className="battle-images"
+              src={userPokehuman?.image}
+              alt="A human pokehuman"
+            />
+            <p className="pokehuman-text">{userPokehuman?.name}</p>
+            <p className="health">{userHP}</p>
+            <button id="physical-move" onClick={handlePhysicalDamage}>
+              {physicalMove}
+              {physicalDamageCalc()}
+            </button>
+            <br />
+            <button id="special-move" onClick={handleSpecialDamage}>
+              {specialMove}
+              {specialDamageCalc()}
+            </button>
+          </div>
+          <div className="combat-log" id="combat-log"></div>
+          <div className="ai-container">
+            <img
+              className="battle-images"
+              src={aiPokehuman?.image}
+              alt="ai Pokehuman"
+            />
+            <p className="pokehuman-text">{aiPokehuman?.name}</p>
+            <p className="health">{aiHP}</p>
+          </div>
         </div>
-      </div>
       </div>
     </>
   )
