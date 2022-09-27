@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import Home from './Home'
 import Nav from './Nav'
@@ -12,12 +12,12 @@ import BattleScreen from './BattleScreen'
 import TeamSelect from './TeamSelect'
 import Login from './Login'
 import Register from './Register'
+import UserTeam from './UserTeam'
 
 import { checkAuth } from '../actions/auth'
 
 function App() {
   const dispatch = useDispatch()
-  const auth = useSelector((state) => state.auth)
 
   useEffect(() => {
     const confirmSuccess = () => {}
@@ -29,10 +29,8 @@ function App() {
       <header className="header">
         <Nav />
       </header>
-
-      {/* <section className="main"></section> */}
       <Routes>
-        <Route path="/" element={auth.isAuthenticated ? <Home /> : <Login />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/add" element={<AddPokeHumans />} />
@@ -41,6 +39,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/battle" element={<BattleScreen />} />
         <Route path="/team" element={<TeamSelect />} />
+        <Route path="/userteam/:id" element={<UserTeam />} />
       </Routes>
     </>
   )

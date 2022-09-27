@@ -3,10 +3,21 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { getAllPokehumansThunk } from '../actions/pokehumans'
+import { postUserTeamThunk } from '../actions/userTeams'
 
 function Dex() {
   const dispatch = useDispatch()
   const humans = useSelector((store) => store.pokehumans)
+  const alreadyAddedIds = useSelector((store) =>
+    store.pokehumans.map((pokes) => pokes.id)
+  )
+  // console.log('whats in this ', alreadyAddedIds)
+
+  const auth = useSelector((state) => state.auth)
+
+  const handleAdd = (id, pokeId) => {
+    dispatch(postUserTeamThunk(id, pokeId))
+  }
 
   useEffect(() => {
     dispatch(getAllPokehumansThunk())
@@ -31,6 +42,20 @@ function Dex() {
                   <p className={`type-${pokes.type2}`}>{pokes.type2}</p>
                 )}
               </div>
+              {auth.isAuthenticated ? (
+                <div className="dex-add-container">
+                  <p>Add to your team:</p>
+                  <button
+                    className="dex-add"
+                    onClick={() => handleAdd(auth.user.id, pokes.id)}
+                    disabled={alreadyAddedIds.includes(pokes)}
+                  >
+                    ADD
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
           )
         })}
