@@ -27,6 +27,7 @@ export default function TeamSelect() {
   return (
     <>
       <h1 className="select-title">Select 3 PokeHuman to form your team!</h1>
+      <div className='select-team'>
       <h2>Current Team: (Max 3)</h2>
       {team?.map((pokes) => {
         return (
@@ -37,6 +38,7 @@ export default function TeamSelect() {
           </>
         )
       })}
+      </div>
       <div className="select-button-start">
         <p>Team Select</p>
         {team.length === 3 && (

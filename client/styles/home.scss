@@ -1,0 +1,23 @@
+//HOME
+
+.title-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .theme-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  .intro-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 150px;
+    text-align: center;
+  }
+  
