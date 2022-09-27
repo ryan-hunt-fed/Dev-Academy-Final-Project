@@ -194,7 +194,8 @@ export default function BattleScreen() {
     if (currentAiHP <= 0) {
       aiTeam.shift()
       if (aiTeam.length === 0) {
-        alert('You have won the battle')
+        // need to change to a victory screen here
+        victory = true
       }
       setAiHP(10)
     } else {
