@@ -15,6 +15,7 @@ function UserTeam() {
   }, [])
 
   const handleClick = (pokehumans_id) => {
+    console.log(pokehumans_id)
     dispatch(deleteUserTeamThunk(pokehumans_id))
   }
 
