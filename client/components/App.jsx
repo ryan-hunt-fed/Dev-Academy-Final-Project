@@ -15,6 +15,8 @@ import Register from './Register'
 import UserTeam from './UserTeam'
 
 import { checkAuth } from '../actions/auth'
+import Victory from './Victory'
+import Defeat from './Defeat'
 
 function App() {
   const dispatch = useDispatch()
@@ -40,6 +42,8 @@ function App() {
         <Route path="/battle" element={<BattleScreen />} />
         <Route path="/team" element={<TeamSelect />} />
         <Route path="/userteam/:id" element={<UserTeam />} />
+        <Route path="/victory" element={<Victory />} />
+        <Route path="/defeat" element={<Defeat />} />
       </Routes>
     </>
   )
