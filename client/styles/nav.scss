@@ -33,13 +33,28 @@
     flex-wrap: wrap;
     justify-content: space-around;
     text-align: center;
-    margin: 2rem;
+    margin: 0.2rem;
     font-size: 2em;
     color: #222224;
+   
     & a {
       color: #222224;
       text-decoration: none;
     }
+   
+    & button {
+      font-size: 0.8em;
+      margin: 25px;
+      border-radius: 3px;
+      background-color: #ee1515;
+      color: white;
+    }
+
+    & button:hover {
+        color: #222224;
+    }
+
+
   }
   .login-a:hover {
     color: #6390F0;

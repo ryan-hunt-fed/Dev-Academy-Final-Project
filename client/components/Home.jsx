@@ -26,7 +26,7 @@ function Home() {
 
       <div className="intro-container">
         <h4>Welcome to PokeHuman, From FameGreak Studios</h4>
-        <div>
+        <div className="home-login">
           <div className="nav-log">
             {auth.isAuthenticated ? (
               <></>
