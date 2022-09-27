@@ -27,6 +27,14 @@ function About() {
             alt="jeff head proflic"
           />
           <h2>Jeff - Scrum Lead</h2>
+          <p>
+            As the scrum lead for the project, I was responsible for setting up
+            our kanban board, setting our sprint goals and conducting our
+            standups and retros. Code wise, I helped code the battle system, set
+            up the induvidual display pages for the dex and just generally was
+            an ear to help people bounce their ideas off. I was also behind the
+            idea for these photos, you&apos;re welcome.
+          </p>
         </div>
         <div className="about-wapper">
           <img
@@ -36,13 +44,10 @@ function About() {
           />
           <h2>Ryan - Product Owner</h2>
           <p>
-            Hello there, as Product Owner I drove us 
-            towards making sure our MVP was 
-            achieved. Other code responsibilities I had 
-            during this project were setting 
-            up components, styling pages,  
-            research and working with others on the  
-            battle system we created.
+            Hello there, as Product Owner I drove us towards making sure our MVP
+            was achieved. Other code responsibilities I had during this project
+            were setting up components, styling pages, research and working with
+            others on the battle system we created.
           </p>
         </div>
         <div className="about-wapper">

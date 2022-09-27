@@ -16,7 +16,7 @@ export default function TeamSelect() {
   const handleSelection = (id) => {
     const selection = humans.find((pokehuman) => pokehuman.id === id)
 
-    if (team.length >= 2) {
+    if (team.length >= 3) {
       alert('You already have a full team!')
     } else {
       setTeam([...team, selection])
@@ -26,10 +26,20 @@ export default function TeamSelect() {
 
   return (
     <>
-      <h1 className="select-title">Select 2 PokeHuman to form your team!</h1>
+      <h1 className="select-title">Select 3 PokeHuman to form your team!</h1>
+      <h2>Current Team: (Max 3)</h2>
+      {team?.map((pokes) => {
+        return (
+          <>
+            <p>{pokes.name}</p>
+            <p>{pokes.type1}</p>
+            <p>{pokes.type2}</p>
+          </>
+        )
+      })}
       <div className="select-button-start">
         <p>Team Select</p>
-        {team.length === 2 && (
+        {team.length === 3 && (
           // button conditionally appears if a full team is selected
           // state is used to pass the team to the battle component
           <Link to="/battle" state={team}>

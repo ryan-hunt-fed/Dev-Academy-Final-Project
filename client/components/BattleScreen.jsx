@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
 import { getAllPokehumansThunk } from '../actions/pokehumans'
+import Victory from './Victory'
 
 export default function BattleScreen() {
   const location = useLocation()
@@ -39,7 +40,7 @@ export default function BattleScreen() {
 
   function combatLogger(e) {
     if (e.target.id == 'physical-move') {
-      combatLog.append('Player used ' + physicalMove + ' ')
+      combatLog.append('Player used ' + physicalMove + ' ', linebreak)
       combatLog.appendChild(linebreak)
       combatLog.append(physicalMove + ' dealt ' + physicalDamage + ' damage!')
       combatLog.appendChild(linebreak)
@@ -90,7 +91,7 @@ export default function BattleScreen() {
       setUserHP(currentUserHP)
       userFaint(currentUserHP)
       combatLog.appendChild(linebreak)
-      combatLog.append('CPU used ' + specialMove)
+      combatLog.append('CPU used ' + specialMove, linebreak)
       combatLog.append(specialMove + ' dealt ' + aiSpecialDamage + ' damage!')
       combatLog.appendChild(linebreak)
     } else {
@@ -188,15 +189,19 @@ export default function BattleScreen() {
     }
   }
 
+  let victory = false
+
   const aiFaint = (currentAiHP) => {
     if (currentAiHP <= 0) {
       aiTeam.shift()
       if (aiTeam.length === 0) {
-        alert('You have won the battle')
+        // need to change to a victory screen here
+        victory = true
+        console.log(victory)
+      } else {
+        console.log(aiHP)
       }
       setAiHP(10)
-    } else {
-      console.log(aiHP)
     }
   }
 
@@ -204,7 +209,7 @@ export default function BattleScreen() {
     if (currentUserHP <= 0) {
       location.state.shift()
       if (location.state.length === 0) {
-        alert('You have lost the battle')
+        alert('You have lost!')
       }
       setUserHP(10)
     }
@@ -212,6 +217,7 @@ export default function BattleScreen() {
 
   return (
     <>
+      {victory && <Victory />}
       <div className="battle-title">
         <h1>The Battle Games</h1>
       </div>
@@ -222,7 +228,7 @@ export default function BattleScreen() {
             src={userPokehuman?.image}
             alt="A human pokehuman"
           />
-          <p className='combat-text'>{userPokehuman?.name}</p>
+          <p className="combat-text">{userPokehuman?.name}</p>
           <p className="health">{userHP}</p>
           <button id="physical-move" onClick={handlePhysicalDamage}>
             {physicalMove}
@@ -241,7 +247,7 @@ export default function BattleScreen() {
             src={aiPokehuman?.image}
             alt="ai Pokehuman"
           />
-          <p className='combat-text'>{aiPokehuman?.name}</p>
+          <p className="combat-text">{aiPokehuman?.name}</p>
           <p className="health">{aiHP}</p>
         </div>
       </div>
