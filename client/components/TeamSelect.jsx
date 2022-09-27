@@ -22,28 +22,29 @@ export default function TeamSelect() {
       setTeam([...team, selection])
     }
   }
-  console.log(team)
 
   return (
     <>
       <h1 className="select-title">Select 3 PokeHuman to form your team!</h1>
-      <div className='select-team'>
-      <h2>Current Team: (Max 3)</h2>
-      {team?.map((pokes) => {
-        return (
-          <>
-            <div className='select-team-name'>
-            <p><strong>{pokes.name}</strong></p>
-            <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
-            {pokes.type1 === pokes.type2 ? (
+      <div className="select-team">
+        <h2>Current Team: (Max 3)</h2>
+        {team?.map((pokes) => {
+          return (
+            <>
+              <div className="select-team-name">
+                <p>
+                  <strong>{pokes.name}</strong>
+                </p>
+                <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
+                {pokes.type1 === pokes.type2 ? (
                   <></>
                 ) : (
                   <p className={`type-${pokes.type2}`}>{pokes.type2}</p>
                 )}
-            </div>
-          </>
-        )
-      })}
+              </div>
+            </>
+          )
+        })}
       </div>
       <div className="select-button-start">
         <p>Team Select</p>

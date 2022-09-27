@@ -45,10 +45,9 @@ export default function BattleScreen() {
     const spcUsedPara = document.createElement('p')
     const spcDmgDealtPara = document.createElement('p')
 
-    window.setInterval(function() {
-    
-      combatLog.scrollTop = combatLog.scrollHeight;
-    }, 1000);
+    window.setInterval(function () {
+      combatLog.scrollTop = combatLog.scrollHeight
+    }, 1000)
 
     if (e.target.id == 'physical-move') {
       phyUsedPara.innerHTML = `Player used ${physicalMove}`

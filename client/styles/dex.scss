@@ -11,8 +11,10 @@
     justify-content: space-around;
     
     & img {
-    max-width: 300px;
-    min-height: 300px;
+    max-width:  320px;
+    min-width:  320px;
+    min-height: 520px;
+    max-height: 520px;
     object-fit: cover;
     padding: 10px;
     background-color: white;
