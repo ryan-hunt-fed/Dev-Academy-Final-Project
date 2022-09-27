@@ -5,7 +5,7 @@
     text-align: center;
   }
   
-  .select-button-start{
+.select-button-start{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,3 +13,15 @@
    
   }
   
+.select-team{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-team-name{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

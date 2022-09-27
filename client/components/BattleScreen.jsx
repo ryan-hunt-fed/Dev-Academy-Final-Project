@@ -34,26 +34,36 @@ export default function BattleScreen() {
   let turn = true
 
   // COMBAT LOG
+
+  // COMBAT LOG VARIABLES
   const combatLog = document.getElementById('combat-log')
   const linebreak = document.createElement('br')
 
   function combatLogger(e) {
+    const phyUsedPara = document.createElement('p')
+    const phyDmgDealtPara = document.createElement('p')
+    const spcUsedPara = document.createElement('p')
+    const spcDmgDealtPara = document.createElement('p')
+
+    window.setInterval(function () {
+      combatLog.scrollTop = combatLog.scrollHeight
+    }, 1000)
+
     if (e.target.id == 'physical-move') {
-      combatLog.append('Player used ' + physicalMove + ' ')
-      combatLog.appendChild(linebreak)
-      combatLog.append(physicalMove + ' dealt ' + physicalDamage + ' damage!')
-      combatLog.appendChild(linebreak)
+      phyUsedPara.innerHTML = `Player used ${physicalMove}`
+      combatLog.append(phyUsedPara, linebreak)
+      phyDmgDealtPara.innerHTML = `${physicalMove} dealt ${physicalDamage} damage!`
+      combatLog.append(phyDmgDealtPara, linebreak)
     } else if (e.target.id == 'special-move') {
-      combatLog.append('Player used ' + specialMove + ' ')
-      combatLog.appendChild(linebreak)
-      combatLog.append(specialMove + ' dealt ' + specialDamage + ' damage!')
-      combatLog.appendChild(linebreak)
+      spcUsedPara.innerHTML = `Player used ${specialMove}`
+      combatLog.append(spcUsedPara, linebreak)
+      spcDmgDealtPara.innerHTML = `${specialMove} dealt ${specialDamage} damage!`
+      combatLog.append(spcDmgDealtPara, linebreak)
     }
   }
 
   function handlePhysicalDamage(e) {
     let currentAiHP = aiHP - physicalDamage
-
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
@@ -64,7 +74,6 @@ export default function BattleScreen() {
 
   function handleSpecialDamage(e) {
     let currentAiHP = aiHP - specialDamage
-
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
@@ -74,36 +83,45 @@ export default function BattleScreen() {
   }
 
   function playerTurn() {
-    combatLog.append('Players turn, choose an attack ')
-    combatLog.appendChild(linebreak)
+    const playerTurnP = document.createElement('p')
+
+    playerTurnP.innerHTML = 'Players turn, choose an attack'
+    combatLog.append(playerTurnP, linebreak)
   }
 
   function cpuTurn() {
-    combatLog.append('CPU turn ')
-    combatLog.appendChild(linebreak)
+    const cpuTurnP = document.createElement('p')
+
+    cpuTurnP.innerHTML = 'CPU Turn'
+    combatLog.append(cpuTurnP, linebreak)
   }
 
   //AI
   function aiAttack() {
     let attackChoice = Math.floor(Math.random() * 10)
+    const cpuPhyP = document.createElement('p')
+    const cpuSpcP = document.createElement('p')
+    const cpuPhyDmg = document.createElement('p')
+    const cpuSpcDmg = document.createElement('p')
+
     if (attackChoice > 5) {
       let aiSpecialDamage = aiSpecialDamageCalc()
       let currentUserHP = userHP - aiSpecialDamage
       setUserHP(currentUserHP)
       userFaint(currentUserHP)
-      combatLog.appendChild(linebreak)
-      combatLog.append('CPU used ' + specialMove)
-      combatLog.append(specialMove + ' dealt ' + aiSpecialDamage + ' damage!')
-      combatLog.appendChild(linebreak)
+      cpuPhyP.innerHTML = `CPU used ${physicalMove}`
+      combatLog.append(cpuPhyP, linebreak)
+      cpuPhyDmg.innerHTML = `${physicalMove} dealt ${physicalDamage} damage!`
+      combatLog.append(cpuPhyDmg, linebreak)
     } else {
       let aiPhysicalDamage = aiPhysicalDamageCalc()
       let currentUserHP = userHP - aiPhysicalDamage
       setUserHP(currentUserHP)
       userFaint(currentUserHP)
-      combatLog.appendChild(linebreak)
-      combatLog.append('CPU used ' + physicalMove)
-      combatLog.append(physicalMove + ' dealt ' + aiPhysicalDamage + ' damage!')
-      combatLog.appendChild(linebreak)
+      cpuSpcP.innerHTML = `CPU used ${specialMove}`
+      combatLog.append(cpuSpcP, linebreak)
+      cpuSpcDmg.innerHTML = `${specialMove} dealt ${specialDamage} damage!`
+      combatLog.append(cpuSpcDmg, linebreak)
     }
     playerTurn()
   }
@@ -190,16 +208,20 @@ export default function BattleScreen() {
     }
   }
 
+  let victory = false
+
   const aiFaint = (currentAiHP) => {
     if (currentAiHP <= 0) {
       aiTeam.shift()
       if (aiTeam.length === 0) {
         // need to change to a victory screen here
         victory = true
+        console.log(victory)
+        console.log(victory)
+      } else {
+        console.log(aiHP)
       }
       setAiHP(10)
-    } else {
-      console.log(aiHP)
     }
   }
 
@@ -207,68 +229,47 @@ export default function BattleScreen() {
     if (currentUserHP <= 0) {
       location.state.shift()
       if (location.state.length === 0) {
-        alert('You have lost the battle')
+        alert('You have lost!')
       }
       setUserHP(10)
     }
   }
-  console.log(aiPokehuman)
 
   return (
     <>
-      <div className="battle-title">
-        <h1>The Battle Games</h1>
-      </div>
-      <div className="game-container">
-        <div className="player-container">
-          {aiPokehuman === undefined ? (
-            <>
-              <img
-                className="battle-images"
-                src="https://c.tenor.com/tZVpbfTIjNMAAAAC/pikachu.gif"
-                alt="You won!"
-              />
-            </>
-          ) : (
+      <div className="background">
+        <div className="battle-title">
+          <h1>The Battle Games</h1>
+        </div>
+        <div className="game-container">
+          <div className="player-container">
             <img
               className="battle-images"
               src={userPokehuman?.image}
               alt="A human pokehuman"
             />
-          )}
-          <p className="combat-text">{userPokehuman?.name}</p>
-          <p className="health">{userHP}</p>
-          <button id="physical-move" onClick={handlePhysicalDamage}>
-            {physicalMove}
-            {physicalDamageCalc()}
-          </button>
-          <br />
-          <button id="special-move" onClick={handleSpecialDamage}>
-            {specialMove}
-            {specialDamageCalc()}
-          </button>
-        </div>
-        <div className="combat-log" id="combat-log"></div>
-        <div className="ai-container">
-          {aiPokehuman === undefined ? (
-            <>
-              <img
-                className="battle-images"
-                src="https://c.tenor.com/WUEKqaYhVsUAAAAC/pokemon-sad.gif"
-                alt="You lost"
-              />
-            </>
-          ) : (
-            <>
-              <img
-                className="battle-images"
-                src={aiPokehuman?.image}
-                alt="ai Pokehuman"
-              />
-              <p className="pokehuman-text">{aiPokehuman?.name}</p>
-              <p className="health">{aiHP}</p>
-            </>
-          )}
+            <p className="pokehuman-text">{userPokehuman?.name}</p>
+            <p className="health">{userHP}</p>
+            <button id="physical-move" onClick={handlePhysicalDamage}>
+              {physicalMove}
+              {physicalDamageCalc()}
+            </button>
+            <br />
+            <button id="special-move" onClick={handleSpecialDamage}>
+              {specialMove}
+              {specialDamageCalc()}
+            </button>
+          </div>
+          <div className="combat-log" id="combat-log"></div>
+          <div className="ai-container">
+            <img
+              className="battle-images"
+              src={aiPokehuman?.image}
+              alt="ai Pokehuman"
+            />
+            <p className="pokehuman-text">{aiPokehuman?.name}</p>
+            <p className="health">{aiHP}</p>
+          </div>
         </div>
       </div>
     </>

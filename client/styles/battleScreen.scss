@@ -10,7 +10,6 @@
   .battle-title{
     text-align: center;
     padding-top: 10px;
-    // color: white;
     font-size: 24px;
   }
   
@@ -79,6 +78,12 @@
     height: 430px;
     outline: black solid 2px;
     padding: 25px;
-    overflow:auto;
+    overflow: auto;
+    scroll-behavior: smooth;
+
+  
+    
   }
+
+
   
