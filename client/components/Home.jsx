@@ -11,17 +11,6 @@ function Home() {
       </div>
 
       {/* Placeholder video. Will be replaced with our theme song. */}
-      <div className="theme-container">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/rg6CiPI6h2g"
-          title="Pokémon Theme Song (Music Video)"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </div>
 
       <div className="intro-container">
         <h4>Welcome to PokeHuman, From FameGreak Studios</h4>
@@ -44,6 +33,18 @@ function Home() {
               </>
             )}
           </div>
+        </div>
+
+        <div className="theme-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/rg6CiPI6h2g"
+            title="Pokémon Theme Song (Music Video)"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </div>
 
         <p>
