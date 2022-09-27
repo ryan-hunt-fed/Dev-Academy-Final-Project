@@ -1,6 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function Home() {
+  const auth = useSelector((state) => state.auth)
+
   return (
     <>
       <div className="title-container">
@@ -22,6 +26,26 @@ function Home() {
 
       <div className="intro-container">
         <h4>Welcome to PokeHuman, From FameGreak Studios</h4>
+        <div>
+          <div className="nav-log">
+            {auth.isAuthenticated ? (
+              <></>
+            ) : (
+              <>
+                <div>
+                  <Link to="/login" className="login-a">
+                    <button>Login</button>
+                  </Link>
+                </div>
+                <div>
+                  <Link to="/register" className="register-a">
+                    <button>Register</button>
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
 
         <p>
           Pokemon have finally risen up and have decided to be the new Pokemon

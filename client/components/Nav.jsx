@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -13,7 +14,6 @@ function Nav() {
     const confirmSuccess = () => navigateTo('/')
     dispatch(logoutUser(confirmSuccess))
   }
-
   return (
     <>
       <div className="nav-container">
@@ -23,20 +23,24 @@ function Nav() {
           <Link to="/add">Add</Link>
           <Link to="/team">Team Select</Link>
           <Link to="/about">About</Link>
-        </div>
-        <div className="nav-log">
+
           {auth.isAuthenticated ? (
             <>
               <Link to={`/userteam/${auth.user.id}`}>My Team</Link>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div className="logout-a">
+          {auth.isAuthenticated ? (
+            <>
               <Link to="/" onClick={logout}>
                 Logout
               </Link>
             </>
           ) : (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </>
+            <></>
           )}
         </div>
       </div>
