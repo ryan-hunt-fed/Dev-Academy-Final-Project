@@ -1,0 +1,175 @@
+//DEX
+
+.dex-title{
+    text-align: center;
+  }
+  
+  .dex-card{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.2em;
+    justify-content: space-around;
+    
+    & img {
+    max-width:  320px;
+    min-width:  320px;
+    min-height: 520px;
+    max-height: 520px;
+    object-fit: cover;
+    padding: 10px;
+    background-color: white;
+    
+    }
+  
+    & button {
+      margin: 0;
+    }
+  
+    & p {
+      // max-width: 100px;
+      min-width: 100px;
+      margin: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+  
+    & .type-Normal{
+     background-color: #A8A77A;
+    }
+  
+    & .type-Fire{
+    background-color: #EE8130;
+    color:white;
+   }
+  
+   & .type-Water{
+    background-color: #6390F0;
+    color:white;
+   }
+  
+   
+   & .type-Grass{
+    background-color: #7AC74C;
+   }
+  
+   & .type-Electric{
+    background-color: #F7D02C;
+   }
+  
+   & .type-Ice{
+    background-color: #96D9D6;
+   }
+  
+   & .type-Fighting{
+    background-color: #C22E28;
+    color:white;
+   }
+  
+   & .type-Poison{
+    background-color: #A33EA1;
+    color:white;
+   }
+  
+   & .type-Ground{
+    background-color: #E2BF65;
+   }
+  
+   & .type-Flying{
+    background-color: #A98FF3;
+    color:white;
+   }
+  
+   & .type-Psychic{
+    background-color: #F95587;
+    color:white;
+   }
+  
+   & .type-Bug{
+    background-color: #A6B91A;
+    color:white;
+   }
+  
+   & .type-Rock{
+    background-color: #B6A136;
+    color:white;
+   }
+  
+   & .type-Ghost{
+    background-color: #735797;
+    color:white;
+   }
+  
+   & .type-Dark{
+    background-color: #705746;
+    color:white;
+   }
+  
+   & .type-Dragon{
+    background-color: #6F35FC;
+    color:white;
+   }
+  
+   & .type-Steel{
+    background-color: #B7B7CE;
+   }
+  
+   & .type-Fairy{
+    background-color: #D685AD;
+   }
+  
+  }
+  
+  .dex-add-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    & button {
+      margin: 10px;
+    }
+  }
+  
+  .dex-add  {
+    max-height: 40px;
+    margin: 0 auto;
+  }
+  
+  
+  .dex-img:hover {
+    opacity: 0.5;
+    color: rgb(255, 193, 8);
+    cursor: pointer;
+  }
+  
+  .dex-name {
+    max-width: none;
+  }
+  
+  .dex-wapper {
+    min-width: 320px;
+    margin: 15px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 3px 3px 2px #21222228;
+    text-align: center;
+  }
+  
+  .Type-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .dex-h2 {
+    text-align: center;
+    font-size: 2.2em;
+    margin: 4rem;
+    display: inline;
+    & p {
+      // border-radius: 6px;
+      // box-shadow: black;
+      text-align: center;
+    }
+  }
+  
+  

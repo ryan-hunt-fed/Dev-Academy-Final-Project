@@ -1,0 +1,27 @@
+
+//TEAMSELECT
+
+.select-title{
+    text-align: center;
+  }
+  
+.select-button-start{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+  }
+  
+.select-team{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-team-name{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

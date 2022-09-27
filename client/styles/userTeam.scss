@@ -1,0 +1,22 @@
+//USERTEAM
+
+.user-container{
+    display: flex;
+    flex-direction: row;
+    h2{
+      text-align: center;
+    }
+    img{
+      max-width: 300px;
+     max-height: 300px;
+    }
+  }
+  
+  .user-content{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-h2 {
+    text-align: center;
+  }

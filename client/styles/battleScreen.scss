@@ -1,0 +1,89 @@
+//BATTLESCREEN
+
+.background{
+    background-image: url('https://ichef.bbci.co.uk/images/ic/1200x675/p0bp1ctb.jpg');
+    background-repeat: no-repeat;
+    background-size:  cover;
+    background-position: center;
+  }
+  
+  .battle-title{
+    text-align: center;
+    padding-top: 10px;
+    font-size: 24px;
+  }
+  
+  .game-container{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 5px;
+  }
+  
+  .player-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 10px;
+    margin-left: 250px;
+    padding: 10px;
+    background-color: rgb(62, 76, 164);
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px #383c3d;
+  
+    & button{
+      border-radius: 5px;
+      background-color: rgb(253, 204, 140);
+    }
+  }
+  
+  .ai-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px 10px;
+    margin-right: 250px;
+    margin-bottom: 30px;
+    padding: 18px;
+    background-color: rgb(201, 53, 53);
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px #383c3d;
+    width: 250px;
+  }
+  
+  .battle-images{
+    max-width: 250px;
+    max-height: 350px;
+    border-radius: 6px;
+  }
+  
+  .health{
+    color: rgb(135, 255, 135);
+  }
+  
+  .pokehuman-text{
+  color: white;
+  }
+  
+  .combat-log{
+    margin: auto;
+    left: 600px;
+    top: 230px;
+    position: absolute;
+    background-color: white;
+    border-radius: 6px;
+    text-align: center;
+    width: 150px;
+    height: 430px;
+    outline: black solid 2px;
+    padding: 25px;
+    overflow: auto;
+    scroll-behavior: smooth;
+
+  
+    
+  }
+
+
+  
