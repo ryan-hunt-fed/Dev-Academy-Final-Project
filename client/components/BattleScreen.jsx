@@ -221,11 +221,21 @@ export default function BattleScreen() {
       </div>
       <div className="game-container">
         <div className="player-container">
-          <img
-            className="battle-images"
-            src={userPokehuman?.image}
-            alt="A human pokehuman"
-          />
+          {aiPokehuman === undefined ? (
+            <>
+              <img
+                className="battle-images"
+                src="https://c.tenor.com/tZVpbfTIjNMAAAAC/pikachu.gif"
+                alt="You won!"
+              />
+            </>
+          ) : (
+            <img
+              className="battle-images"
+              src={userPokehuman?.image}
+              alt="A human pokehuman"
+            />
+          )}
           <p className="combat-text">{userPokehuman?.name}</p>
           <p className="health">{userHP}</p>
           <button id="physical-move" onClick={handlePhysicalDamage}>
@@ -238,47 +248,27 @@ export default function BattleScreen() {
             {specialDamageCalc()}
           </button>
         </div>
-        <div className="game-container">
-          <div className="player-container">
-            <img
-              className="battle-images"
-              src={userPokehuman?.image}
-              alt="A human pokehuman"
-            />
-            <p className="pokehuman-text">{userPokehuman?.name}</p>
-            <p className="health">{userHP}</p>
-            <button id="physical-move" onClick={handlePhysicalDamage}>
-              {physicalMove}
-              {physicalDamageCalc()}
-            </button>
-            <br />
-            <button id="special-move" onClick={handleSpecialDamage}>
-              {specialMove}
-              {specialDamageCalc()}
-            </button>
-          </div>
-          <div className="combat-log" id="combat-log"></div>
-          <div className="ai-container">
-            {aiPokehuman === undefined ? (
-              <>
-                <img
-                  className="battle-images"
-                  src="https://c.tenor.com/WUEKqaYhVsUAAAAC/pokemon-sad.gif"
-                  alt="You lost"
-                />
-              </>
-            ) : (
-              <>
-                <img
-                  className="battle-images"
-                  src={aiPokehuman?.image}
-                  alt="ai Pokehuman"
-                />
-                <p className="pokehuman-text">{aiPokehuman?.name}</p>
-                <p className="health">{aiHP}</p>
-              </>
-            )}
-          </div>
+        <div className="combat-log" id="combat-log"></div>
+        <div className="ai-container">
+          {aiPokehuman === undefined ? (
+            <>
+              <img
+                className="battle-images"
+                src="https://c.tenor.com/WUEKqaYhVsUAAAAC/pokemon-sad.gif"
+                alt="You lost"
+              />
+            </>
+          ) : (
+            <>
+              <img
+                className="battle-images"
+                src={aiPokehuman?.image}
+                alt="ai Pokehuman"
+              />
+              <p className="pokehuman-text">{aiPokehuman?.name}</p>
+              <p className="health">{aiHP}</p>
+            </>
+          )}
         </div>
       </div>
     </>
