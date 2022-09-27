@@ -212,6 +212,7 @@ export default function BattleScreen() {
       setUserHP(10)
     }
   }
+  console.log(aiPokehuman)
 
   return (
     <>
@@ -237,15 +238,47 @@ export default function BattleScreen() {
             {specialDamageCalc()}
           </button>
         </div>
-        <div className="combat" id="combat-log"></div>
-        <div className="ai-container">
-          <img
-            className="battle-images"
-            src={aiPokehuman?.image}
-            alt="ai Pokehuman"
-          />
-          <p className="combat-text">{aiPokehuman?.name}</p>
-          <p className="health">{aiHP}</p>
+        <div className="game-container">
+          <div className="player-container">
+            <img
+              className="battle-images"
+              src={userPokehuman?.image}
+              alt="A human pokehuman"
+            />
+            <p className="pokehuman-text">{userPokehuman?.name}</p>
+            <p className="health">{userHP}</p>
+            <button id="physical-move" onClick={handlePhysicalDamage}>
+              {physicalMove}
+              {physicalDamageCalc()}
+            </button>
+            <br />
+            <button id="special-move" onClick={handleSpecialDamage}>
+              {specialMove}
+              {specialDamageCalc()}
+            </button>
+          </div>
+          <div className="combat-log" id="combat-log"></div>
+          <div className="ai-container">
+            {aiPokehuman === undefined ? (
+              <>
+                <img
+                  className="battle-images"
+                  src="https://c.tenor.com/WUEKqaYhVsUAAAAC/pokemon-sad.gif"
+                  alt="You lost"
+                />
+              </>
+            ) : (
+              <>
+                <img
+                  className="battle-images"
+                  src={aiPokehuman?.image}
+                  alt="ai Pokehuman"
+                />
+                <p className="pokehuman-text">{aiPokehuman?.name}</p>
+                <p className="health">{aiHP}</p>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>

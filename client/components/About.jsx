@@ -21,11 +21,13 @@ function About() {
       </div>
       <div className="about-card">
         <div className="about-wapper">
-          <img
-            className="about-heat-shot"
-            src="/images/Jeff-head-shot-03.jpeg"
-            alt="jeff head proflic"
-          />
+          <a href="https://www.linkedin.com/in/jeff-mcnie-691797246/">
+            <img
+              className="about-heat-shot"
+              src="/images/Jeff-head-shot-03.jpeg"
+              alt="jeff head proflic"
+            />
+          </a>
           <h2>Jeff - Scrum Lead</h2>
         </div>
         <div className="about-wapper">
