@@ -17,7 +17,9 @@ body {
   margin: 0;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f0f0f0;
-  background-image: ;
+  background-image: url('/server/public/images/stripes-light.png');
+  background-position: center;
+  background-size: cover;
 }
 
 html {
