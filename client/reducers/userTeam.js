@@ -12,7 +12,7 @@ const reducer = (state = null, action) => {
     case POST_USERTEAM:
       return payload
     case DELETE_USERTEAM:
-      return state.filter((team) => team.id !== payload)
+      return state.filter((team) => team.id !== payload.id)
     default:
       return state
   }

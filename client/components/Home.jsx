@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 function Home() {
   const auth = useSelector((state) => state.auth)
-
   return (
     <>
       <div className="title-container">
@@ -26,7 +25,7 @@ function Home() {
 
       <div className="intro-container">
         <h4>Welcome to PokeHuman, From FameGreak Studios</h4>
-        <div>
+        <div className="home-login">
           <div className="nav-log">
             {auth.isAuthenticated ? (
               <></>
