@@ -5,7 +5,6 @@ body {
   margin: 0;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f0f0f0;
-  //background-image: url(https://c4.wallpaperflare.com/wallpaper/931/229/236/pokemon-tile-cartoon-pattern-hd-wallpaper-thumb.jpg);
 }
 
 html {
@@ -50,25 +49,44 @@ html {
   justify-content: space-around;
   
  
-  & a{
+  & a {
     text-decoration: none;
     margin: 0px 10px;
     font-size: 24px;
     color:white;
   }
 
-  & a:hover{
+  & a:hover { 
     color: #222224;
   }
-  
-}
 
-.nav-main {
-  text-align: left;
+  & .nav-main {
+    justify-content: flex-start;
+  }
+  
+  & .logout-a {
+    justify-content: flex-end;
+  }
 }
 
 .nav-log {
-  text-align: right;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+  margin: 2rem;
+  font-size: 2em;
+  color: #222224;
+  & a {
+    color: #222224;
+    text-decoration: none;
+  }
+}
+.login-a:hover {
+  color: #6390F0;
+}
+.register-a:hover {
+  color: #6390F0;
 }
 
 //LOGIN
@@ -531,8 +549,8 @@ html {
 }
 
 .battle-images{
-  max-width: 450px;
-  max-height: 450px;
+  max-width: 250px;
+  max-height: 350px;
   border-radius: 6px;
 }
 
