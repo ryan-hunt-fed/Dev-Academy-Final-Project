@@ -13,8 +13,8 @@ function About() {
 
         <div className="about-text">
           <p>
-            Hi all welcome to FameGreak we are small team of full stack
-            developer and this our final project for Dev-Academy. Here meet the
+            Hi all, welcome to FameGreak we are a small team of full stack
+            developers and this our final project for Dev-Academy. Meet the
             team.
           </p>
         </div>
