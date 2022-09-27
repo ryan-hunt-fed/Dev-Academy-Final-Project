@@ -226,6 +226,7 @@ export default function BattleScreen() {
       setUserHP(10)
     }
   }
+  console.log(aiPokehuman)
 
   return (
     <>
@@ -254,13 +255,25 @@ export default function BattleScreen() {
           </div>
           <div className="combat-log" id="combat-log"></div>
           <div className="ai-container">
-            <img
-              className="battle-images"
-              src={aiPokehuman?.image}
-              alt="ai Pokehuman"
-            />
-            <p className="pokehuman-text">{aiPokehuman?.name}</p>
-            <p className="health">{aiHP}</p>
+            {aiPokehuman === undefined ? (
+              <>
+                <img
+                  className="battle-images"
+                  src="https://c.tenor.com/WUEKqaYhVsUAAAAC/pokemon-sad.gif"
+                  alt="You lost"
+                />
+              </>
+            ) : (
+              <>
+                <img
+                  className="battle-images"
+                  src={aiPokehuman?.image}
+                  alt="ai Pokehuman"
+                />
+                <p className="pokehuman-text">{aiPokehuman?.name}</p>
+                <p className="health">{aiHP}</p>
+              </>
+            )}
           </div>
         </div>
       </div>
