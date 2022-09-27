@@ -32,9 +32,15 @@ export default function TeamSelect() {
       {team?.map((pokes) => {
         return (
           <>
-            <p>{pokes.name}</p>
-            <p>{pokes.type1}</p>
-            <p>{pokes.type2}</p>
+            <div className='select-team-name'>
+            <p><strong>{pokes.name}</strong></p>
+            <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
+            {pokes.type1 === pokes.type2 ? (
+                  <></>
+                ) : (
+                  <p className={`type-${pokes.type2}`}>{pokes.type2}</p>
+                )}
+            </div>
           </>
         )
       })}
