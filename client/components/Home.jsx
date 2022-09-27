@@ -1,10 +1,34 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function Home() {
+  const auth = useSelector((state) => state.auth)
+
   return (
     <>
       <div className="title-container">
         <img src="./images/Pokehuman-title.png" alt="Pokehuman"></img>
+      </div>
+      <div>
+        <div className="nav-log">
+          {auth.isAuthenticated ? (
+            <></>
+          ) : (
+            <>
+              <div>
+                <Link to="/login" className="login-a">
+                  Login
+                </Link>
+              </div>
+              <div>
+                <Link to="/register" className="register-a">
+                  Register
+                </Link>
+              </div>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Placeholder video. Will be replaced with our theme song. */}
