@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 function Home() {
   const auth = useSelector((state) => state.auth)
-
   return (
     <>
       <div className="title-container">
