@@ -2,6 +2,7 @@
 
 .dex-title{
     text-align: center;
+    font-size: 3em;
   }
   
   .dex-card{
@@ -22,8 +23,15 @@
     }
   
     & button {
-      margin: 0;
+      font-size: 0.8em;
+      margin: 25px;
+      border-radius: 3px;
+      background-color: #ee1515;
+      color: white;
     }
+    & button:hover {
+      color: #222224;
+  }
   
     & p {
       // max-width: 100px;
