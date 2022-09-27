@@ -10,26 +10,6 @@ function Home() {
       <div className="title-container">
         <img src="./images/Pokehuman-title.png" alt="Pokehuman"></img>
       </div>
-      <div>
-        <div className="nav-log">
-          {auth.isAuthenticated ? (
-            <></>
-          ) : (
-            <>
-              <div>
-                <Link to="/login" className="login-a">
-                  Login
-                </Link>
-              </div>
-              <div>
-                <Link to="/register" className="register-a">
-                  Register
-                </Link>
-              </div>
-            </>
-          )}
-        </div>
-      </div>
 
       {/* Placeholder video. Will be replaced with our theme song. */}
       <div className="theme-container">
@@ -46,6 +26,26 @@ function Home() {
 
       <div className="intro-container">
         <h4>Welcome to PokeHuman, From FameGreak Studios</h4>
+        <div>
+          <div className="nav-log">
+            {auth.isAuthenticated ? (
+              <></>
+            ) : (
+              <>
+                <div>
+                  <Link to="/login" className="login-a">
+                    <button>Login</button>
+                  </Link>
+                </div>
+                <div>
+                  <Link to="/register" className="register-a">
+                    <button>Register</button>
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
 
         <p>
           Pokemon have finally risen up and have decided to be the new Pokemon
