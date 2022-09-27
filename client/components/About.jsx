@@ -3,7 +3,7 @@ import React from 'react'
 function About() {
   return (
     <>
-      <h2 className="about-h2">About the Team</h2>
+      <h2 className="about-h2 title-font">About the Team</h2>
       <div className="about-container">
         <img
           className="about-team-img"
@@ -26,7 +26,7 @@ function About() {
             src="/images/Jeff-head-shot-03.jpeg"
             alt="jeff head proflic"
           />
-          <h2>Jeff - Scrum Lead</h2>
+          <h2 className='title-font'>Jeff - Scrum Lead</h2>
           <p>
             As the scrum lead for the project, I was responsible for setting up
             our kanban board, setting our sprint goals and conducting our
@@ -42,7 +42,7 @@ function About() {
             src="/images/Ryan-head-shot-02.jpeg"
             alt="ryan head proflic"
           />
-          <h2>Ryan - Product Owner</h2>
+          <h2 className='title-font'>Ryan - Product Owner</h2>
           <p>
             Hello there, as Product Owner I drove us towards making sure our MVP
             was achieved. Other code responsibilities I had during this project
@@ -56,7 +56,7 @@ function About() {
             src="/images/Jordan-head-shot-05.jpeg"
             alt="jordan head proflic"
           />
-          <h2>Jordan - Git Keeper</h2>
+          <h2 className='title-font'>Jordan - Git Keeper</h2>
           <p>
             Hello, my job as the Git Keeper was to manage our git flow and
             oversee merges. I didn't have to do much of this as the team was
@@ -70,7 +70,7 @@ function About() {
             src="/images/Kris-head-shot-01.jpeg"
             alt="kris head proflic"
           />
-          <h2>Kris - Vibes Watcher</h2>
+          <h2 className='title-font'>Kris - Vibes Watcher</h2>
           <p>
             Hey there, I am your local trash gremlin and Vibes Watcher. As the
             vibes watcher, my goal is to make sure that the team energy and
@@ -85,7 +85,7 @@ function About() {
             src="/images/Ming-head-shot-04.jpeg"
             alt="ming head proflic"
           />
-          <h2>Ming - Fungineer</h2>
+          <h2 className='title-font'>Ming - Fungineer</h2>
         </div>
       </div>
     </>

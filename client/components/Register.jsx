@@ -47,7 +47,7 @@ function Register() {
 
   return (
     <form className="register-form" onSubmit={handleSubmit}>
-      <h1>Register</h1>
+      <h1 className='title-font'>Register</h1>
       <hr />
       {auth.errorMessage && <span>{auth.errorMessage}</span>}
       <label>

@@ -36,7 +36,7 @@ function AddPokeHumans() {
   return (
     <>
       <div className="form-container">
-        <h2>Add New PokeHumans</h2>
+        <h2 className='title-font'>Add New PokeHumans</h2>
         <div className="App">
           <ImageUploading
             value={images}

@@ -25,15 +25,15 @@ export default function TeamSelect() {
 
   return (
     <>
-      <h1 className="select-title">Select 3 PokeHuman to form your team!</h1>
+      <h1 className="select-title title-font">Select 3 PokeHuman to form your team!</h1>
       <div className="select-team">
-        <h2>Current Team: (Max 3)</h2>
+        <h2 className='title-font'>Current Team: (Max 3)</h2>
         {team?.map((pokes) => {
           return (
             <>
               <div className="select-team-name">
-                <p>
-                  <strong>{pokes.name}</strong>
+                <p className='title-font'>
+                  {pokes.name}
                 </p>
                 <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
                 {pokes.type1 === pokes.type2 ? (
@@ -47,7 +47,6 @@ export default function TeamSelect() {
         })}
       </div>
       <div className="select-button-start">
-        <p>Team Select</p>
         {team.length === 3 && (
           // button conditionally appears if a full team is selected
           // state is used to pass the team to the battle component
@@ -68,7 +67,7 @@ export default function TeamSelect() {
               }}
             >
               <img className="dex-img" src={pokes.image} alt={pokes.name} />
-              <p>{pokes.name}</p>
+              <p className='title-font'>{pokes.name}</p>
               <div className="Type-box">
                 <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
                 {pokes.type1 === pokes.type2 ? (
