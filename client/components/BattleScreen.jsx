@@ -234,6 +234,7 @@ export default function BattleScreen() {
       setUserHP(10)
     }
   }
+  console.log(location.state.length)
 
   return (
     <>
@@ -243,32 +244,60 @@ export default function BattleScreen() {
         </div>
         <div className="game-container">
           <div className="player-container">
-            <img
-              className="battle-images"
-              src={userPokehuman?.image}
-              alt="A human pokehuman"
-            />
-            <p className="pokehuman-text title-font">{userPokehuman?.name}</p>
-            <p className="health title-font">{userHP}</p>
-            <button id="physical-move" onClick={handlePhysicalDamage}>
-              {physicalMove}
-              {physicalDamageCalc()}
-            </button>
-            <br />
-            <button id="special-move" onClick={handleSpecialDamage}>
-              {specialMove}
-              {specialDamageCalc()}
-            </button>
+            {aiPokehuman === undefined ? (
+              <>
+                <h2 className='title-font'>Victory!</h2>
+                <img
+                  src="https://c.tenor.com/tZVpbfTIjNMAAAAC/pikachu.gif"
+                  className="battle-images"
+                  alt="Youwon.gif"
+                />
+              </>
+            ) : (
+              <>
+                <h2 className='title-font'>Pokehumans left: {location.state.length}</h2>
+                <img
+                  className="battle-images"
+                  src={userPokehuman?.image}
+                  alt="A human pokehuman"
+                />
+                <p className="pokehuman-text title-font">{userPokehuman?.name}</p>
+                <p className="health title-font">{userHP}</p>
+                <button id="physical-move" onClick={handlePhysicalDamage}>
+                  {physicalMove}
+                  {physicalDamageCalc()}
+                </button>
+                <br />
+                <button id="special-move" onClick={handleSpecialDamage}>
+                  {specialMove}
+                  {specialDamageCalc()}
+                </button>
+              </>
+            )}
           </div>
           <div className="combat-log" id="combat-log"></div>
           <div className="ai-container">
-            <img
-              className="battle-images"
-              src={aiPokehuman?.image}
-              alt="ai Pokehuman"
-            />
-            <p className="pokehuman-text title-font">{aiPokehuman?.name}</p>
-            <p className="health title-font">{aiHP}</p>
+            {aiPokehuman === undefined ? (
+              <>
+                <h2 className='title-font'>Defeat!</h2>
+                <img
+                  src="https://c.tenor.com/WUEKqaYhVsUAAAAC/pokemon-sad.gif"
+                  className="battle-images"
+                  alt="Youlost.gif"
+                />
+              </>
+            ) : (
+              <>
+                <h2 className='title-font'>Pokehumans left: {aiTeam.length}</h2>
+                <img
+                  className="battle-images"
+                  src={aiPokehuman?.image}
+                  alt="ai Pokehuman"
+                />
+                <p className="pokehuman-text title-font">{aiPokehuman?.name}</p>
+                <p className="health title-font">{aiHP}</p>
+              </>
+            )}
           </div>
         </div>
       </div>

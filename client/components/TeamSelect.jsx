@@ -23,6 +23,11 @@ export default function TeamSelect() {
     }
   }
 
+  const handleRemove = () => {
+    team.pop()
+    setTeam([...team])
+  }
+
   return (
     <>
       <h1 className="select-title title-font">Select 3 PokeHuman to form your team!</h1>
@@ -45,6 +50,7 @@ export default function TeamSelect() {
             </>
           )
         })}
+        <button onClick={handleRemove}>Remove last team pick</button>
       </div>
       <div className="select-button-start">
         {team.length === 3 && (
