@@ -57,6 +57,12 @@ function About() {
             alt="jordan head proflic"
           />
           <h2>Jordan - Git Keeper</h2>
+          <p>
+            Hello, my job as the Git Keeper was to manage our git flow and
+            oversee merges. I didn't have to do much of this as the team was
+            amazing and our workflow kept us from stepping on each others toes
+            too much.
+          </p>
         </div>
         <div className="about-wapper">
           <img
@@ -66,11 +72,11 @@ function About() {
           />
           <h2>Kris - Vibes Watcher</h2>
           <p>
-            Hey there, is your local trash gremlin and Vides watcher. As the
-            vides watcher, my goal is to make sure that the team energy and
-            spirit are high. by doing regular check-ins and having stress,
-            profile i can keep an eye out for team member stress and then act
-            according to their tips on how to them.
+            Hey there, I am your local trash gremlin and Vibes Watcher. As the
+            vibes watcher, my goal is to make sure that the team energy and
+            spirits are high by doing regular check-ins and having stress
+            profiles I can keep an eye out for team member stress and then act
+            according to their tips on how to help them.
           </p>
         </div>
         <div className="about-wapper">

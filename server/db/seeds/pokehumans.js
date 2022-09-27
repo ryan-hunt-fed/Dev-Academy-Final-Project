@@ -11,5 +11,6 @@ exports.seed = async function (knex) {
     { id: 3, name: 'Ironryan', type_1: 'Steel', type_2: 'Electric', HP: 10, attack: 59, defence: 91, Sp_attack: 53, Sp_defence: 55, speed: 42, image: '/images/Ironryan.jpeg' },
     { id: 4, name: 'Jeffykin', type_1: 'Fairy', type_2: 'Flying', HP: 10, attack: 46, defence: 58, Sp_attack: 61, Sp_defence: 96, speed: 59, image: '/images/Jeffykin.jpeg' },
     { id: 5, name: 'Jordanian', type_1: 'Fighting', type_2: 'Fighting', HP: 10, attack: 98, defence: 30, Sp_attack: 64, Sp_defence: 46, speed: 72, image: '/images/Jordanian.jpeg' },
+    { id: 6, name: 'Kataria', type_1: 'Fairy', type_2: 'Dragon', HP: 10, attack: 80, defence: 89, Sp_attack: 95, Sp_defence: 84, speed: 86, image: 'https://lastfm.freetls.fastly.net/i/u/770x0/cbc22ac98ea714ee60b07b0d9fd920e6.jpg' }
   ]);
 };
