@@ -212,10 +212,6 @@ export default function BattleScreen() {
       if (aiTeam.length === 0) {
         // need to change to a victory screen here
         victory = true
-        console.log(victory)
-        console.log(victory)
-      } else {
-        console.log(aiHP)
       }
       setAiHP(10)
     }
