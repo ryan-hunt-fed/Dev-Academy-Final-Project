@@ -57,8 +57,6 @@ export default function TeamSelect() {
       <br />
       <div className="select-button-start">
         {team.length === 3 && (
-          // button conditionally appears if a full team is selected
-          // state is used to pass the team to the battle component
           <Link to="/battle" state={team}>
             <button className="select-button">Start Battle</button>
           </Link>

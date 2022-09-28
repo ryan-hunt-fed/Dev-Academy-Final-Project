@@ -20,7 +20,7 @@ router.post('/saved/:userId', (req, res) => {
   const postId = req.body.pokeId
 
   db.insertUsersTeam(userId, postId)
-    .then((poke) => {
+    .then(() => {
       res.sendStatus(201)
     })
     .catch((err) => {

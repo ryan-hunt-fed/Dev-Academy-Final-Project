@@ -19,6 +19,7 @@ server.use('/api/v1/pokehumans', pokehumansRoutes)
 server.use('/api/v1/dexentry', getDexEntry)
 server.use('/api/v1/teams', userTeams)
 server.use('/api/v1/', removeUserTeam)
+
 server.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'))
 })

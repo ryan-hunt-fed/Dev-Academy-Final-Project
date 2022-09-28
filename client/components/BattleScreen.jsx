@@ -9,7 +9,6 @@ export default function BattleScreen() {
   const dispatch = useDispatch()
   const pokehumans = useSelector((store) => store.pokehumans)
   const [aiTeam, setAiTeam] = useState([])
-
   const userPokehuman = location.state[0]
   const aiPokehuman = aiTeam[0]
   const [userHP, setUserHP] = useState(userPokehuman?.HP)
@@ -33,6 +32,7 @@ export default function BattleScreen() {
   // COMBAT LOG
 
   // COMBAT LOG VARIABLES
+
   const combatLog = document.getElementById('combat-log')
   const linebreak = document.createElement('br')
 
@@ -65,8 +65,8 @@ export default function BattleScreen() {
     physicalDamage = physicalDamageCalc()
     let currentAiHP = aiHP - physicalDamage
     setAiHP(currentAiHP)
-    aiFaint(currentAiHP)
     combatLogger(e)
+    aiFaint(currentAiHP)
     cpuTurn()
     aiAttack()
   }
@@ -75,8 +75,8 @@ export default function BattleScreen() {
     specialDamage = specialDamageCalc()
     let currentAiHP = aiHP - specialDamage
     setAiHP(currentAiHP)
-    aiFaint(currentAiHP)
     combatLogger(e)
+    aiFaint(currentAiHP)
     cpuTurn()
     aiAttack()
   }
@@ -107,25 +107,26 @@ export default function BattleScreen() {
       let aiSpecialDamage = aiSpecialDamageCalc()
       let currentUserHP = userHP - aiSpecialDamage
       setUserHP(currentUserHP)
-      userFaint(currentUserHP)
       cpuPhyP.innerHTML = `CPU used ${physicalMove}`
       combatLog.append(cpuPhyP, linebreak)
       cpuPhyDmg.innerHTML = `${physicalMove} dealt ${physicalDamage} damage!`
       combatLog.append(cpuPhyDmg, linebreak)
+      userFaint(currentUserHP)
     } else {
       let aiPhysicalDamage = aiPhysicalDamageCalc()
       let currentUserHP = userHP - aiPhysicalDamage
       setUserHP(currentUserHP)
-      userFaint(currentUserHP)
       cpuSpcP.innerHTML = `CPU used ${specialMove}`
       combatLog.append(cpuSpcP, linebreak)
       cpuSpcDmg.innerHTML = `${specialMove} dealt ${specialDamage} damage!`
       combatLog.append(cpuSpcDmg, linebreak)
+      userFaint(currentUserHP)
     }
     playerTurn()
   }
 
   //MOVES
+
   const physicalMoveArr = [
     'Tackle',
     'Pound',
@@ -187,11 +188,11 @@ export default function BattleScreen() {
   let aiPhysicalDamage = 1
 
   const aiPhysicalDamageCalc = () => {
-    if (userPokehuman.attack > 75) {
+    if (aiPokehuman.attack > 75) {
       return (aiPhysicalDamage = Math.floor(Math.random() * 6))
-    } else if (userPokehuman.attack > 50) {
+    } else if (aiPokehuman.attack > 50) {
       return (aiPhysicalDamage = Math.floor(Math.random() * 4))
-    } else if (userPokehuman.attack > 25) {
+    } else if (aiPokehuman.attack > 25) {
       return (aiPhysicalDamage = Math.floor(Math.random() * 3))
     } else {
       return aiPhysicalDamage
@@ -201,11 +202,11 @@ export default function BattleScreen() {
   let aiSpecialDamage = 1
 
   const aiSpecialDamageCalc = () => {
-    if (userPokehuman.spAttack > 75) {
+    if (aiPokehuman.spAttack > 75) {
       return (aiSpecialDamage = Math.floor(Math.random() * 6))
-    } else if (userPokehuman.spAttack > 50) {
+    } else if (aiPokehuman.spAttack > 50) {
       return (aiSpecialDamage = Math.floor(Math.random() * 4))
-    } else if (userPokehuman.spAttack > 25) {
+    } else if (aiPokehuman.spAttack > 25) {
       return (aiSpecialDamage = Math.floor(Math.random() * 3))
     } else {
       return aiSpecialDamage
@@ -347,7 +348,9 @@ export default function BattleScreen() {
         </div>
         <div className="game-container">
           <div className="player-container">{userVictoryCheck()}</div>
-          <div className="combat-log" id="combat-log"></div>
+          <div className="combat-log" id="combat-log">
+            <p>Players turn, choose an attack</p>
+          </div>
           <div className="ai-container">{aiVictoryCheck()}</div>
         </div>
       </div>

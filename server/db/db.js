@@ -12,8 +12,8 @@ async function insertPokeHumanDb(newData, db = conn) {
   return await db('pokehumans').insert(newData)
 }
 
-function getUserTeam(userId, db = conn) {
-  return db('teams')
+async function getUserTeam(userId, db = conn) {
+  return await db('teams')
     .join('pokehumans', 'teams.pokehumans_id', 'pokehumans.id')
     .where('user_id', userId)
     .select('*', 'teams.id AS id')
@@ -24,7 +24,6 @@ async function insertUsersTeam(userId, pokehumansId, db = conn) {
   return await db('teams').select().insert(data)
 }
 
-// DEL USER SAVING TEAM
 async function removeUserTeamDb(id, db = conn) {
   return await db('teams').del().where('id', id)
 }

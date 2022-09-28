@@ -10,10 +10,10 @@ function Home() {
         <img src="./images/Pokehuman-title.png" alt="Pokehuman"></img>
       </div>
 
-      {/* Placeholder video. Will be replaced with our theme song. */}
-
       <div className="intro-container">
-        <h4 className='title-font'>Welcome to PokeHuman, From FameGreak Studios</h4>
+        <h4 className="title-font">
+          Welcome to PokeHuman, From FameGreak Studios
+        </h4>
         <div className="home-login">
           <div className="nav-log">
             {auth.isAuthenticated ? (

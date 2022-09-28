@@ -10,7 +10,6 @@ function createUser(user, db = conn) {
   })
 }
 
-
 function userExists(username, db = conn) {
   return db('users')
     .where('username', username)

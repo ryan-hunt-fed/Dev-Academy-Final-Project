@@ -22,7 +22,6 @@ function AddPokeHumans() {
       ...formData,
       [evt.target.name]: evt.target.value,
     })
-    console.log(evt.target.value)
   }
 
   const onChange = (imageList) => {
@@ -50,7 +49,6 @@ function AddPokeHumans() {
               isDragging,
               dragProps,
             }) => (
-              // write your building UI
               <div className="upload-image-wrapper">
                 <button
                   style={isDragging ? { color: 'red' } : undefined}
