@@ -53,7 +53,6 @@ export default function TeamSelect() {
         <button onClick={handleRemove}>Remove last team pick</button>
       </div>
       <div className="select-button-start">
-        <p>Team Select</p>
         {team.length === 3 && (
           // button conditionally appears if a full team is selected
           // state is used to pass the team to the battle component
