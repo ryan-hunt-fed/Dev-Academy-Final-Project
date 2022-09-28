@@ -22,7 +22,7 @@ function UserTeam() {
   return (
     <>
       <div>
-        <h2 className="user-h2">My Team</h2>
+        <h2 className="user-h2 title-font">My Team</h2>
         <div className="dex-card">
           {useTeam?.map((poke, idx) => {
             return (
