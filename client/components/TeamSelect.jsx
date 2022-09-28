@@ -52,6 +52,7 @@ export default function TeamSelect() {
         })}
         <button onClick={handleRemove}>Remove last team pick</button>
       </div>
+      <br />
       <div className="select-button-start">
         {team.length === 3 && (
           // button conditionally appears if a full team is selected
