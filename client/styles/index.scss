@@ -10,6 +10,8 @@
 @import "./userTeam.scss";
 @import "./teamSelect.scss";
 
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Righteous&display=swap');
+
 
 body {
   top: 0;
@@ -24,4 +26,8 @@ body {
 
 html {
   height: 100%
+}
+
+.title-font{
+  font-family: 'Carter One', cursive;
 }

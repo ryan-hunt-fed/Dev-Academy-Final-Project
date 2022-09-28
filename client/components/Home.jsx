@@ -13,7 +13,7 @@ function Home() {
       {/* Placeholder video. Will be replaced with our theme song. */}
 
       <div className="intro-container">
-        <h4>Welcome to PokeHuman, From FameGreak Studios</h4>
+        <h4 className='title-font'>Welcome to PokeHuman, From FameGreak Studios</h4>
         <div className="home-login">
           <div className="nav-log">
             {auth.isAuthenticated ? (
@@ -47,7 +47,7 @@ function Home() {
           ></iframe>
         </div>
 
-        <p>
+        <p className="home-p">
           Pokemon have finally risen up and have decided to be the new Pokemon
           masters. They have created a new Pokedex filled with Pokehumans and
           much like their previous rulers have chosen to make their Pokehumans

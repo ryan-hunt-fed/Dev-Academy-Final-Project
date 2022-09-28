@@ -51,7 +51,7 @@ export default function DexEntry() {
           )}
         </div>
         <div className="entry-content">
-          <h1>{dexEntry?.name}</h1>
+          <h1 className="title-font">{dexEntry?.name}</h1>
           <img src={dexEntry?.image} alt="A dexEntry!" />
           <div className="entry-display-types">
             <p className={`type-${dexEntry?.type_1}`}>{dexEntry?.type_1}</p>
@@ -61,13 +61,69 @@ export default function DexEntry() {
               <p className={`type-${dexEntry?.type_2}`}>{dexEntry?.type_2}</p>
             )}
           </div>
-          <div>
-            <p>HP: {dexEntry?.HP}</p>
-            <p>Attack: {dexEntry?.attack}</p>
-            <p>Defence: {dexEntry?.defence}</p>
-            <p>Special Attack: {dexEntry?.Sp_attack}</p>
-            <p>Special Defence: {dexEntry?.Sp_defence}</p>
-            <p>Speed: {dexEntry?.speed}</p>
+          <div className="stats">
+            {/* <p>HP: {dexEntry?.HP}</p> */}
+
+            <div className="stat">
+              <div className="stat-name">HP: {dexEntry?.HP}</div>
+              <div className="stat-bar">
+                <div className="stat-HP" style={{ maxWidth: `100%` }}></div>
+              </div>
+            </div>
+
+            <div className="stat">
+              <div className="stat-name">Attack: {dexEntry?.attack}</div>
+              <div className="stat-bar">
+                <div
+                  className="stat-attack"
+                  style={{ maxWidth: `${dexEntry?.attack}%` }}
+                ></div>
+              </div>
+            </div>
+
+            <div className="stat">
+              <div className="stat-name">Defence: {dexEntry?.defence}</div>
+              <div className="stat-bar">
+                <div
+                  className="stat-defence"
+                  style={{ maxWidth: `${dexEntry?.defence}%` }}
+                ></div>
+              </div>
+            </div>
+
+            <div className="stat">
+              <div className="stat-name">
+                Special Attack: {dexEntry?.Sp_attack}
+              </div>
+              <div className="stat-bar">
+                <div
+                  className="stat-Sp-attack"
+                  style={{ maxWidth: `${dexEntry?.Sp_attack}%` }}
+                ></div>
+              </div>
+            </div>
+
+            <div className="stat">
+              <div className="stat-name">
+                Special Defence: {dexEntry?.Sp_defence}
+              </div>
+              <div className="stat-bar">
+                <div
+                  className="stat-Sp-defence"
+                  style={{ maxWidth: `${dexEntry?.Sp_defence}%` }}
+                ></div>
+              </div>
+            </div>
+
+            <div className="stat">
+              <div className="stat-name">Speed: {dexEntry?.speed}</div>
+              <div className="stat-bar">
+                <div
+                  className="stat-speed"
+                  style={{ maxWidth: `${dexEntry?.speed}%` }}
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

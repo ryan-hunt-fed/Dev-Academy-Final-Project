@@ -34,7 +34,7 @@ function Login() {
 
   return (
     <form className="login-from" onSubmit={handleSubmit}>
-      <h2 className="login-title">Login</h2>
+      <h2 className="login-title title-font">Login</h2>
       <hr />
       {auth.errorMessage && (
         <span className="login-error">{auth.errorMessage}</span>

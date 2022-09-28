@@ -49,13 +49,12 @@ export function postUserTeamThunk(id, pokeId) {
   return async (dispatch) => {
     const teamData = await postUserTeamApi(id, pokeId)
     dispatch(postUserTeamAction(teamData))
-  }
+  } 
 }
 
 export function deleteUserTeamThunk(id) {
-  return (dispatch) => {
-    removeUserTeamApi(id).then(() => {
+  return async (dispatch) => {
+    await removeUserTeamApi(id) 
       dispatch(deleteUserTeamAction(id))
-    })
   }
 }

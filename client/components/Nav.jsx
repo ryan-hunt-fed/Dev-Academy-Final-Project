@@ -18,17 +18,17 @@ function Nav() {
     <>
       <div className="nav-container">
         <div className="nav-main">
-          <Link to="/">Home</Link>
-          <Link to="/dex">Dex</Link>
-          <Link to="/add">Add</Link>
-          <Link to="/team">Team Select</Link>
-          <Link to="/about">About</Link>
+          <Link to="/" className='title-font'>Home</Link>
+          <Link to="/dex" className='title-font'>Dex</Link>
+          <Link to="/add" className='title-font'>Add</Link>
+          <Link to="/team" className='title-font'>Team Select</Link>
+          <Link to="/about" className='title-font'>About</Link>
         </div>
         <div className="nav-log">
           {auth.isAuthenticated ? (
             <>
-              <Link to={`/userteam/${auth.user.id}`}>My Team</Link>
-              <Link to="/" onClick={logout}>
+              <Link to={`/userteam/${auth.user.id}`} className='title-font'>My Team</Link>
+              <Link to="/" onClick={logout} className='title-font'>
                 Logout
               </Link>
             </>
