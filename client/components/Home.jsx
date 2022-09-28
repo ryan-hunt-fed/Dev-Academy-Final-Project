@@ -47,7 +47,7 @@ function Home() {
           ></iframe>
         </div>
 
-        <p>
+        <p className="home-p">
           Pokemon have finally risen up and have decided to be the new Pokemon
           masters. They have created a new Pokedex filled with Pokehumans and
           much like their previous rulers have chosen to make their Pokehumans
