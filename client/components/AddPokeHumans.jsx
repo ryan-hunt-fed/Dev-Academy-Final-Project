@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import ImageUploading from 'react-images-uploading'
 import { useNavigate } from 'react-router-dom'
+import ImageUploading from 'react-images-uploading'
 
 import { addPokehumanThunk } from '../actions/pokehumans'
 

@@ -14,6 +14,7 @@ export default function BattleScreen() {
   const aiPokehuman = aiTeam[0]
   const [userHP, setUserHP] = useState(userPokehuman?.HP)
   const [aiHP, setAiHP] = useState()
+  const [moves, setMoves] = useState([])
 
   useEffect(() => {
     dispatch(getAllPokehumansThunk())
@@ -28,10 +29,6 @@ export default function BattleScreen() {
     setAiTeam(getMultipleRandom(pokehumans, 3))
     setAiHP(10)
   }, [])
-
-  // Potential turn taking system
-
-  let turn = true
 
   // COMBAT LOG
 
@@ -50,14 +47,14 @@ export default function BattleScreen() {
     }, 1000)
 
     if (e.target.id == 'physical-move') {
-      phyUsedPara.innerHTML = `Player used ${physicalMove}`
+      phyUsedPara.innerHTML = `Player used ${moves[0]}`
       combatLog.append(phyUsedPara, linebreak)
-      phyDmgDealtPara.innerHTML = `${physicalMove} dealt ${physicalDamage} damage!`
+      phyDmgDealtPara.innerHTML = `${moves[0]} dealt ${physicalDamage} damage!`
       combatLog.append(phyDmgDealtPara, linebreak)
     } else if (e.target.id == 'special-move') {
-      spcUsedPara.innerHTML = `Player used ${specialMove}`
+      spcUsedPara.innerHTML = `Player used ${moves[1]}`
       combatLog.append(spcUsedPara, linebreak)
-      spcDmgDealtPara.innerHTML = `${specialMove} dealt ${specialDamage} damage!`
+      spcDmgDealtPara.innerHTML = `${moves[1]} dealt ${specialDamage} damage!`
       combatLog.append(spcDmgDealtPara, linebreak)
     }
   }
@@ -67,7 +64,6 @@ export default function BattleScreen() {
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
-    turn = false
     cpuTurn()
     aiAttack()
   }
@@ -77,7 +73,6 @@ export default function BattleScreen() {
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
-    turn = false
     cpuTurn()
     aiAttack()
   }
@@ -147,8 +142,13 @@ export default function BattleScreen() {
 
   const physicalMove =
     physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)]
+
   const specialMove =
     specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
+
+  useEffect(() => {
+    setMoves([physicalMove, specialMove])
+  }, [])
 
   //DAMAGE CALCULATION
 
@@ -208,17 +208,9 @@ export default function BattleScreen() {
     }
   }
 
-  let victory = false
-
   const aiFaint = (currentAiHP) => {
     if (currentAiHP <= 0) {
       aiTeam.shift()
-      if (aiTeam.length === 0) {
-        // need to change to a victory screen here
-        victory = true
-      } else {
-        console.log(aiHP)
-      }
       setAiHP(10)
     }
   }
@@ -227,9 +219,9 @@ export default function BattleScreen() {
     if (currentUserHP <= 0) {
       location.state.shift()
       setUserHP(10)
+      setMoves([physicalMove, specialMove])
     }
   }
-  console.log(location.state.length)
 
   const userVictoryCheck = () => {
     if (aiPokehuman === undefined) {
@@ -266,12 +258,12 @@ export default function BattleScreen() {
           <p className="pokehuman-text title-font">{userPokehuman?.name}</p>
           <p className="health title-font">{userHP}</p>
           <button className='title-font' id="physical-move" onClick={handlePhysicalDamage}>
-            {physicalMove}
+            {moves[0]}
             {physicalDamageCalc()}
           </button>
           <br />
           <button className='title-font' id="special-move" onClick={handleSpecialDamage}>
-            {specialMove}
+            {moves[1]}
             {specialDamageCalc()}
           </button>
         </>

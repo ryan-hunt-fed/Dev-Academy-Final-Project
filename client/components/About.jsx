@@ -21,12 +21,14 @@ function About() {
       </div>
       <div className="about-card">
         <div className="about-wapper">
-          <img
-            className="about-heat-shot"
-            src="/images/Jeff-head-shot-03.jpeg"
-            alt="jeff head proflic"
-          />
-          <h2 className='title-font'>Jeff - Scrum Lead</h2>
+          <a href="https://www.linkedin.com/in/jeff-mcnie-691797246/">
+            <img
+              className="about-heat-shot"
+              src="/images/Jeff-head-shot-03.jpeg"
+              alt="jeff head proflic"
+            />
+          </a>
+          <h2>Jeff - Scrum Lead</h2>
           <p>
             As the scrum lead for the project, I was responsible for setting up
             our kanban board, setting our sprint goals and conducting our
@@ -37,11 +39,13 @@ function About() {
           </p>
         </div>
         <div className="about-wapper">
+        <a href="https://www.linkedin.com/in/ryanhunt2/">
           <img
             className="about-heat-shot"
             src="/images/Ryan-head-shot-02.jpeg"
             alt="ryan head proflic"
           />
+          </a>
           <h2 className='title-font'>Ryan - Product Owner</h2>
           <p>
             Hello there, as Product Owner I drove us towards making sure our MVP
@@ -59,9 +63,9 @@ function About() {
           <h2 className='title-font'>Jordan - Git Keeper</h2>
           <p>
             Hello, my job as the Git Keeper was to manage our git flow and
-            oversee merges. I didn't have to do much of this as the team was
-            amazing and our workflow kept us from stepping on each others toes
-            too much.
+            oversee merges. I didn&apos;t have to do much of this as the team
+            was amazing and our workflow kept us from stepping on each others
+            toes too much.
           </p>
         </div>
         <div className="about-wapper">
