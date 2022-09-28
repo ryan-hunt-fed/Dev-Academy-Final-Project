@@ -67,7 +67,7 @@ export default function BattleScreen() {
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
-    turn = false
+    // turn = false
     cpuTurn()
     aiAttack()
   }
@@ -77,7 +77,7 @@ export default function BattleScreen() {
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
-    turn = false
+    // turn = false
     cpuTurn()
     aiAttack()
   }
@@ -144,9 +144,16 @@ export default function BattleScreen() {
     'Moonblast',
     'Ice Beam',
   ]
+  let physicalMove
 
-  const physicalMove =
-    physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)]
+  const getPhysicalMove = () => {
+    const physicalMove =
+      physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)]
+    return physicalMove
+  }
+
+  console.log(getPhysicalMove())
+
   const specialMove =
     specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
 
@@ -229,7 +236,6 @@ export default function BattleScreen() {
       setUserHP(10)
     }
   }
-  console.log(location.state.length)
 
   const userVictoryCheck = () => {
     if (aiPokehuman === undefined) {
@@ -266,7 +272,7 @@ export default function BattleScreen() {
           <p className="pokehuman-text">{userPokehuman?.name}</p>
           <p className="health">{userHP}</p>
           <button id="physical-move" onClick={handlePhysicalDamage}>
-            {physicalMove}
+            {getPhysicalMove()}
             {physicalDamageCalc()}
           </button>
           <br />
