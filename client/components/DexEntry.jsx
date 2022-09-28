@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 
+import { getAllPokehumansThunk } from '../actions/pokehumans'
 import { getDexEntryThunk } from '../actions/dexentry'
 
 export default function DexEntry() {
@@ -10,11 +11,12 @@ export default function DexEntry() {
   const pokehuman = useSelector((store) => store.pokehumans)
 
   const lastEntry = pokehuman?.slice(-1)
-  const lastNumber = lastEntry[0].id
+  const lastNumber = lastEntry[0]?.id
 
   let { id } = useParams()
 
   useEffect(() => {
+    dispatch(getAllPokehumansThunk())
     dispatch(getDexEntryThunk(id))
   }, [id])
 
@@ -59,12 +61,14 @@ export default function DexEntry() {
               <p className={`type-${dexEntry?.type_2}`}>{dexEntry?.type_2}</p>
             )}
           </div>
-          <p>HP: {dexEntry?.HP}</p>
-          <p>Attack: {dexEntry?.attack}</p>
-          <p>Defence: {dexEntry?.defence}</p>
-          <p>Special Attack: {dexEntry?.Sp_attack}</p>
-          <p>Special Defence: {dexEntry?.Sp_defence}</p>
-          <p>Speed: {dexEntry?.speed}</p>
+          <div>
+            <p>HP: {dexEntry?.HP}</p>
+            <p>Attack: {dexEntry?.attack}</p>
+            <p>Defence: {dexEntry?.defence}</p>
+            <p>Special Attack: {dexEntry?.Sp_attack}</p>
+            <p>Special Defence: {dexEntry?.Sp_defence}</p>
+            <p>Speed: {dexEntry?.speed}</p>
+          </div>
         </div>
       </div>
     </>
