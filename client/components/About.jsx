@@ -68,11 +68,13 @@ function About() {
           </p>
         </div>
         <div className="about-wapper">
-          <img
-            className="about-heat-shot"
-            src="/images/Kris-head-shot-01.jpeg"
-            alt="kris head proflic"
-          />
+          <a href="https://www.linkedin.com/in/krisbacaling/">
+            <img
+              className="about-heat-shot"
+              src="/images/Kris-head-shot-01.jpeg"
+              alt="kris head proflic"
+            />
+          </a>
           <h2 className="title-font">Kris - Vibes Watcher</h2>
           <p>
             Hey there, I am your local trash gremlin and Vibes Watcher. As the
