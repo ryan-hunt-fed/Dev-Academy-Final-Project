@@ -3,22 +3,21 @@ import React from 'react'
 function About() {
   return (
     <>
-      <h2 className="about-h2">About the Team</h2>
+      <h2 className="about-h2">Welcome</h2>
+      <div className="about-text">
+        <p>
+          Hi all welcome to FameGreak we are small team of full stack developer
+          and this our final project for Dev-Academy.
+        </p>
+      </div>
       <div className="about-container">
         <img
           className="about-team-img"
           src="/images/team.jpeg"
           alt="Team shot"
         />
-
-        <div className="about-text">
-          <p>
-            Hi all welcome to FameGreak we are small team of full stack
-            developer and this our final project for Dev-Academy. Here meet the
-            team.
-          </p>
-        </div>
       </div>
+      <h2 className="about-h2">About the Team</h2>
       <div className="about-card">
         <div className="about-wapper">
           <img
