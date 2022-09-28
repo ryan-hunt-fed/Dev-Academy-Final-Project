@@ -11,7 +11,6 @@ function Dex() {
   const alreadyAddedIds = useSelector((store) =>
     store.pokehumans.map((pokes) => pokes.id)
   )
-
   const auth = useSelector((state) => state.auth)
 
   const handleAdd = (id, pokeId) => {

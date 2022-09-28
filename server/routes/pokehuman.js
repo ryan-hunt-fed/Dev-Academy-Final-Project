@@ -60,7 +60,6 @@ router.post('/', async (req, res) => {
     speed,
     image,
   }
-
   await db.insertPokeHumanDb(data)
   return res
 })

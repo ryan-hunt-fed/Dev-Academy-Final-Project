@@ -79,6 +79,7 @@
   }
 
   // stat bars
+
   .stats {
     width: 100%;
     max-width: 600px;
@@ -134,8 +135,8 @@
   }
 
 
-.entry-display-types{
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
+  .entry-display-types{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }

@@ -9,7 +9,6 @@ export default function DexEntry() {
   const dispatch = useDispatch()
   const dexEntry = useSelector((store) => store.dexEntry)
   const pokehuman = useSelector((store) => store.pokehumans)
-
   const lastEntry = pokehuman?.slice(-1)
   const lastNumber = lastEntry[0]?.id
 
@@ -24,7 +23,6 @@ export default function DexEntry() {
     <>
       <div className="entry-container">
         <div className="entry-button-container">
-          {/* These currently break if they go below 1 or above 5. Future endeavour for us to fix during our end of day coding */}
           {Number(id) === 1 ? (
             <>
               <Link to={`/dex/${lastNumber}`}>

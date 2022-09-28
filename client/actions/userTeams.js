@@ -5,11 +5,13 @@ import {
 } from '../apis/userTeams'
 
 //Variable
+
 export const GET_USERTEAM = 'GET_USERTEAM'
 export const POST_USERTEAM = 'POST_USERTEAM'
 export const DELETE_USERTEAM = 'DELETE_USERTEAM'
 
-// Action
+// Action Creator
+
 function getUserTeamAction(team) {
   return {
     type: GET_USERTEAM,
@@ -31,7 +33,7 @@ function deleteUserTeamAction(id) {
   }
 }
 
-// THunk
+// THUNK
 
 export function getUserTeamThunk(id) {
   return (dispatch) => {
