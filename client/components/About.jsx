@@ -88,7 +88,11 @@ function About() {
             src="/images/Ming-head-shot-04.jpeg"
             alt="ming head proflic"
           />
-          <h2 className="title-font">Ming - Fungineer</h2>
+          <h2>Ming - Fungineer</h2>
+          <p>
+            Hello, my role as fungineer is similiar with vibes watcher. As the
+            fungineer, my main goal is to make sure that everyone have fun!
+          </p>
         </div>
       </div>
     </>

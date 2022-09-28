@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 
+import { getAllPokehumansThunk } from '../actions/pokehumans'
 import { getDexEntryThunk } from '../actions/dexentry'
 
 export default function DexEntry() {
@@ -10,11 +11,12 @@ export default function DexEntry() {
   const pokehuman = useSelector((store) => store.pokehumans)
 
   const lastEntry = pokehuman?.slice(-1)
-  const lastNumber = lastEntry[0].id
+  const lastNumber = lastEntry[0]?.id
 
   let { id } = useParams()
 
   useEffect(() => {
+    dispatch(getAllPokehumansThunk())
     dispatch(getDexEntryThunk(id))
   }, [id])
 
@@ -49,7 +51,7 @@ export default function DexEntry() {
           )}
         </div>
         <div className="entry-content">
-          <h1 className='title-font'>{dexEntry?.name}</h1>
+          <h1 className="title-font">{dexEntry?.name}</h1>
           <img src={dexEntry?.image} alt="A dexEntry!" />
           <div className="entry-display-types">
             <p className={`type-${dexEntry?.type_1}`}>{dexEntry?.type_1}</p>
