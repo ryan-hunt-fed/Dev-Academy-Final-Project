@@ -30,10 +30,6 @@ export default function BattleScreen() {
     setAiHP(10)
   }, [])
 
-  // Potential turn taking system
-
-  let turn = true
-
   // COMBAT LOG
 
   // COMBAT LOG VARIABLES
@@ -68,7 +64,6 @@ export default function BattleScreen() {
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
-    turn = false
     cpuTurn()
     aiAttack()
   }
@@ -78,7 +73,6 @@ export default function BattleScreen() {
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
     combatLogger(e)
-    turn = false
     cpuTurn()
     aiAttack()
   }
@@ -148,6 +142,7 @@ export default function BattleScreen() {
 
   const physicalMove =
     physicalMoveArr[Math.floor(Math.random() * physicalMoveArr.length)]
+
   const specialMove =
     specialMoveArr[Math.floor(Math.random() * specialMoveArr.length)]
 
@@ -213,17 +208,9 @@ export default function BattleScreen() {
     }
   }
 
-  let victory = false
-
   const aiFaint = (currentAiHP) => {
     if (currentAiHP <= 0) {
       aiTeam.shift()
-      if (aiTeam.length === 0) {
-        // need to change to a victory screen here
-        victory = true
-      } else {
-        console.log(aiHP)
-      }
       setAiHP(10)
     }
   }

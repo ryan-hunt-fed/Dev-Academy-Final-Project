@@ -21,11 +21,13 @@ function About() {
       </div>
       <div className="about-card">
         <div className="about-wapper">
-          <img
-            className="about-heat-shot"
-            src="/images/Jeff-head-shot-03.jpeg"
-            alt="jeff head proflic"
-          />
+          <a href="https://www.linkedin.com/in/jeff-mcnie-691797246/">
+            <img
+              className="about-heat-shot"
+              src="/images/Jeff-head-shot-03.jpeg"
+              alt="jeff head proflic"
+            />
+          </a>
           <h2>Jeff - Scrum Lead</h2>
           <p>
             As the scrum lead for the project, I was responsible for setting up
@@ -59,9 +61,9 @@ function About() {
           <h2>Jordan - Git Keeper</h2>
           <p>
             Hello, my job as the Git Keeper was to manage our git flow and
-            oversee merges. I didn't have to do much of this as the team was
-            amazing and our workflow kept us from stepping on each others toes
-            too much.
+            oversee merges. I didn&apos;t have to do much of this as the team
+            was amazing and our workflow kept us from stepping on each others
+            toes too much.
           </p>
         </div>
         <div className="about-wapper">
