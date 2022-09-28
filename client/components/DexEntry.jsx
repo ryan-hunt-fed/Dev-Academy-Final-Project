@@ -49,7 +49,7 @@ export default function DexEntry() {
           )}
         </div>
         <div className="entry-content">
-          <h1>{dexEntry?.name}</h1>
+          <h1 className='title-font'>{dexEntry?.name}</h1>
           <img src={dexEntry?.image} alt="A dexEntry!" />
           <div className="entry-display-types">
             <p className={`type-${dexEntry?.type_1}`}>{dexEntry?.type_1}</p>
