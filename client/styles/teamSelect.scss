@@ -26,3 +26,24 @@
     flex-direction: row;
     gap: 10px;
 }
+
+.button-style {
+  font-size: 0.8em;
+  margin: 25px;
+  border-radius: 3px;
+  background-color: #ee1515;
+  color:  #ffffff;
+}
+
+
+.select-button {
+  font-size: 0.8em;
+  margin: 25px;
+  border-radius: 3px;
+  background-color: #ee1515;
+  color:  #ffffff;
+}
+
+ button:hover {
+  color: black;
+}

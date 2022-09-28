@@ -6,8 +6,8 @@ function About() {
       <h2 className="about-h2 title-font">Welcome</h2>
       <div className="about-text">
         <p>
-          Hi all welcome to FameGreak we are small team of full stack developer
-          and this our final project for Dev-Academy.
+          Welcome to FameGreak!! We are a small team of full stack web
+          developers and this is our final project for DevAcademy.
         </p>
       </div>
       <div className="about-container">
@@ -68,11 +68,13 @@ function About() {
           </p>
         </div>
         <div className="about-wapper">
-          <img
-            className="about-heat-shot"
-            src="/images/Kris-head-shot-01.jpeg"
-            alt="kris head proflic"
-          />
+          <a href="https://www.linkedin.com/in/krisbacaling/">
+            <img
+              className="about-heat-shot"
+              src="/images/Kris-head-shot-01.jpeg"
+              alt="kris head proflic"
+            />
+          </a>
           <h2 className="title-font">Kris - Vibes Watcher</h2>
           <p>
             Hey there, I am your local trash gremlin and Vibes Watcher. As the

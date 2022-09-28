@@ -30,16 +30,16 @@ export default function TeamSelect() {
 
   return (
     <>
-      <h1 className="select-title title-font">Select 3 PokeHuman to form your team!</h1>
+      <h1 className="select-title title-font">
+        Select 3 PokeHuman to form your team!
+      </h1>
       <div className="select-team">
-        <h2 className='title-font'>Current Team: (Max 3)</h2>
+        <h2 className="title-font">Current Team: (Max 3)</h2>
         {team?.map((pokes) => {
           return (
             <>
               <div className="select-team-name">
-                <p className='title-font'>
-                  {pokes.name}
-                </p>
+                <p className="title-font">{pokes.name}</p>
                 <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
                 {pokes.type1 === pokes.type2 ? (
                   <></>
@@ -50,7 +50,9 @@ export default function TeamSelect() {
             </>
           )
         })}
-        <button onClick={handleRemove}>Remove last team pick</button>
+        <button className="button-style" onClick={handleRemove}>
+          Remove last team pick
+        </button>
       </div>
       <br />
       <div className="select-button-start">
@@ -58,7 +60,7 @@ export default function TeamSelect() {
           // button conditionally appears if a full team is selected
           // state is used to pass the team to the battle component
           <Link to="/battle" state={team}>
-            <button className="select-button-start">Start Battle</button>
+            <button className="select-button">Start Battle</button>
           </Link>
         )}
       </div>
@@ -74,7 +76,7 @@ export default function TeamSelect() {
               }}
             >
               <img className="dex-img" src={pokes.image} alt={pokes.name} />
-              <p className='title-font'>{pokes.name}</p>
+              <p className="title-font">{pokes.name}</p>
               <div className="Type-box">
                 <p className={`type-${pokes.type1}`}>{pokes.type1}</p>
                 {pokes.type1 === pokes.type2 ? (

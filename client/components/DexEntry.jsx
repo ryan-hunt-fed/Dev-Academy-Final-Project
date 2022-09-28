@@ -62,8 +62,6 @@ export default function DexEntry() {
             )}
           </div>
           <div className="stats">
-            {/* <p>HP: {dexEntry?.HP}</p> */}
-
             <div className="stat">
               <div className="stat-name">HP: {dexEntry?.HP}</div>
               <div className="stat-bar">
