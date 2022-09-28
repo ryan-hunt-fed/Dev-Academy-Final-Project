@@ -6,8 +6,8 @@ function About() {
       <h2 className="about-h2 title-font">Welcome</h2>
       <div className="about-text">
         <p>
-          Hi all welcome to FameGreak we are small team of full stack developer
-          and this our final project for Dev-Academy.
+          Welcome to FameGreak!! We are a small team of full stack web
+          developers and this is our final project for DevAcademy.
         </p>
       </div>
       <div className="about-container">

@@ -36,7 +36,7 @@ function AddPokeHumans() {
   return (
     <>
       <div className="form-container">
-        <h2 className='title-font pokehuman-text'>Add New PokeHumans</h2>
+        <h2 className="title-font pokehuman-text">Add A New PokeHuman</h2>
         <div className="App">
           <ImageUploading
             value={images}
@@ -169,7 +169,10 @@ function AddPokeHumans() {
             />
           </div>
           <div>
-            <label htmlFor="Sp_attack" className="sp-attack-label pokehuman-text">
+            <label
+              htmlFor="Sp_attack"
+              className="sp-attack-label pokehuman-text"
+            >
               SP Attack:{' '}
             </label>
             <input
@@ -182,7 +185,10 @@ function AddPokeHumans() {
             />
           </div>
           <div>
-            <label htmlFor="Sp_defence" className="sp-defence-label pokehuman-text">
+            <label
+              htmlFor="Sp_defence"
+              className="sp-defence-label pokehuman-text"
+            >
               SP Defence:{' '}
             </label>
             <input
@@ -208,7 +214,10 @@ function AddPokeHumans() {
             />
           </div>
 
-          <button className='register-a' disabled={!formData || formData.name === ''}>
+          <button
+            className="register-a"
+            disabled={!formData || formData.name === ''}
+          >
             Add PokeHuman
           </button>
         </form>

@@ -62,6 +62,7 @@ export default function BattleScreen() {
   }
 
   function handlePhysicalDamage(e) {
+    physicalDamage = physicalDamageCalc()
     let currentAiHP = aiHP - physicalDamage
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
@@ -71,6 +72,7 @@ export default function BattleScreen() {
   }
 
   function handleSpecialDamage(e) {
+    specialDamage = specialDamageCalc()
     let currentAiHP = aiHP - specialDamage
     setAiHP(currentAiHP)
     aiFaint(currentAiHP)
@@ -220,12 +222,8 @@ export default function BattleScreen() {
       combatLog.append(aiFaintP, linebreak)
       aiTeam.shift()
       if (aiTeam.length === 0) {
-        // need to change to a victory screen here
         victoryP.innerHTML = `You are the winner!`
         combatLog.append(victoryP, linebreak)
-        victory = true
-      } else {
-        console.log(aiHP)
       }
       setAiHP(10)
     }
@@ -248,7 +246,7 @@ export default function BattleScreen() {
     if (aiPokehuman === undefined) {
       return (
         <>
-          <h2 className='title-font pokehuman-text'>Victory!</h2>
+          <h2 className="title-font pokehuman-text">Victory!</h2>
           <img
             src="https://c.tenor.com/tZVpbfTIjNMAAAAC/pikachu.gif"
             className="battle-images"
@@ -259,7 +257,7 @@ export default function BattleScreen() {
     } else if (userPokehuman === undefined) {
       return (
         <>
-          <h2 className='title-font pokehuman-text'>Defeat!</h2>
+          <h2 className="title-font pokehuman-text">Defeat!</h2>
           <img
             src="https://c.tenor.com/WUEKqaYhVsUAAAAC/pokemon-sad.gif"
             className="battle-images"
@@ -270,7 +268,9 @@ export default function BattleScreen() {
     } else {
       return (
         <>
-          <h2 className='title-font pokehuman-text'>Pokehumans left: {location.state.length}</h2>
+          <h2 className="title-font pokehuman-text">
+            Pokehumans left: {location.state.length}
+          </h2>
           <img
             className="battle-images"
             src={userPokehuman?.image}
@@ -278,14 +278,20 @@ export default function BattleScreen() {
           />
           <p className="pokehuman-text title-font">{userPokehuman?.name}</p>
           <p className="health title-font">{userHP}</p>
-          <button className='title-font' id="physical-move" onClick={handlePhysicalDamage}>
+          <button
+            className="title-font"
+            id="physical-move"
+            onClick={handlePhysicalDamage}
+          >
             {moves[0]}
-            {physicalDamageCalc()}
           </button>
           <br />
-          <button className='title-font' id="special-move" onClick={handleSpecialDamage}>
+          <button
+            className="title-font"
+            id="special-move"
+            onClick={handleSpecialDamage}
+          >
             {moves[1]}
-            {specialDamageCalc()}
           </button>
         </>
       )
@@ -296,7 +302,7 @@ export default function BattleScreen() {
     if (userPokehuman === undefined) {
       return (
         <>
-          <h2 className='title-font pokehuman-text'>Victory!</h2>
+          <h2 className="title-font pokehuman-text">Victory!</h2>
           <img
             src="https://c.tenor.com/tZVpbfTIjNMAAAAC/pikachu.gif"
             className="battle-images"
@@ -307,7 +313,7 @@ export default function BattleScreen() {
     } else if (aiPokehuman === undefined) {
       return (
         <>
-          <h2 className='title-font pokehuman-text'>Defeat!</h2>
+          <h2 className="title-font pokehuman-text">Defeat!</h2>
           <img
             src="https://c.tenor.com/WUEKqaYhVsUAAAAC/pokemon-sad.gif"
             className="battle-images"
@@ -318,7 +324,9 @@ export default function BattleScreen() {
     } else {
       return (
         <>
-          <h2 className='title-font pokehuman-text'>Pokehumans left: {location.state.length}</h2>
+          <h2 className="title-font pokehuman-text">
+            Pokehumans left: {location.state.length}
+          </h2>
           <img
             className="battle-images"
             src={aiPokehuman?.image}
@@ -335,7 +343,7 @@ export default function BattleScreen() {
     <>
       <div className="background">
         <div className="battle-title">
-          <h1 className='title-font'>The Battle Games</h1>
+          <h1 className="title-font">The Battle Games</h1>
         </div>
         <div className="game-container">
           <div className="player-container">{userVictoryCheck()}</div>
