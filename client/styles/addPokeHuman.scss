@@ -8,7 +8,10 @@
     align-content: center;
     padding: 10px 5px;
     margin: 35px 250px;
-    background-color: white;
+    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c5069763-9098-4808-b222-a0089bb5786d/dcrrow9-6eb749e4-5308-4985-ac0b-20e432f8425c.png/v1/fill/w_1600,h_2846,q_80,strp/pokedex_phone_wallpaper_by_drboxhead_dcrrow9-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Mjg0NiIsInBhdGgiOiJcL2ZcL2M1MDY5NzYzLTkwOTgtNDgwOC1iMjIyLWEwMDg5YmI1Nzg2ZFwvZGNycm93OS02ZWI3NDllNC01MzA4LTQ5ODUtYWMwYi0yMGU0MzJmODQyNWMucG5nIiwid2lkdGgiOiI8PTE2MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.np-kqNxcquZ_PQMMY5BIw44HX2ccec7_5auukla8gKc');
+    background-repeat: no-repeat;
+    background-position: -100px -180px;
+    background-size: contain cover 50%;
     border-radius: 6px;
     box-shadow: 3px 3px 10px #383c3d;
   
@@ -30,6 +33,14 @@
     
     & button {
       margin: 10px 85px;
+      background-color: #30A7D7;
+      color: white;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    & button:hover{
+      color:black;
     }
   }
   

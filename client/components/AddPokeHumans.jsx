@@ -36,7 +36,7 @@ function AddPokeHumans() {
   return (
     <>
       <div className="form-container">
-        <h2 className='title-font'>Add New PokeHumans</h2>
+        <h2 className='title-font pokehuman-text'>Add New PokeHumans</h2>
         <div className="App">
           <ImageUploading
             value={images}
@@ -72,14 +72,14 @@ function AddPokeHumans() {
         </div>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name" className="name-label">
+            <label htmlFor="name" className="name-label pokehuman-text">
               Name:{' '}
             </label>
             <input type="text" id="name" name="name" onChange={handleChange} />
           </div>
           <div>
-            <label htmlFor="type_1" className="type-1-label">
-              Type_1:{' '}
+            <label htmlFor="type_1" className="type-1-label pokehuman-text">
+              Type 1:{' '}
             </label>
             <select id="type_1" name="type_1" onChange={handleChange}>
               <option>--Please choose your type--</option>
@@ -104,8 +104,8 @@ function AddPokeHumans() {
             </select>
           </div>
           <div>
-            <label htmlFor="type_2" className="type-2-label">
-              Type_2:{' '}
+            <label htmlFor="type_2" className="type-2-label pokehuman-text">
+              Type 2:{' '}
             </label>
             <select id="type_2" name="type_2" onChange={handleChange}>
               <option>--Please choose your type--</option>
@@ -130,7 +130,7 @@ function AddPokeHumans() {
             </select>
           </div>
           <div>
-            <label htmlFor="HP" className="hp-label">
+            <label htmlFor="HP" className="hp-label pokehuman-text">
               HP:{' '}
             </label>
             <input
@@ -143,7 +143,7 @@ function AddPokeHumans() {
             />
           </div>
           <div>
-            <label htmlFor="attack" className="attack-label">
+            <label htmlFor="attack" className="attack-label pokehuman-text">
               Attack:{' '}
             </label>
             <input
@@ -156,7 +156,7 @@ function AddPokeHumans() {
             />
           </div>
           <div>
-            <label htmlFor="defence" className="defence-label">
+            <label htmlFor="defence" className="defence-label pokehuman-text">
               Defence:{' '}
             </label>
             <input
@@ -169,8 +169,8 @@ function AddPokeHumans() {
             />
           </div>
           <div>
-            <label htmlFor="Sp_attack" className="sp-attack-label">
-              Sp_attack:{' '}
+            <label htmlFor="Sp_attack" className="sp-attack-label pokehuman-text">
+              SP Attack:{' '}
             </label>
             <input
               type="number"
@@ -182,8 +182,8 @@ function AddPokeHumans() {
             />
           </div>
           <div>
-            <label htmlFor="Sp_defence" className="sp-defence-label">
-              Sp_defence:{' '}
+            <label htmlFor="Sp_defence" className="sp-defence-label pokehuman-text">
+              SP Defence:{' '}
             </label>
             <input
               type="number"
@@ -195,7 +195,7 @@ function AddPokeHumans() {
             />
           </div>
           <div>
-            <label htmlFor="speed" className="speed-label">
+            <label htmlFor="speed" className="speed-label pokehuman-text">
               Speed:{' '}
             </label>
             <input
@@ -208,7 +208,7 @@ function AddPokeHumans() {
             />
           </div>
 
-          <button disabled={!formData || formData.name === ''}>
+          <button className='register-a' disabled={!formData || formData.name === ''}>
             Add PokeHuman
           </button>
         </form>
