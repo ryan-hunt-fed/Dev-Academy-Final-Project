@@ -41,6 +41,8 @@ export default function BattleScreen() {
     const phyDmgDealtPara = document.createElement('p')
     const spcUsedPara = document.createElement('p')
     const spcDmgDealtPara = document.createElement('p')
+    const aiFaintP = document.createElement('p')
+    aiFaintP.classList.add('ai-faint')
 
     window.setInterval(function () {
       combatLog.scrollTop = combatLog.scrollHeight
@@ -209,14 +211,33 @@ export default function BattleScreen() {
   }
 
   const aiFaint = (currentAiHP) => {
+    const aiFaintP = document.createElement('p')
+    const victoryP = document.createElement('p')
+    aiFaintP.classList.add('ai-faint')
+
     if (currentAiHP <= 0) {
+      aiFaintP.innerHTML = `You have defeated ${aiPokehuman.name}`
+      combatLog.append(aiFaintP, linebreak)
       aiTeam.shift()
+      if (aiTeam.length === 0) {
+        // need to change to a victory screen here
+        victoryP.innerHTML = `You are the winner!`
+        combatLog.append(victoryP, linebreak)
+        victory = true
+      } else {
+        console.log(aiHP)
+      }
       setAiHP(10)
     }
   }
 
   const userFaint = (currentUserHP) => {
+    const userFaintP = document.createElement('p')
+    userFaintP.classList.add('user-faint')
+
     if (currentUserHP <= 0) {
+      userFaintP.innerHTML = `${userPokehuman.name} has fainted`
+      combatLog.append(userFaintP, linebreak)
       location.state.shift()
       setUserHP(10)
       setMoves([physicalMove, specialMove])
